@@ -707,6 +707,88 @@ h2 {
   color: var(--text);
 }
 
+/* NEWS */
+#news { background: var(--bg); }
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+.news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 4px;
+  position: relative;
+}
+.news-date {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.news-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.news-content {
+  font-size: 15px;
+  color: #c0c0d8;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.news-section {
+  margin-bottom: 20px;
+}
+.news-section h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.news-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.news-section li {
+  font-size: 14px;
+  color: #c0c0d8;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+.news-section li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.news-section p {
+  font-size: 14px;
+  color: #c0c0d8;
+  line-height: 1.75;
+  margin: 0;
+}
+.news-section a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-section a:hover {
+  color: var(--accent2);
+  text-decoration: underline;
+}
+
 /* CONTACTS */
 #contacts { background: var(--bg); }
 .contacts-grid {
@@ -940,6 +1022,7 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
   <a href="#services" onclick="closeMobileMenu()">Услуги</a>
   <a href="#why" onclick="closeMobileMenu()">О нас</a>
   <a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
+  <a href="#news" onclick="closeMobileMenu()">Новости</a>
   <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
   <a href="tel:+79952507772" class="mobile-phone">📞 +7 (995) 250-77-72</a>
 </div>
@@ -952,6 +1035,7 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <li><a href="#services">Услуги</a></li>
     <li><a href="#why">О нас</a></li>
     <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#news">Новости</a></li>
     <li><a href="#contacts">Контакты</a></li>
   </ul>
   <a href="tel:+79952507772" class="nav-cta" aria-label="Позвонить нам">📞 Позвонить</a>
@@ -1246,6 +1330,54 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
 </div>
 ```
 
+  </div>
+</section>
+
+<!-- НОВОСТИ -->
+
+<section id="news" aria-labelledby="news-heading">
+  <div class="container">
+    <div class="section-tag">§ Новости</div>
+    <h2 id="news-heading">Новости и публикации</h2>
+    <p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
+    
+    <div class="news-grid">
+      <!-- Новость 1 -->
+      <article class="news-card" role="article">
+        <div class="news-date">5 мая 2026</div>
+        <h3 class="news-title">Ремсити36 — профессионалы в ремонте техники</h3>
+        <p class="news-content">
+          Ремсити36 — ремонт бытовой техники в Воронеже. Профессионально ремонтируем то, от чего другие отказываются! 🛠
+        </p>
+        <div class="news-section">
+          <h4>Что мы ремонтируем:</h4>
+          <ul>
+            <li><strong>Крупную технику:</strong> духовые шкафы, варочные панели, вытяжки, бойлеры.</li>
+            <li><strong>Мелкую бытовую:</strong> микроволновки, пылесосы, утюги, парогенераторы, блендеры, мясорубки.</li>
+            <li><strong>Электронику:</strong> телевизоры, ноутбуки, мониторы, проекторы, аудио- и видеотехнику, умные колонки.</li>
+            <li><strong>Кофемашины:</strong> ремонт любой сложности, декальцинация, чистка от накипи и засоров.</li>
+          </ul>
+        </div>
+        <div class="news-section">
+          <h4>⭐ Почему выбирают нас:</h4>
+          <ul>
+            <li><strong>Честные цены:</strong> называем точную стоимость ДО начала работ, никаких скрытых доплат.</li>
+            <li><strong>Бесплатная диагностика</strong> (при согласии на ремонт).</li>
+            <li><strong>Оперативность:</strong> сроки ремонта от 1 дня.</li>
+            <li><strong>Надежность:</strong> даем официальную гарантию на работу и запчасти.</li>
+            <li><strong>Удобство:</strong> работаем с выездом на дом по всему Воронежу. Принимаем наличные, карты, оплату по QR-коду и СБП.</li>
+          </ul>
+        </div>
+        <div class="news-section">
+          <h4>📍 Как нас найти:</h4>
+          <p>
+            <strong>Адрес:</strong> ул. 9 Января, 233/20<br>
+            <strong>Телефон:</strong> <a href="tel:+79952507772">+7 (995) 250-77-72</a><br>
+            <strong>Email:</strong> <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a>
+          </p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
