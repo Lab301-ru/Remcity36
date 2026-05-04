@@ -965,6 +965,86 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
 }
 .footer-msg-link:hover { opacity: 0.8; }
 
+
+/* ГАЛЕРЕЯ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  aspect-ratio: 4/3;
+  background: var(--surface);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  color: #fff;
+  font-size: 12px;
+  padding: 24px 12px 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; }
+.gallery-item.featured {
+  grid-column: span 2;
+}
+
+/* ЛАЙТБОКС */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 28px;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+
+@media (max-width: 700px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item.featured { grid-column: span 2; }
+}
+@media (max-width: 420px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item.featured { grid-column: span 1; }
+}
+
 /* ANIMATIONS */
 .fade-up {
   opacity: 0;
@@ -1296,6 +1376,60 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
   </div>
 </section>
 
+<!-- ГАЛЕРЕЯ -->
+
+<section id="gallery" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="section-tag">§ Наша работа</div>
+    <h2 id="gallery-heading">Мастера за работой</h2>
+    <p class="section-desc">Реальные фото из нашего сервисного центра — смотрите как мы работаем.</p>
+
+```
+<div class="gallery-grid">
+
+  <div class="gallery-item featured fade-up" onclick="openLightbox('IMG_5837.jpeg')">
+    <img src="IMG_5837.jpeg" alt="Ведущий инженер Ремсити36 ремонтирует кофемашину" loading="lazy">
+    <div class="gallery-caption">Ведущий инженер за ремонтом кофемашины</div>
+  </div>
+
+  <div class="gallery-item fade-up" onclick="openLightbox('IMG_5824.jpeg')">
+    <img src="IMG_5824.jpeg" alt="Ремонт бытовой техники в Ремсити36" loading="lazy">
+    <div class="gallery-caption">Ремонт бытовой техники</div>
+  </div>
+
+  <div class="gallery-item fade-up" onclick="openLightbox('IMG_5825.jpeg')">
+    <img src="IMG_5825.jpeg" alt="Диагностика и ремонт техники" loading="lazy">
+    <div class="gallery-caption">Диагностика и ремонт</div>
+  </div>
+
+  <div class="gallery-item fade-up" onclick="openLightbox('IMG_5829.jpeg')">
+    <img src="IMG_5829.jpeg" alt="Мастер Ремсити36 выполняет ремонт" loading="lazy">
+    <div class="gallery-caption">Мастер за работой</div>
+  </div>
+
+  <div class="gallery-item fade-up" onclick="openLightbox('IMG_5833.jpeg')">
+    <img src="IMG_5833.jpeg" alt="Профессиональный ремонт техники Воронеж" loading="lazy">
+    <div class="gallery-caption">Профессиональный ремонт</div>
+  </div>
+
+  <div class="gallery-item fade-up" onclick="openLightbox('IMG_5834.jpeg')">
+    <img src="IMG_5834.jpeg" alt="Сервисный центр Ремсити36 Воронеж" loading="lazy">
+    <div class="gallery-caption">В нашем сервисном центре</div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ЛАЙТБОКС -->
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <span class="lightbox-close" onclick="closeLightbox()" aria-label="Закрыть">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- ОТЗЫВЫ -->
 
 <section id="reviews" aria-labelledby="reviews-heading">
@@ -1340,44 +1474,47 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <div class="section-tag">§ Новости</div>
     <h2 id="news-heading">Новости и публикации</h2>
     <p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
-    
-    <div class="news-grid">
-      <!-- Новость 1 -->
-      <article class="news-card" role="article">
-        <div class="news-date">5 мая 2026</div>
-        <h3 class="news-title">Ремсити36 — профессионалы в ремонте техники</h3>
-        <p class="news-content">
-          Ремсити36 — ремонт бытовой техники в Воронеже. Профессионально ремонтируем то, от чего другие отказываются! 🛠
-        </p>
-        <div class="news-section">
-          <h4>Что мы ремонтируем:</h4>
-          <ul>
-            <li><strong>Крупную технику:</strong> духовые шкафы, варочные панели, вытяжки, бойлеры.</li>
-            <li><strong>Мелкую бытовую:</strong> микроволновки, пылесосы, утюги, парогенераторы, блендеры, мясорубки.</li>
-            <li><strong>Электронику:</strong> телевизоры, ноутбуки, мониторы, проекторы, аудио- и видеотехнику, умные колонки.</li>
-            <li><strong>Кофемашины:</strong> ремонт любой сложности, декальцинация, чистка от накипи и засоров.</li>
-          </ul>
-        </div>
-        <div class="news-section">
-          <h4>⭐ Почему выбирают нас:</h4>
-          <ul>
-            <li><strong>Честные цены:</strong> называем точную стоимость ДО начала работ, никаких скрытых доплат.</li>
-            <li><strong>Бесплатная диагностика</strong> (при согласии на ремонт).</li>
-            <li><strong>Оперативность:</strong> сроки ремонта от 1 дня.</li>
-            <li><strong>Надежность:</strong> даем официальную гарантию на работу и запчасти.</li>
-            <li><strong>Удобство:</strong> работаем с выездом на дом по всему Воронежу. Принимаем наличные, карты, оплату по QR-коду и СБП.</li>
-          </ul>
-        </div>
-        <div class="news-section">
-          <h4>📍 Как нас найти:</h4>
-          <p>
-            <strong>Адрес:</strong> ул. 9 Января, 233/20<br>
-            <strong>Телефон:</strong> <a href="tel:+79952507772">+7 (995) 250-77-72</a><br>
-            <strong>Email:</strong> <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a>
-          </p>
-        </div>
-      </article>
+
+```
+<div class="news-grid">
+  <!-- Новость 1 -->
+  <article class="news-card" role="article">
+    <div class="news-date">5 мая 2026</div>
+    <h3 class="news-title">Ремсити36 — профессионалы в ремонте техники</h3>
+    <p class="news-content">
+      Ремсити36 — ремонт бытовой техники в Воронеже. Профессионально ремонтируем то, от чего другие отказываются! 🛠
+    </p>
+    <div class="news-section">
+      <h4>Что мы ремонтируем:</h4>
+      <ul>
+        <li><strong>Крупную технику:</strong> духовые шкафы, варочные панели, вытяжки, бойлеры.</li>
+        <li><strong>Мелкую бытовую:</strong> микроволновки, пылесосы, утюги, парогенераторы, блендеры, мясорубки.</li>
+        <li><strong>Электронику:</strong> телевизоры, ноутбуки, мониторы, проекторы, аудио- и видеотехнику, умные колонки.</li>
+        <li><strong>Кофемашины:</strong> ремонт любой сложности, декальцинация, чистка от накипи и засоров.</li>
+      </ul>
     </div>
+    <div class="news-section">
+      <h4>⭐ Почему выбирают нас:</h4>
+      <ul>
+        <li><strong>Честные цены:</strong> называем точную стоимость ДО начала работ, никаких скрытых доплат.</li>
+        <li><strong>Бесплатная диагностика</strong> (при согласии на ремонт).</li>
+        <li><strong>Оперативность:</strong> сроки ремонта от 1 дня.</li>
+        <li><strong>Надежность:</strong> даем официальную гарантию на работу и запчасти.</li>
+        <li><strong>Удобство:</strong> работаем с выездом на дом по всему Воронежу. Принимаем наличные, карты, оплату по QR-коду и СБП.</li>
+      </ul>
+    </div>
+    <div class="news-section">
+      <h4>📍 Как нас найти:</h4>
+      <p>
+        <strong>Адрес:</strong> ул. 9 Января, 233/20<br>
+        <strong>Телефон:</strong> <a href="tel:+79952507772">+7 (995) 250-77-72</a><br>
+        <strong>Email:</strong> <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a>
+      </p>
+    </div>
+  </article>
+</div>
+```
+
   </div>
 </section>
 
