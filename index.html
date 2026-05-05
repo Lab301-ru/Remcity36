@@ -1036,6 +1036,194 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
 }
 .lightbox-close:hover { opacity: 1; }
 
+/* ═══════════════════════════════════════
+   КАЛЬКУЛЯТОР СТОИМОСТИ — iOS СТИЛЬ
+═══════════════════════════════════════ */
+#calculator { background: linear-gradient(145deg, #0d0d14 0%, #111118 100%); }
+.calc-wrapper { max-width: 680px; margin: 0 auto; }
+.calc-card {
+  background: #1c1c24;
+  border: 1px solid rgba(255,107,43,0.18);
+  border-radius: 28px;
+  padding: 36px 36px 40px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(255,107,43,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.calc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 30%; right: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,43,0.4), transparent);
+}
+.calc-row { margin-bottom: 28px; }
+.calc-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #9090b0;
+}
+.calc-label strong {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.calc-value-badge {
+  background: rgba(255,107,43,0.12);
+  border: 1px solid rgba(255,107,43,0.25);
+  color: var(--accent2);
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  min-width: 90px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.ios-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 100px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--accent) 0%, var(--accent) var(--pct, 0%), #2a2a38 var(--pct, 0%), #2a2a38 100%);
+}
+.ios-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,107,43,0.3);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ios-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 0 0 3px rgba(255,107,43,0.5);
+}
+.ios-slider::-moz-range-thumb {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
+}
+.slider-ticks span { font-size: 11px; color: #50506a; }
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.toggle-row:hover { background: rgba(255,255,255,0.05); }
+.toggle-row.active-toggle { border-color: rgba(52,199,89,0.3); background: rgba(52,199,89,0.05); }
+.toggle-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.toggle-sub { font-size: 12px; color: var(--muted); }
+.ios-toggle { position: relative; width: 51px; height: 31px; flex-shrink: 0; }
+.ios-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.ios-toggle-track {
+  position: absolute;
+  inset: 0;
+  background: #3a3a4a;
+  border-radius: 100px;
+  transition: background 0.3s cubic-bezier(0.4,0,0.2,1);
+  cursor: pointer;
+}
+.ios-toggle input:checked + .ios-toggle-track { background: #34c759; }
+.ios-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 25px; height: 25px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.ios-toggle input:checked + .ios-toggle-track::after { transform: translateX(20px); }
+.calc-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  margin: 28px 0;
+}
+.calc-result {
+  background: rgba(255,107,43,0.06);
+  border: 1px solid rgba(255,107,43,0.2);
+  border-radius: 20px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.calc-result-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.calc-total {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.calc-total-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.calc-cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(255,107,43,0.3);
+}
+.calc-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(255,107,43,0.4); }
+.calc-cta-btn:active { transform: translateY(0); }
+.calc-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.025);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.calc-disclaimer-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.calc-disclaimer-text { font-size: 12px; color: #6060a0; line-height: 1.5; }
+.calc-disclaimer-text b { color: #8080b0; }
+
 @media (max-width: 700px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-item.featured { grid-column: span 2; }
@@ -1087,6 +1275,89 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
   .reviews-grid { grid-template-columns: 1fr; }
   .map-cta { flex-direction: column; }
 }
+
+/* ФОРМА ОБРАТНОЙ СВЯЗИ */
+.callback-form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.form-group input,
+.form-group textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: 'Golos Text', sans-serif;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,107,43,0.15);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+.form-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.form-note {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 400px;
+  line-height: 1.5;
+}
+.form-result {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+.form-result.success {
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.3);
+  color: #4ade80;
+  display: block;
+}
+.form-result.error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171;
+  display: block;
+}
+
 </style>
 
 </head>
@@ -1116,7 +1387,8 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <li><a href="#why">О нас</a></li>
     <li><a href="#reviews">Отзывы</a></li>
     <li><a href="#news">Новости</a></li>
-    <li><a href="#contacts">Контакты</a></li>
+    <li><a href="#callback">Написать нам</a></li>
+      <li><a href="#contacts">Контакты</a></li>
   </ul>
   <a href="tel:+79952507772" class="nav-cta" aria-label="Позвонить нам">📞 Позвонить</a>
   <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
@@ -1144,7 +1416,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
       </div>
     </div>
 
-```
 <div class="hero-right fade-up" style="transition-delay: 0.2s;">
   <div class="hero-stats" role="list" aria-label="Ключевые показатели">
     <div class="stat-card" role="listitem">
@@ -1188,6 +1459,107 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     </div>
   </div>
 </div>
+
+  </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
+
+<section id="calculator" aria-labelledby="calc-heading">
+  <div class="container">
+    <div class="section-tag">§ Калькулятор</div>
+    <h2 id="calc-heading">Рассчитайте стоимость<br>прямо сейчас</h2>
+    <p class="section-desc" style="margin-bottom: 48px;">Передвигайте ползунки — цена обновляется в реальном времени. Точная стоимость согласовывается после диагностики.</p>
+    <div class="calc-wrapper">
+      <div class="calc-card fade-up" role="form" aria-label="Калькулятор стоимости ремонта">
+
+```
+    <!-- Сложность работ -->
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>🔧 Сложность работ</strong>
+        <span class="calc-value-badge" id="workBadge">190 ₽</span>
+      </div>
+      <input type="range" class="ios-slider" id="workSlider"
+        min="190" max="9900" step="50" value="190"
+        aria-label="Сложность работ от 190 до 9900 рублей"
+        aria-valuetext="190 рублей">
+      <div class="slider-ticks">
+        <span>190 ₽</span>
+        <span>Замена деталей</span>
+        <span>Пайка плат</span>
+        <span>9 900 ₽</span>
+      </div>
+    </div>
+
+    <!-- Стоимость деталей -->
+    <div class="calc-row">
+      <div class="calc-label">
+        <strong>🔩 Запчасти и детали</strong>
+        <span class="calc-value-badge" id="partsBadge">0 ₽</span>
+      </div>
+      <input type="range" class="ios-slider" id="partsSlider"
+        min="0" max="30000" step="100" value="0"
+        aria-label="Стоимость запчастей от 0 до 30000 рублей"
+        aria-valuetext="0 рублей">
+      <div class="slider-ticks">
+        <span>0 ₽</span>
+        <span>Мелкие детали</span>
+        <span>Крупные узлы</span>
+        <span>30 000 ₽</span>
+      </div>
+    </div>
+
+    <!-- Срочный ремонт -->
+    <label class="toggle-row" id="urgencyRow" for="urgencyToggle" aria-label="Срочный ремонт сегодня, дополнительно 1000 рублей">
+      <div class="toggle-info">
+        <div class="toggle-title">⚡ Срочный ремонт — сегодня</div>
+        <div class="toggle-sub">Мастер приедет в приоритетном порядке</div>
+      </div>
+      <div class="ios-toggle">
+        <input type="checkbox" id="urgencyToggle" aria-label="Включить срочный ремонт">
+        <div class="ios-toggle-track"></div>
+      </div>
+    </label>
+
+    <!-- Выезд на дом -->
+    <label class="toggle-row" id="visitRow" for="visitToggle" aria-label="Выезд мастера на дом, дополнительно 500 рублей">
+      <div class="toggle-info">
+        <div class="toggle-title">🚗 Выезд мастера на дом</div>
+        <div class="toggle-sub">По всему Воронежу — без лишних хлопот (+500 ₽)</div>
+      </div>
+      <div class="ios-toggle">
+        <input type="checkbox" id="visitToggle" aria-label="Включить выезд на дом">
+        <div class="ios-toggle-track"></div>
+      </div>
+    </label>
+
+    <div class="calc-divider" aria-hidden="true"></div>
+
+    <!-- Итог -->
+    <div class="calc-result" role="status" aria-live="polite" aria-label="Итоговая стоимость">
+      <div>
+        <div class="calc-result-label">Ориентировочная стоимость</div>
+        <div class="calc-total" id="calcTotal">690 ₽</div>
+        <div class="calc-total-sub" id="calcBreakdown">Диагностика 500 ₽ + работа 190 ₽</div>
+      </div>
+      <a href="tel:+79952507772" class="calc-cta-btn" aria-label="Позвонить и записаться на ремонт">
+        📞 Записаться
+      </a>
+    </div>
+
+    <!-- Дисклеймер -->
+    <div class="calc-disclaimer" role="note">
+      <div class="calc-disclaimer-icon">ℹ️</div>
+      <div class="calc-disclaimer-text">
+        Если вы не знаете стоимость запчасти — оставьте ползунок на нуле.
+        <b>Мы сообщим точную цену детали после бесплатной диагностики.</b>
+        Диагностика (500 ₽) вычитается из стоимости ремонта при выполнении работ.
+      </div>
+    </div>
+
+  </div>
+</div>
 ```
 
   </div>
@@ -1205,7 +1577,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
       <p class="section-desc" style="margin-bottom: 0;">Ремонтируем любую бытовую технику и электронику — от утюга до игровой консоли.</p>
     </div>
 
-```
 <div class="services-grid fade-up">
 
   <article class="service-card">
@@ -1317,7 +1688,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
   </article>
 
 </div>
-```
 
   </div>
 </section>
@@ -1330,7 +1700,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <h2 id="why-heading">Почему нас выбирают</h2>
     <p class="section-desc">Более 10 лет мы ремонтируем технику воронежцев — и знаем, что важнее всего.</p>
 
-```
 <div class="award-banner fade-up" role="note" aria-label="Награда Хорошее место 2026 от Яндекс Карт">
   <div class="award-icon" aria-hidden="true">🏆</div>
   <div>
@@ -1371,7 +1740,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <p class="why-text">Большинство ремонтов выполняем в день обращения. Срочный ремонт — в приоритете. Мы понимаем, как важна работающая техника дома.</p>
   </div>
 </div>
-```
 
   </div>
 </section>
@@ -1384,7 +1752,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <h2 id="gallery-heading">Мастера за работой</h2>
     <p class="section-desc">Реальные фото из нашего сервисного центра — смотрите как мы работаем.</p>
 
-```
 <div class="gallery-grid">
 
   <div class="gallery-item featured fade-up" onclick="openLightbox('IMG_5837.jpeg')">
@@ -1418,7 +1785,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
   </div>
 
 </div>
-```
 
   </div>
 </section>
@@ -1438,7 +1804,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <h2 id="reviews-heading">Что говорят клиенты</h2>
     <p class="section-desc">Реальные отзывы с Яндекс Карт. Рейтинг 5.0 на основе 53 оценок.</p>
 
-```
 <div class="reviews-grid">
   <article class="review-card fade-up">
     <div class="review-stars" aria-label="5 звёзд">★★★★★</div>
@@ -1462,7 +1827,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     Все отзывы на Яндекс Картах →
   </a>
 </div>
-```
 
   </div>
 </section>
@@ -1475,7 +1839,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <h2 id="news-heading">Новости и публикации</h2>
     <p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
 
-```
 <div class="news-grid">
   <!-- Новость 1 -->
   <article class="news-card" role="article">
@@ -1513,6 +1876,44 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     </div>
   </article>
 </div>
+
+  </div>
+</section>
+
+<!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+
+<section id="callback" aria-labelledby="callback-heading" style="background: var(--surface);">
+  <div class="container">
+    <div class="section-tag">§ Обратная связь</div>
+    <h2 id="callback-heading">Оставьте заявку</h2>
+    <p class="section-desc">Опишите проблему — мы свяжемся с вами и согласуем удобное время визита мастера.</p>
+
+```
+<form id="contactForm" class="callback-form fade-up" onsubmit="submitForm(event)" novalidate>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="cf-name">Ваше имя *</label>
+      <input type="text" id="cf-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+    </div>
+    <div class="form-group">
+      <label for="cf-phone">Телефон *</label>
+      <input type="tel" id="cf-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cf-device">Что нужно отремонтировать?</label>
+    <input type="text" id="cf-device" name="device" placeholder="Стиральная машина, холодильник, кофемашина…">
+  </div>
+  <div class="form-group">
+    <label for="cf-message">Опишите проблему</label>
+    <textarea id="cf-message" name="message" rows="4" placeholder="Не включается, течёт, шумит… Чем подробнее, тем точнее сможем помочь."></textarea>
+  </div>
+  <div class="form-footer">
+    <button type="submit" class="btn-primary" id="cf-submit">📨 Отправить заявку</button>
+    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответ придёт на remcity36@ya.ru.</p>
+  </div>
+  <div id="cf-result" class="form-result" role="alert" aria-live="polite"></div>
+</form>
 ```
 
   </div>
@@ -1526,57 +1927,59 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     <h2 id="contacts-heading">Как нас найти</h2>
     <p class="section-desc">Приходите в сервис или вызовите мастера на дом — работаем по всему Воронежу.</p>
 
-```
 <div class="contacts-grid fade-up">
   <div class="contact-block">
     <h3>Адрес и телефон</h3>
 
-    <div class="contact-item">
-      <div class="contact-item-icon" aria-hidden="true">📍</div>
-      <div>
-        <div class="contact-item-title">Адрес</div>
-        <address>
-          <div class="contact-item-value">ул. 9 Января, 233/20</div>
-          <div style="font-size:14px; color: var(--muted);">г. Воронеж, 394020</div>
-        </address>
-      </div>
-    </div>
+```
+<div class="contact-item">
+  <div class="contact-item-icon" aria-hidden="true">📍</div>
+  <div>
+    <div class="contact-item-title">Адрес</div>
+    <address>
+      <div class="contact-item-value">ул. 9 Января, 233/20</div>
+      <div style="font-size:14px; color: var(--muted);">г. Воронеж, 394020</div>
+    </address>
+  </div>
+</div>
 
-    <div class="contact-item">
-      <div class="contact-item-icon" aria-hidden="true">📞</div>
-      <div>
-        <div class="contact-item-title">Телефон</div>
-        <div class="contact-item-value">
-          <a href="tel:+79952507772" aria-label="Позвонить: плюс 7 995 250 77 72">+7 (995) 250-77-72</a>
-        </div>
-      </div>
+<div class="contact-item">
+  <div class="contact-item-icon" aria-hidden="true">📞</div>
+  <div>
+    <div class="contact-item-title">Телефон</div>
+    <div class="contact-item-value">
+      <a href="tel:+79952507772" aria-label="Позвонить: плюс 7 995 250 77 72">+7 (995) 250-77-72</a>
     </div>
+  </div>
+</div>
 
-    <div class="contact-item">
-      <div class="contact-item-icon" aria-hidden="true">🌐</div>
-      <div>
-        <div class="contact-item-title">Сайт</div>
-        <div class="contact-item-value">
-          <a href="https://ремсити36.рф" aria-label="Сайт Ремсити36">ремсити36.рф</a>
-        </div>
-      </div>
+<div class="contact-item">
+  <div class="contact-item-icon" aria-hidden="true">✉️</div>
+  <div>
+    <div class="contact-item-title">Электронная почта</div>
+    <div class="contact-item-value">
+      <a href="mailto:remcity36@ya.ru" aria-label="Написать на почту remcity36@ya.ru">remcity36@ya.ru</a>
     </div>
+  </div>
+</div>
 
-    <!-- МЕССЕНДЖЕРЫ -->
-    <div class="messengers" aria-label="Написать в мессенджер">
-      <a href="https://wa.me/message/B6YTD4MBBHS2C1" target="_blank" rel="noopener noreferrer" class="messenger-btn whatsapp" aria-label="Написать в WhatsApp">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <a href="https://t.me/remcity36" target="_blank" rel="noopener noreferrer" class="messenger-btn telegram" aria-label="Написать в Telegram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-        Telegram
-      </a>
-      <a href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" target="_blank" rel="noopener noreferrer" class="messenger-btn max-msg" aria-label="Написать в Max">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.5 14.5h-2l-2.5-3.5-2.5 3.5h-2l3.5-5-3.5-5h2l2.5 3.5 2.5-3.5h2l-3.5 5 3.5 5z"/></svg>
-        Max
-      </a>
-    </div>
+<!-- МЕССЕНДЖЕРЫ -->
+<div class="messengers" aria-label="Написать в мессенджер">
+  <a href="https://wa.me/message/B6YTD4MBBHS2C1" target="_blank" rel="noopener noreferrer" class="messenger-btn whatsapp" aria-label="Написать в WhatsApp">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="https://t.me/remcity36" target="_blank" rel="noopener noreferrer" class="messenger-btn telegram" aria-label="Написать в Telegram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    Telegram
+  </a>
+  <a href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" target="_blank" rel="noopener noreferrer" class="messenger-btn max-msg" aria-label="Написать в Max">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.5 14.5h-2l-2.5-3.5-2.5 3.5h-2l3.5-5-3.5-5h2l2.5 3.5 2.5-3.5h2l-3.5 5 3.5 5z"/></svg>
+    Max
+  </a>
+</div>
+```
+
   </div>
 
   <div class="contact-block">
@@ -1596,15 +1999,19 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
       </div>
     </div>
 
-    <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
-      <a href="tel:+79952507772" class="btn-primary" style="display: inline-flex; width: 100%; justify-content: center; animation: none;" aria-label="Позвонить в сервисный центр">
-        📞 Позвонить сейчас
-      </a>
-    </div>
+```
+<div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
+  <a href="tel:+79952507772" class="btn-primary" style="display: inline-flex; width: 100%; justify-content: center; animation: none;" aria-label="Позвонить в сервисный центр">
+    📞 Позвонить сейчас
+  </a>
+</div>
+```
+
   </div>
 </div>
 
 <!-- ЯНДЕКС КАРТЫ -->
+
 <a href="https://yandex.ru/maps/org/remsiti36/144825190316" target="_blank" rel="noopener noreferrer" class="map-cta" aria-label="Открыть Ремсити36 на Яндекс Картах">
   <div>
     <div class="map-cta-text">📍 Ремсити36 на Яндекс Картах</div>
@@ -1614,7 +2021,6 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     Открыть карту →
   </div>
 </a>
-```
 
   </div>
 </section>
@@ -1724,6 +2130,177 @@ document.addEventListener('keydown', (e) => {
 <noscript><div><img src="https://mc.yandex.ru/watch/109037763" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 <!-- /Yandex.Metrika counter -->
+
+<script>
+async function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const btn = document.getElementById('cf-submit');
+  const result = document.getElementById('cf-result');
+  result.className = 'form-result';
+  result.textContent = '';
+
+  const name = document.getElementById('cf-name').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const device = document.getElementById('cf-device').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+
+  if (!name || !phone) {
+    result.textContent = '⚠️ Пожалуйста, укажите имя и телефон.';
+    result.className = 'form-result error';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Отправляем…';
+
+  // FormSubmit — бесплатный сервис отправки форм на email
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('device', device || 'не указано');
+  formData.append('message', message || 'не указано');
+  formData.append('_subject', 'Новая заявка с сайта Ремсити36');
+  formData.append('_replyto', 'remcity36@ya.ru');
+  formData.append('_next', window.location.href);
+  formData.append('_captcha', 'false');
+
+  try {
+    const resp = await fetch('https://formsubmit.co/ajax/remcity36@ya.ru', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
+    const data = await resp.json();
+    if (data.success === 'true' || resp.ok) {
+      result.textContent = '✅ Заявка отправлена! Мы перезвоним вам в ближайшее время.';
+      result.className = 'form-result success';
+      form.reset();
+    } else {
+      throw new Error('error');
+    }
+  } catch(err) {
+    result.textContent = '❌ Не удалось отправить. Позвоните нам: +7 (995) 250-77-72';
+    result.className = 'form-result error';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '📨 Отправить заявку';
+}
+
+/* ═══════════════════════════════════════
+   КАЛЬКУЛЯТОР СТОИМОСТИ — ЛОГИКА
+═══════════════════════════════════════ */
+(function() {
+  const DIAG = 500;
+  const URGENCY_FEE = 1000;
+  const VISIT_FEE = 500;
+
+  const workSlider   = document.getElementById('workSlider');
+  const partsSlider  = document.getElementById('partsSlider');
+  const urgencyToggle = document.getElementById('urgencyToggle');
+  const visitToggle  = document.getElementById('visitToggle');
+  const workBadge    = document.getElementById('workBadge');
+  const partsBadge   = document.getElementById('partsBadge');
+  const calcTotal    = document.getElementById('calcTotal');
+  const calcBreakdown = document.getElementById('calcBreakdown');
+  const urgencyRow   = document.getElementById('urgencyRow');
+  const visitRow     = document.getElementById('visitRow');
+
+  function fmt(n) {
+    return n.toLocaleString('ru-RU') + ' ₽';
+  }
+
+  function updateSliderFill(slider) {
+    const min = +slider.min, max = +slider.max, val = +slider.value;
+    const pct = ((val - min) / (max - min)) * 100;
+    slider.style.setProperty('--pct', pct + '%');
+  }
+
+  function updateCalc() {
+    const work   = +workSlider.value;
+    const parts  = +partsSlider.value;
+    const urgent = urgencyToggle.checked ? URGENCY_FEE : 0;
+    const visit  = visitToggle.checked ? VISIT_FEE : 0;
+
+    const total = DIAG + work + parts + urgent + visit;
+
+    workBadge.textContent  = fmt(work);
+    partsBadge.textContent = parts > 0 ? fmt(parts) : 'без запчастей';
+
+    // Animate total
+    calcTotal.style.opacity = '0.5';
+    calcTotal.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      calcTotal.textContent = fmt(total);
+      calcTotal.style.opacity = '1';
+      calcTotal.style.transform = 'scale(1)';
+    }, 120);
+
+    // Breakdown text
+    let parts_arr = [`диагностика ${fmt(DIAG)}`, `работа ${fmt(work)}`];
+    if (parts > 0) parts_arr.push(`запчасти ~${fmt(parts)}`);
+    if (urgent)    parts_arr.push(`срочность +${fmt(URGENCY_FEE)}`);
+    if (visit)     parts_arr.push(`выезд +${fmt(VISIT_FEE)}`);
+    calcBreakdown.textContent = parts_arr.join(' + ');
+
+    // Update aria
+    workSlider.setAttribute('aria-valuetext', fmt(work));
+    partsSlider.setAttribute('aria-valuetext', parts > 0 ? fmt(parts) : 'без запчастей');
+
+    updateSliderFill(workSlider);
+    updateSliderFill(partsSlider);
+  }
+
+  // Toggle active state visual
+  urgencyToggle.addEventListener('change', function() {
+    urgencyRow.classList.toggle('active-toggle', this.checked);
+    updateCalc();
+  });
+  visitToggle.addEventListener('change', function() {
+    visitRow.classList.toggle('active-toggle', this.checked);
+    updateCalc();
+  });
+
+  workSlider.addEventListener('input', updateCalc);
+  partsSlider.addEventListener('input', updateCalc);
+
+  // Init
+  updateSliderFill(workSlider);
+  updateSliderFill(partsSlider);
+  updateCalc();
+
+  // Add nav link for calculator
+  document.querySelectorAll('.nav-links').forEach(function(ul) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#calculator';
+    a.textContent = 'Калькулятор';
+    li.appendChild(a);
+    // insert after services link
+    const servicesLi = ul.querySelector('a[href="#services"]');
+    if (servicesLi) {
+      servicesLi.parentNode.insertAdjacentElement('afterend', li);
+    } else {
+      ul.insertBefore(li, ul.firstChild);
+    }
+  });
+  document.querySelectorAll('.mobile-menu').forEach(function(menu) {
+    const a = document.createElement('a');
+    a.href = '#calculator';
+    a.textContent = 'Калькулятор';
+    a.addEventListener('click', function() {
+      const mm = document.getElementById('mobileMenu');
+      const burger = document.getElementById('burgerBtn');
+      if (mm) { mm.classList.remove('open'); mm.setAttribute('aria-hidden','true'); }
+      if (burger) { burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+    });
+    const phoneEl = menu.querySelector('.mobile-phone');
+    if (phoneEl) menu.insertBefore(a, phoneEl);
+    else menu.appendChild(a);
+  });
+})();
+</script>
 
 </body>
 </html>
