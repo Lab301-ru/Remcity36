@@ -1224,6 +1224,15 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
 .calc-disclaimer-text { font-size: 12px; color: #6060a0; line-height: 1.5; }
 .calc-disclaimer-text b { color: #8080b0; }
 
+/* MAP EMBED */
+.map-embed-wrap {
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,107,43,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
 @media (max-width: 700px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-item.featured { grid-column: span 2; }
@@ -2015,6 +2024,8 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
 
 <!-- ЯНДЕКС КАРТЫ -->
 
+<!-- ЯНДЕКС КАРТЫ -->
+
 <a href="https://yandex.ru/maps/org/remsiti36/144825190316" target="_blank" rel="noopener noreferrer" class="map-cta" aria-label="Открыть Ремсити36 на Яндекс Картах">
   <div>
     <div class="map-cta-text">📍 Ремсити36 на Яндекс Картах</div>
@@ -2024,6 +2035,20 @@ address { font-style: normal; font-size: 13px; color: var(--muted); line-height:
     Открыть карту →
   </div>
 </a>
+
+<div class="map-embed-wrap fade-up">
+  <iframe
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3A144825190316&amp;source=constructor&amp;ll=39.1245%2C51.6784&amp;z=16&amp;l=map&amp;pt=39.1245%2C51.6784%2Cpm2rdm"
+    width="100%"
+    height="420"
+    frameborder="0"
+    allowfullscreen
+    loading="lazy"
+    title="Ремсити36 на карте — ул. 9 Января, 233/20, Воронеж"
+    aria-label="Интерактивная карта с расположением сервисного центра Ремсити36"
+    style="border-radius:20px; display:block;">
+  </iframe>
+</div>
 
   </div>
 </section>
