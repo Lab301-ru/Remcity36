@@ -186,12 +186,29 @@ h1 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px;
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .news-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(255, 107, 43, 0.15);
+}
+.news-cover {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 24px;
+  border-radius: 0;
+  object-fit: cover;
+}
+.news-card > div:first-of-type,
+.news-card > h2,
+.news-card > p,
+.news-card > .news-section {
+  padding: 0 32px;
+}
+.news-card > div:first-of-type {
+  padding-top: 32px;
 }
 .news-date {
   font-size: 15px;
@@ -430,6 +447,7 @@ address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8;
 <div class="news-grid">
 <!-- Новость 1 -->
 <article class="news-card" role="article">
+<img alt="Ремсити36 Воронеж - профессионалы в ремонте техники" class="news-cover" decoding="async" loading="lazy" src="og-image.jpg" width="800" height="450"/>
 <div class="news-date">5 мая 2026</div>
 <h2 class="news-title">Ремсити36 — профессионалы в ремонте техники</h2>
 <p class="news-content">
