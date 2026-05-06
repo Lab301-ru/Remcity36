@@ -1167,11 +1167,13 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 .calc-label {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 12px;
   font-size: 19px;
   font-weight: 500;
   color: #9090b0;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 .calc-label strong {
   display: flex;
@@ -1205,11 +1207,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   font-family: 'Unbounded', sans-serif;
   font-size: 21px;
   font-weight: 700;
-  padding: 4px 14px;
+  padding: 6px 16px;
   border-radius: 100px;
-  min-width: 90px;
+  min-width: 140px;
   text-align: center;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 .ios-slider {
   -webkit-appearance: none;
@@ -1245,9 +1251,10 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 .slider-ticks {
   display: flex;
   justify-content: space-between;
-  margin-top: 7px;
+  margin-top: 12px;
+  gap: 8px;
 }
-.slider-ticks span { font-size: 21px; color: #50506a; }
+.slider-ticks span { font-size: 14px; color: #50506a; text-align: center; flex: 1; }
 .toggle-row {
   display: flex;
   align-items: center;
