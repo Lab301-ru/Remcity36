@@ -119,24 +119,25 @@ nav {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 60px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--surface);
+  inset: 0;
+  background: rgba(10,10,15,0.97);
+  z-index: 400;
   flex-direction: column;
-  padding: 20px;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   overflow-y: auto;
-  z-index: 99;
+  padding: 80px 20px 20px;
 }
 .mobile-menu.active { display: flex; }
 .mobile-menu a {
-  font-size: 18px;
-  font-weight: 600;
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 12px 20px;
+  text-align: center;
+  width: 100%;
 }
 .mobile-menu a:hover { background: var(--surface2); }
 .mobile-menu a[href^="tel:"] {
@@ -458,15 +459,15 @@ address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8;
 <button aria-label="Открыть меню" class="burger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">☰</button>
 </nav>
 <div class="mobile-menu">
-<a href="/#services">Услуги</a>
-<a href="/news.html">Новости</a>
-<a href="/#reviews">Отзывы</a>
-<a href="/#gallery">Галерея</a>
-<a href="/#contacts">Контакты</a>
-<a href="/#callback">Написать нам</a>
-<a href="/#why">О нас</a>
-<a href="/#calculator">Калькулятор</a>
-<a href="tel:+79952507772">📞 Позвонить</a>
+<a href="/#services" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Услуги</a>
+<a href="/news.html" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Новости</a>
+<a href="/#reviews" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Отзывы</a>
+<a href="/#gallery" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Галерея</a>
+<a href="/#contacts" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Контакты</a>
+<a href="/#callback" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Написать нам</a>
+<a href="/#calculator" onclick="document.querySelector('.mobile-menu').classList.remove('active')">Калькулятор</a>
+<a href="/#why" onclick="document.querySelector('.mobile-menu').classList.remove('active')">О нас</a>
+<a href="tel:+79952507772" onclick="document.querySelector('.mobile-menu').classList.remove('active')">📞 Позвонить</a>
 </div>
 <!-- ОСНОВНОЙ КОНТЕНТ -->
 <main role="main">
