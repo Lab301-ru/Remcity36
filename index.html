@@ -351,10 +351,11 @@ nav {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 40px;
 }
 .hero-badge {
   display: inline-flex;
@@ -401,12 +402,15 @@ h1 em::after {
   color: #a0a0c0;
   line-height: 1.7;
   margin-bottom: 40px;
-  max-width: 480px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -1379,7 +1383,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   .burger { display: flex; }
   section { padding: 64px 20px; }
   .hero { padding: 100px 20px 60px; }
-  .hero-content { grid-template-columns: 1fr; gap: 40px; }
+  .hero-content { gap: 32px; }
   .contacts-grid { grid-template-columns: 1fr; }
   footer { padding: 40px 20px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
@@ -1537,7 +1541,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <div class="hero-content">
 <div class="hero-left fade-up">
 <div aria-label="Награда Яндекс Карт" class="hero-badge">Хорошее место 2026 · Рейтинг 5.0</div>
-<h1>Ремонт<br/><em>бытовой</em><br/>техники</h1>
+<h1>Ремонт <em>бытовой</em> техники</h1>
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
