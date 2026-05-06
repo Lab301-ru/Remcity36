@@ -1653,6 +1653,38 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 </div>
 </section>
 <!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
+<section aria-labelledby="callback-heading" id="callback" style="background: var(--surface);">
+<div class="container">
+<div class="section-tag">§ Обратная связь</div>
+<h2 id="callback-heading">Оставьте заявку</h2>
+<p class="section-desc">Опишите проблему — мы свяжемся с вами и согласуем удобное время визита мастера.</p>
+<form class="callback-form fade-up" id="contactForm" novalidate="" onsubmit="submitForm(event)">
+<div class="form-row">
+<div class="form-group">
+<label for="cf-name">Ваше имя *</label>
+<input autocomplete="name" id="cf-name" name="name" placeholder="Иван Иванов" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="cf-phone">Телефон *</label>
+<input autocomplete="tel" id="cf-phone" name="phone" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label for="cf-device">Что нужно отремонтировать?</label>
+<input id="cf-device" name="device" placeholder="Стиральная машина, холодильник, кофемашина…" type="text"/>
+</div>
+<div class="form-group">
+<label for="cf-message">Опишите проблему</label>
+<textarea id="cf-message" name="message" placeholder="Не включается, течёт, шумит… Чем подробнее, тем точнее сможем помочь." rows="4"></textarea>
+</div>
+<div class="form-footer">
+<button class="btn-primary" id="cf-submit" type="submit">📨 Отправить заявку</button>
+<p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответ придёт на remcity36@ya.ru.</p>
+</div>
+<div aria-live="polite" class="form-result" id="cf-result" role="alert"></div>
+</form>
+</div>
+</section>
 <section aria-labelledby="calc-heading" id="calculator">
 <div class="container">
 <div class="section-tag">§ Калькулятор</div>
@@ -1932,38 +1964,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 </div>
 </section>
 <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
-<section aria-labelledby="callback-heading" id="callback" style="background: var(--surface);">
-<div class="container">
-<div class="section-tag">§ Обратная связь</div>
-<h2 id="callback-heading">Оставьте заявку</h2>
-<p class="section-desc">Опишите проблему — мы свяжемся с вами и согласуем удобное время визита мастера.</p>
-<form class="callback-form fade-up" id="contactForm" novalidate="" onsubmit="submitForm(event)">
-<div class="form-row">
-<div class="form-group">
-<label for="cf-name">Ваше имя *</label>
-<input autocomplete="name" id="cf-name" name="name" placeholder="Иван Иванов" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="cf-phone">Телефон *</label>
-<input autocomplete="tel" id="cf-phone" name="phone" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
-</div>
-</div>
-<div class="form-group">
-<label for="cf-device">Что нужно отремонтировать?</label>
-<input id="cf-device" name="device" placeholder="Стиральная машина, холодильник, кофемашина…" type="text"/>
-</div>
-<div class="form-group">
-<label for="cf-message">Опишите проблему</label>
-<textarea id="cf-message" name="message" placeholder="Не включается, течёт, шумит… Чем подробнее, тем точнее сможем помочь." rows="4"></textarea>
-</div>
-<div class="form-footer">
-<button class="btn-primary" id="cf-submit" type="submit">📨 Отправить заявку</button>
-<p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Ответ придёт на remcity36@ya.ru.</p>
-</div>
-<div aria-live="polite" class="form-result" id="cf-result" role="alert"></div>
-</form>
-</div>
-</section>
+
 <!-- ГАЛЕРЕЯ -->
 <section aria-labelledby="gallery-heading" id="gallery">
 <div class="container">
