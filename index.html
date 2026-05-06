@@ -222,42 +222,47 @@ nav {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,107,43,0.15);
+  flex-wrap: wrap;
+  gap: 16px;
 }
-
 .nav-logo {
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
   font-size: 24px;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 .nav-logo span { color: var(--accent); }
-
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: clamp(12px, 2vw, 24px);
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
 }
 .nav-links a {
-  font-size: 21px;
+  font-size: clamp(14px, 1.5vw, 18px);
   font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--text); }
-
 .nav-cta {
   background: var(--accent);
   color: white;
-  padding: 10px 24px;
-  font-size: 21px;
+  padding: 10px 20px;
+  font-size: clamp(14px, 1.5vw, 18px);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: opacity 0.2s;
   border-radius: 2px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav-cta:hover { opacity: 0.85; }
 
