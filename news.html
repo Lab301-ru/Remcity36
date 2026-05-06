@@ -139,6 +139,15 @@ nav {
   transition: background 0.2s;
 }
 .mobile-menu a:hover { background: var(--surface2); }
+.mobile-menu a[href^="tel:"] {
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+.mobile-menu a[href^="tel:"]:hover {
+  background: #ff5500;
+}
 /* КОНТЕЙНЕР */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 /* НОВОСТИ */
@@ -413,13 +422,16 @@ address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8;
   .hours-row { flex-direction: row; gap: 12px; align-items: center; white-space: nowrap; }
 }
 @media (max-width: 600px) {
-  .news-card { padding: 20px; }
+  #news { padding: 40px 12px; }
+  .news-grid { padding: 0 4px; }
+  .news-card { padding: 16px; }
   .news-title { font-size: 22px; }
   .news-content { font-size: 15px; }
   .news-section h3 { font-size: 17px; }
   .news-section li, .news-section p { font-size: 15px; }
-  .contact-block { padding: 20px; }
+  .contact-block { padding: 16px; }
   h1 { font-size: 28px; }
+  .section-desc { max-width: 100%; padding: 0 8px; }
 }
 </style>
 </head>
