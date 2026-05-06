@@ -412,6 +412,20 @@ h1 em::after {
   flex-wrap: wrap;
   justify-content: center;
 }
+.hero-cover-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(255, 107, 43, 0.15);
+}
+.hero-cover-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
 
 .btn-primary {
   display: inline-flex;
@@ -1568,6 +1582,10 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <div aria-label="Бесплатная диагностика" class="stat-num">100<span>%</span></div>
 <div class="stat-label">Бесплатная диагностика</div>
 </div>
+</div>
+<!-- HERO COVER IMAGE -->
+<div class="hero-cover-wrapper fade-up" style="transition-delay: 0.4s;">
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" loading="lazy" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-contact-info">
 <div class="contact-row">
