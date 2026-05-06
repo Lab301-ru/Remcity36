@@ -1523,7 +1523,8 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 }
 .hero, nav { content-visibility: visible; }
 </style>
-<link as="image" href="logo-96.webp" rel="preload" type="image/webp"/></head>
+<link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
+<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/></head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
 <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -2099,15 +2100,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <!-- МЕССЕНДЖЕРЫ -->
 <div aria-label="Написать в мессенджер" class="messengers">
 <a aria-label="Написать в WhatsApp" class="messenger-btn whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" rel="noopener noreferrer" target="_blank">
-<img src="whatsapp_icon.png" width="48" height="48" alt="WhatsApp">
+<picture><source srcset="whatsapp_icon.webp" type="image/webp"><img src="whatsapp_icon.png" width="48" height="48" alt="WhatsApp" loading="lazy" decoding="async"></picture>
     WhatsApp
   </a>
 <a aria-label="Написать в Telegram" class="messenger-btn telegram" href="https://t.me/remcity36" rel="noopener noreferrer" target="_blank">
-<img src="telegram_icon.png" width="48" height="48" alt="Telegram">
+<picture><source srcset="telegram_icon.webp" type="image/webp"><img src="telegram_icon.png" width="48" height="48" alt="Telegram" loading="lazy" decoding="async"></picture>
     Telegram
   </a>
 <a aria-label="Написать в Max" class="messenger-btn max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" rel="noopener noreferrer" target="_blank">
-<img alt="Max" aria-hidden="true" decoding="async" height="48" loading="lazy" src="max_icon.png" width="48"/>
+<picture><source srcset="max_icon.webp" type="image/webp"><img alt="Max" aria-hidden="true" decoding="async" height="48" loading="lazy" src="max_icon.png" width="48"/></picture>
     Max
   </a>
 </div>
@@ -2167,15 +2168,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 ```
   <div aria-label="Мессенджеры" class="footer-messengers">
 <a aria-label="WhatsApp" class="footer-msg-link whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" rel="noopener noreferrer" target="_blank">
-<img src="whatsapp_icon.png" width="36" height="36" alt="WhatsApp">
+<picture><source srcset="whatsapp_icon.webp" type="image/webp"><img src="whatsapp_icon.png" width="36" height="36" alt="WhatsApp" loading="lazy" decoding="async"></picture>
       WhatsApp
     </a>
 <a aria-label="Telegram" class="footer-msg-link telegram" href="https://t.me/remcity36" rel="noopener noreferrer" target="_blank">
-<img src="telegram_icon.png" width="36" height="36" alt="Telegram">
+<picture><source srcset="telegram_icon.webp" type="image/webp"><img src="telegram_icon.png" width="36" height="36" alt="Telegram" loading="lazy" decoding="async"></picture>
       Telegram
     </a>
 <a aria-label="Max" class="footer-msg-link max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" rel="noopener noreferrer" target="_blank">
-<img aria-hidden="true" decoding="async" height="36" loading="lazy" src="max_icon.png" width="36"/>
+<picture><source srcset="max_icon.webp" type="image/webp"><img aria-hidden="true" decoding="async" height="36" loading="lazy" src="max_icon.png" width="36"/></picture>
       Max
     </a>
 </div></div>
@@ -2392,10 +2393,20 @@ async function submitForm(e) {
 
   workSlider.addEventListener('input', updateCalc);
   partsSlider.addEventListener('input', updateCalc);
-  // Init
-  updateSliderFill(workSlider);
-  updateSliderFill(partsSlider);
-  updateCalc();
+  // Init - defer non-critical calculations
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      updateSliderFill(workSlider);
+      updateSliderFill(partsSlider);
+      updateCalc();
+    });
+  } else {
+    setTimeout(() => {
+      updateSliderFill(workSlider);
+      updateSliderFill(partsSlider);
+      updateCalc();
+    }, 0);
+  }
   // Add nav link for calculator
   document.querySelectorAll('.nav-links').forEach(function(ul) {
     const li = document.createElement('li');
@@ -2427,7 +2438,7 @@ async function submitForm(e) {
   });
 })();
 </script>
-<script>
+<script defer>
 window.addEventListener('load', function () {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(function () {});
