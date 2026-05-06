@@ -889,17 +889,26 @@ h2 {
   justify-content: flex-start;
   gap: 16px;
   padding: 16px 24px;
-  border-radius: 8px;
+  border-radius: 14px;
   font-size: 18px;
   font-weight: 600;
   transition: opacity 0.2s, transform 0.2s;
   white-space: nowrap;
-  min-width: 280px;
+  min-width: 200px;
+  flex: 1;
   text-align: left;
   border: none;
   cursor: pointer;
   text-decoration: none;
   color: white;
+}
+.messenger-btn img {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  vertical-align: middle;
+  display: block;
 }
 .messenger-btn:hover { opacity: 0.85; transform: translateY(-2px); }
 .whatsapp { background: #25d366; color: white; }
@@ -1020,7 +1029,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   justify-content: center;
   gap: 8px;
   padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
   transition: opacity 0.2s;
@@ -1029,6 +1038,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   border: none;
   cursor: pointer;
   text-decoration: none;
+  color: white;
+}
+.footer-msg-link img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  vertical-align: middle;
+  display: block;
 }
 .footer-msg-link:hover { opacity: 0.8; }
 
@@ -2049,15 +2067,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <!-- МЕССЕНДЖЕРЫ -->
 <div aria-label="Написать в мессенджер" class="messengers">
 <a aria-label="Написать в WhatsApp" class="messenger-btn whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" rel="noopener noreferrer" target="_blank">
-<img src="whatsapp_icon.png" width="48" height="48" alt="WhatsApp" style="flex-shrink: 0; vertical-align: middle;">
+<img src="whatsapp_icon.png" width="48" height="48" alt="WhatsApp">
     WhatsApp
   </a>
 <a aria-label="Написать в Telegram" class="messenger-btn telegram" href="https://t.me/remcity36" rel="noopener noreferrer" target="_blank">
-<img src="telegram_icon.png" width="48" height="48" alt="Telegram" style="flex-shrink: 0; vertical-align: middle;">
+<img src="telegram_icon.png" width="48" height="48" alt="Telegram">
     Telegram
   </a>
 <a aria-label="Написать в Max" class="messenger-btn max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" rel="noopener noreferrer" target="_blank">
-<img alt="Max" aria-hidden="true" decoding="async" height="48" loading="lazy" src="max_icon.png" style="flex-shrink: 0; border-radius:3px;vertical-align:middle;" width="48"/>
+<img alt="Max" aria-hidden="true" decoding="async" height="48" loading="lazy" src="max_icon.png" width="48"/>
     Max
   </a>
 </div>
@@ -2117,15 +2135,15 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 ```
   <div aria-label="Мессенджеры" class="footer-messengers">
 <a aria-label="WhatsApp" class="footer-msg-link whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" rel="noopener noreferrer" target="_blank">
-<img src="whatsapp_icon.png" width="36" height="36" alt="WhatsApp" style="flex-shrink: 0; vertical-align: middle;">
+<img src="whatsapp_icon.png" width="36" height="36" alt="WhatsApp">
       WhatsApp
     </a>
 <a aria-label="Telegram" class="footer-msg-link telegram" href="https://t.me/remcity36" rel="noopener noreferrer" target="_blank">
-<img src="telegram_icon.png" width="36" height="36" alt="Telegram" style="flex-shrink: 0; vertical-align: middle;">
+<img src="telegram_icon.png" width="36" height="36" alt="Telegram">
       Telegram
     </a>
 <a aria-label="Max" class="footer-msg-link max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" rel="noopener noreferrer" target="_blank">
-<img aria-hidden="true" decoding="async" height="36" loading="lazy" src="max_icon.png" style="border-radius:3px;vertical-align:middle;" width="36"/>
+<img aria-hidden="true" decoding="async" height="36" loading="lazy" src="max_icon.png" width="36"/>
       Max
     </a>
 </div></div>
