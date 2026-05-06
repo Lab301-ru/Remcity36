@@ -3,7 +3,7 @@
   <!-- Главная страница -->
   <url>
     <loc>https://ремсити36.рф/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,7 +11,7 @@
   <!-- Раздел услуг -->
   <url>
     <loc>https://ремсити36.рф/#services</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -19,7 +19,7 @@
   <!-- Раздел калькулятора -->
   <url>
     <loc>https://ремсити36.рф/#calculator</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- О компании -->
   <url>
     <loc>https://ремсити36.рф/#about</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -35,7 +35,7 @@
   <!-- Отзывы -->
   <url>
     <loc>https://ремсити36.рф/#reviews</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -43,7 +43,7 @@
   <!-- Новости -->
   <url>
     <loc>https://ремсити36.рф/#news</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,7 +51,7 @@
   <!-- Контакты -->
   <url>
     <loc>https://ремсити36.рф/#contacts</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,7 +59,7 @@
   <!-- Форма обратной связи -->
   <url>
     <loc>https://ремсити36.рф/#contact-form</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
