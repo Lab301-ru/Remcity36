@@ -1579,14 +1579,14 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <a class="skip-link" href="#main-content">Перейти к содержимому</a>
 <!-- МОБИЛЬНОЕ МЕНЮ -->
 <div aria-hidden="true" aria-label="Мобильное меню" class="mobile-menu" id="mobileMenu" role="dialog">
-<a href="#calculator" onclick="closeMobileMenu()">Калькулятор</a>
 <a href="#services" onclick="closeMobileMenu()">Услуги</a>
-<a href="#why" onclick="closeMobileMenu()">О нас</a>
-<a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
-<a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
 <a href="news.html" onclick="closeMobileMenu()">Новости</a>
-<a href="#callback" onclick="closeMobileMenu()">Написать нам</a>
+<a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
+<a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
 <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
+<a href="#callback" onclick="closeMobileMenu()">Написать нам</a>
+<a href="#why" onclick="closeMobileMenu()">О нас</a>
+<a href="#calculator" onclick="closeMobileMenu()">Калькулятор</a>
 <a class="mobile-phone" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
 </div>
 <!-- НАВИГАЦИЯ -->
@@ -2454,21 +2454,7 @@ async function submitForm(e) {
       updateCalc();
     }, 0);
   }
-  // Калькулятор убран из десктопного меню
-  document.querySelectorAll('.mobile-menu').forEach(function(menu) {
-    const a = document.createElement('a');
-    a.href = '#calculator';
-    a.textContent = 'Калькулятор';
-    a.addEventListener('click', function() {
-      const mm = document.getElementById('mobileMenu');
-      const burger = document.getElementById('burgerBtn');
-      if (mm) { mm.classList.remove('open'); mm.setAttribute('aria-hidden','true'); }
-      if (burger) { burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
-    });
-    const phoneEl = menu.querySelector('.mobile-phone');
-    if (phoneEl) menu.insertBefore(a, phoneEl);
-    else menu.appendChild(a);
-  });
+  // Калькулятор теперь статично в HTML мобильного меню
 })();
 </script>
 <script defer>
