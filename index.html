@@ -574,6 +574,7 @@ section { padding: 100px 40px; }
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
+  text-align: center;
 }
 h2 {
   font-family: 'Unbounded', sans-serif;
@@ -582,6 +583,7 @@ h2 {
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  text-align: center;
 }
 .section-desc {
   font-size: 19px;
@@ -589,6 +591,9 @@ h2 {
   max-width: 520px;
   line-height: 1.7;
   margin-bottom: 56px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* SERVICES */
@@ -1040,10 +1045,11 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 32px;
+  text-align: center;
 }
 .footer-logo {
   font-family: 'Unbounded', sans-serif;
@@ -1435,6 +1441,18 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 }
 @media (max-width: 600px) {
   h1 { font-size: 38px; }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .hero-actions .btn-primary {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 18px;
+  }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .stat-num { font-size: 28px; }
   .services-grid { grid-template-columns: 1fr; }
