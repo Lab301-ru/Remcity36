@@ -499,10 +499,13 @@ h1 em::after {
 }
 .contact-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
+}
+.contact-row > div:last-child {
+  flex: 1;
 }
 .contact-row:last-child { border-bottom: none; }
 .contact-icon {
@@ -515,6 +518,11 @@ h1 em::after {
   font-size: 19px;
   flex-shrink: 0;
 }
+.contact-emoji {
+  display: inline-block;
+  font-size: 20px;
+}
+
 .contact-text { font-size: 21px; color: var(--text); font-weight: 500; }
 .contact-sub { font-size: 21px; color: var(--muted); margin-top: 2px; }
 
@@ -880,12 +888,13 @@ h2 {
 /* HOURS */
 .hours-grid { display: grid; gap: 8px; }
 .hours-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
   font-size: 19px;
+  gap: 20px;
 }
 .hours-row:last-child { border-bottom: none; }
 .hours-day { color: var(--muted); }
@@ -899,12 +908,21 @@ h2 {
   border-radius: 4px;
   padding: 24px 32px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   transition: border-color 0.2s, background 0.2s;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 40px;
+}
+.map-cta-content {
+  flex: 1;
+}
+.map-cta-icon {
+  display: inline-block;
+  font-size: 28px;
+  margin-right: 12px;
+  flex-shrink: 0;
 }
 .map-cta:hover {
   border-color: rgba(255,107,43,0.4);
@@ -1071,11 +1089,21 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 .calc-label {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 12px;
   font-size: 19px;
   font-weight: 500;
   color: #9090b0;
+}
+.calc-label strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.calc-emoji {
+  display: inline-block;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 .calc-label strong {
   font-family: 'Unbounded', sans-serif;
@@ -1083,6 +1111,14 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.calc-emoji {
+  display: inline-block;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 .calc-value-badge {
   background: rgba(255,107,43,0.12);
@@ -1470,21 +1506,21 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 </div>
 <div class="hero-contact-info">
 <div class="contact-row">
-<div aria-hidden="true" class="contact-icon">📍</div>
+<div aria-hidden="true" class="contact-icon"><span class="contact-emoji">📍</span></div>
 <div>
 <div class="contact-text">ул. 9 Января, 233/20, Воронеж</div>
 <div class="contact-sub">Советский район</div>
 </div>
 </div>
 <div class="contact-row">
-<div aria-hidden="true" class="contact-icon">🕐</div>
+<div aria-hidden="true" class="contact-icon"><span class="contact-emoji">🕐</span></div>
 <div>
 <div class="contact-text">Вт–Пт: 10:00–19:00 · Сб–Вс: 10:00–18:00</div>
 <div class="contact-sub">Понедельник — выходной</div>
 </div>
 </div>
 <div class="contact-row">
-<div aria-hidden="true" class="contact-icon">🚀</div>
+<div aria-hidden="true" class="contact-icon"><span class="contact-emoji">🚀</span></div>
 <div>
 <div class="contact-text">Выезд мастера на дом</div>
 <div class="contact-sub">По всему Воронежу</div>
@@ -1507,7 +1543,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <!-- Сложность работ -->
 <div class="calc-row">
 <div class="calc-label">
-<strong>🔧 Сложность работ</strong>
+<strong><span class="calc-emoji">🔧</span> Сложность работ</strong>
 <span class="calc-value-badge" id="workBadge">190 ₽</span>
 </div>
 <input aria-label="Сложность работ от 190 до 9900 рублей" aria-valuetext="190 рублей" class="ios-slider" id="workSlider" max="9900" min="190" step="50" type="range" value="190"/>
@@ -1521,7 +1557,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <!-- Стоимость деталей -->
 <div class="calc-row">
 <div class="calc-label">
-<strong>🔩 Запчасти и детали</strong>
+<strong><span class="calc-emoji">🔩</span> Запчасти и детали</strong>
 <span class="calc-value-badge" id="partsBadge">0 ₽</span>
 </div>
 <input aria-label="Стоимость запчастей от 0 до 30000 рублей" aria-valuetext="0 рублей" class="ios-slider" id="partsSlider" max="30000" min="0" step="100" type="range" value="0"/>
@@ -2003,7 +2039,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 </div>
 <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
 <a aria-label="Позвонить в сервисный центр" class="btn-primary btn-call-now" href="tel:+79952507772" style="display: inline-flex; width: 100%; justify-content: center; animation: none;">
-    📞 Позвонить сейчас
+    <span class="btn-emoji">📞</span> Позвонить сейчас
   </a>
 </div>
 </div>
@@ -2012,7 +2048,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 <!-- ЯНДЕКС КАРТЫ -->
 <a aria-label="Открыть Ремсити36 на Яндекс Картах" class="map-cta" href="https://yandex.ru/maps/org/remsiti36/144825190316" rel="noopener noreferrer" target="_blank">
 <div>
-<div class="map-cta-text">📍 Ремсити36 на Яндекс Картах</div>
+<div class="map-cta-text"><span class="map-cta-icon">📍</span>Ремсити36 на Яндекс Картах</div>
 <div class="map-cta-sub">ул. 9 Января, 233/20, Воронеж · Рейтинг 5.0 · Награда «Хорошее место 2026»</div>
 </div>
 <div aria-hidden="true" class="map-cta-btn">
