@@ -65,7 +65,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; scroll-behavior: smooth; }
+  scroll-padding-top: 90px; scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background: var(--bg);
@@ -682,59 +682,65 @@ Max
 </div>
 </div>
 </footer>
-<script>
-const burgerBtn = document.getElementById('burgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-
-function openMobileMenu() {
-  burgerBtn.classList.add('open');
-  mobileMenu.classList.add('open');
-  mobileMenu.setAttribute('aria-hidden', 'false');
-  burgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMobileMenu() {
-  burgerBtn.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  mobileMenu.setAttribute('aria-hidden', 'true');
-  burgerBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-
-burgerBtn.addEventListener('click', () => {
-  burgerBtn.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeMobileMenu();
-});
-</script>
 
 <script>
-// Универсальный плавный скролл
-document.addEventListener('click', function(e) {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
-    
-    const href = anchor.getAttribute('href');
-    if (href === '#' || href.startsWith('##')) return;
-    
-    const target = document.querySelector(href);
-    if (target) {
-        e.preventDefault();
-        if (typeof closeMobileMenu === 'function') closeMobileMenu();
-        
-        const header = document.querySelector('nav');
-        const headerHeight = header ? header.offsetHeight : 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    window.openMobileMenu = function() {
+        burgerBtn.classList.add('open');
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeMobileMenu = function() {
+        burgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
+    if (burgerBtn) {
+        burgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            burgerBtn.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
         });
-        history.pushState(null, null, href);
     }
+
+    // Навигация в news.html
+    document.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a[href*="#"]');
+        if (!anchor) return;
+        
+        const href = anchor.getAttribute('href');
+        
+        // Если это ссылка на главную с якорем (напр. /#services)
+        if (href.startsWith('/#')) {
+            // Если мы уже на главной, скроллим. Но в news.html мы НЕ на главной.
+            // Поэтому позволяем браузеру просто перейти по ссылке.
+            // Но закрываем меню перед этим.
+            closeMobileMenu();
+            return;
+        }
+
+        // Если это внутренний якорь (напр. #contacts внутри news.html)
+        if (href.startsWith('#') && href !== '#') {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                closeMobileMenu();
+                const nav = document.querySelector('nav');
+                const offset = nav ? nav.offsetHeight : 80;
+                const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                history.pushState(null, null, href);
+            }
+        }
+    });
 });
 </script>
 </body>
