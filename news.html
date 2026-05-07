@@ -494,6 +494,16 @@ address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8;
 }
 
 /* MOBILE OPTIMIZATION FIX */
+nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  background: #1a1a1a !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 900px) {
     nav { 
         display: flex !important; 
@@ -603,11 +613,11 @@ main, .news-section, .container:first-of-type {
 <li><a href="/#contacts">Контакты</a></li>
 </ul>
 <a aria-label="Позвонить нам" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
+<div style="margin-left: auto;"><button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
 <span></span>
 <span></span>
 <span></span>
-</button>
+</button></div>
 </nav>
 
 
