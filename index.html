@@ -3,8 +3,8 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8"/>
+  <link rel="preload" as="image" href="logo-96.webp" type="image/webp" fetchpriority="high"/>
   <link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
-  <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1598,8 +1598,8 @@ nav img, .nav-logo img { width: 52px; height: 52px; max-width: 52px; min-width: 
   decoding="async"
   fetchpriority="high"
   src="hero_cover.webp"
-  srcset="hero_cover_mobile.webp 600w, hero_cover.webp 1200w"
-  sizes="(max-width: 600px) 600px, 1200px"
+  srcset="hero_cover_mobile.webp 700w, hero_cover.webp 1200w"
+  sizes="(max-width: 768px) 700px, 1200px"
   width="1200"
   height="675"
   class="hero-cover-img"
@@ -2267,9 +2267,9 @@ document.addEventListener('keydown', (e) => {
     ym(109037763, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   }
   if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadMetrika, { timeout: 3500 });
+    requestIdleCallback(loadMetrika, { timeout: 5000 });
   } else {
-    window.addEventListener('load', function () { setTimeout(loadMetrika, 1500); }, { once: true });
+    window.addEventListener('load', function () { setTimeout(loadMetrika, 5000); }, { once: true });
   }
 })();
 </script>
