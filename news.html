@@ -310,11 +310,16 @@ h1 {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(255, 107, 43, 0.15);
 }
+.news-cover-wrapper {
+  height: 250px;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 24px;
+}
 .news-cover {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  margin-bottom: 24px;
   border-radius: 0;
   object-fit: cover;
 }
@@ -694,7 +699,7 @@ nav img, .nav-logo img {
 <div class="news-grid">
 <!-- Новость 1 -->
 <article class="news-card" role="article">
-<img alt="Ремсити36 Воронеж - профессионалы в ремонте техники" class="news-cover" decoding="async" loading="lazy" src="og-image.jpg" width="800" height="450"/>
+<div class="news-cover-wrapper"><img alt="Ремсити36 Воронеж - профессионалы в ремонте техники" class="news-cover" decoding="async" loading="lazy" src="og-image.jpg" width="800" height="450"/></div>
 <div class="news-date">5 мая 2026</div>
 <h2 class="news-title">Ремсити36 — профессионалы в ремонте техники</h2>
 <p class="news-content">
@@ -730,7 +735,7 @@ nav img, .nav-logo img {
 </article>
 <!-- МЕСТО ДЛЯ НОВЫХ НОВОСтЕЙ -->
 <article class="news-card" role="article">
-<img alt="Ремонт телевизоров в Воронеже - Ремсити36" class="news-cover" decoding="async" loading="lazy" src="IMG_5663-compressed.jpeg" width="800" height="450"/>
+<div class="news-cover-wrapper"><img alt="Ремонт телевизоров в Воронеже - Ремсити36" class="news-cover" decoding="async" loading="lazy" src="IMG_5663-compressed.jpeg" width="800" height="450"/></div>
 <div class="news-date">6 мая 2026</div>
 <h2 class="news-title">Ремонт телевизоров в Воронеже: быстро, качественно, с гарантией от Ремсити36</h2>
 <p class="news-content">

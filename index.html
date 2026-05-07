@@ -802,6 +802,9 @@ h2 {
   padding: 32px;
   border-radius: 4px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
 }
 .news-date {
   color: var(--accent);
@@ -1118,7 +1121,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   gap: 16px;
   margin-top: 40px;
 }
-.gallery-item { aspect-ratio: 1/1 !important;
+.gallery-item {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
@@ -1126,6 +1129,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   aspect-ratio: 1/1 !important;
   background: var(--surface);
   cursor: pointer;
+  height: 250px;
 }
 .gallery-item img {
   width: 100%;
