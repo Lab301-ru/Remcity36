@@ -2,8 +2,10 @@
 
 <html lang="ru">
 <head>
+  <meta charset="utf-8"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
 <meta content="Ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом. Рейтинг 5.0. Награда «Хорошее место 2026»." name="description"/>
@@ -225,9 +227,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,15,0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10,10,15,0.95);
   border-bottom: 1px solid rgba(255,107,43,0.15);
 }
 
@@ -464,6 +464,7 @@ h1 em::after {
   border-radius: 3px;
   transition: transform 0.2s, box-shadow 0.2s;
   animation: pulse-ring 2.5s ease infinite;
+  animation-delay: 2s;
   line-height: 1.2;
 }
 .btn-emoji {
@@ -1643,7 +1644,7 @@ nav img, .nav-logo img {
 }
 </style>
 <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
-<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
+<link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -1689,7 +1690,7 @@ nav img, .nav-logo img {
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" loading="lazy" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" fetchpriority="high" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
