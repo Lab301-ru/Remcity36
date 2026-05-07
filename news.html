@@ -257,6 +257,23 @@ nav {
   margin-bottom: 16px;
   text-align: center;
 }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,107,43,0.1);
+  border: 1px solid rgba(255,107,43,0.3);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 28px;
+}
+.hero-badge::before { content: '★'; color: var(--accent); }
+
 h1 {
   font-family: 'Unbounded', sans-serif;
   font-weight: 900;
@@ -680,6 +697,7 @@ nav img, .nav-logo img {
 <div class="container">
 <div class="news-header">
 
+<div aria-label="Награда Яндекс Карт" class="hero-badge">Хорошее место 2026 · Рейтинг 5.0</div>
 <h1 id="news-heading" style="margin-top: 16px; padding-top: 0;">Новости и публикации</h1>
 <p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
 </div>
