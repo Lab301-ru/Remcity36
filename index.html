@@ -1126,10 +1126,17 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   overflow: hidden;
   border-radius: 4px;
   border: 1px solid var(--border);
-  aspect-ratio: 1/1 !important;
+  aspect-ratio: unset;
   background: var(--surface);
   cursor: pointer;
-  height: 250px;
+  height: 200px;
+}
+
+/* Десктоп */
+@media (min-width: 768px) {
+  .gallery-item {
+    height: 300px;
+  }
 }
 .gallery-item img {
   width: 100%;
