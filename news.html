@@ -513,7 +513,7 @@ window.openMobileMenu = function() {
 <a href="/#contacts">Контакты</a>
 </div>
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn">
+<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" style="z-index: 9999; position: relative;">
 <span></span>
 <span></span>
 <span></span>
@@ -775,6 +775,22 @@ Max
         initMenu();
     }
 })();
+
+function toggleMobileMenu(e) {
+    if (e) e.preventDefault();
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    if (btn.classList.contains('open')) {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+    } else {
+        btn.classList.add('open');
+        menu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+}
 </script>
 </body>
 </html>
