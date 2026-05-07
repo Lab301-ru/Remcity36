@@ -158,30 +158,25 @@ nav {
 .nav-cta:hover { opacity: 0.85; }
 
 
-.burger { 
-  display: none; 
-  pointer-events: auto !important; 
-  min-width: 44px; 
-  min-height: 44px; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  gap: 5px; 
-  cursor: pointer; 
-  background: none; 
-  border: none; 
-  z-index: 7000; 
-  position: relative; 
-}
-.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+	.burger { 
+	  display: none; 
+	  pointer-events: auto !important; 
+	  min-width: 44px; 
+	  min-height: 44px; 
+	  flex-direction: column; 
+	  justify-content: center; 
+	  align-items: center; 
+	  gap: 5px; 
+	  cursor: pointer; 
+	  background: none; 
+	  border: none; 
+	  z-index: 7000; 
+	  position: relative; 
+	}
+	.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+	.burger.open span:nth-child(2) { opacity: 0; }
+	.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 
 
@@ -197,10 +192,7 @@ nav {
   padding-top: 80px;
   overflow-y: auto;
 }
-.mobile-menu.open { display: flex; }
-
-
-.mobile-menu.open { display: flex; }
+	.mobile-menu.open { display: flex; }
 
 .mobile-menu a {
   font-family: 'Unbounded', sans-serif;
@@ -306,16 +298,14 @@ h1 {
     gap: 32px;
   }
 }
-.news-card {
-  margin-bottom: 16px;
-}
-.news-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+	.news-card {
+	  margin-bottom: 16px;
+	  background: var(--surface);
+	  border: 1px solid var(--border);
+	  border-radius: 16px;
+	  overflow: hidden;
+	  transition: transform 0.2s, box-shadow 0.2s;
+	}
 .news-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(255, 107, 43, 0.15);
