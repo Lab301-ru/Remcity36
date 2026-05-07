@@ -170,7 +170,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px; scroll-behavior: smooth; }
+  scroll-padding-top: 100px; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -1575,7 +1575,7 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 .hero, nav { content-visibility: visible; }
 
 section[id] {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 100px;
 }
 </style>
 <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
@@ -2510,14 +2510,27 @@ window.addEventListener('load', function () {
             if (!anchor) return;
             const href = anchor.getAttribute('href');
             if (href === '#' || href.startsWith('##')) return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                closeMenu();
-                const offset = 80;
+            
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            closeMenu();
+            
+            // Даем мобильному меню закрыться, чтобы расчет высоты был точным
+            setTimeout(() => {
+                const nav = document.querySelector('nav');
+                const offset = nav ? nav.offsetHeight : 80;
                 const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                
+                window.scrollTo({
+                    top: targetPos,
+                    behavior: 'smooth'
+                });
+                
                 history.pushState(null, null, href);
+            }, 10);
+        }
+
             }
         });
     }
