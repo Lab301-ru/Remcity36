@@ -3,12 +3,9 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8"/>
-  <link rel="preload" as="image" href="logo-96.webp" type="image/webp" fetchpriority="high"/>
-  <link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@700;900&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
 <meta content="Ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом. Рейтинг 5.0. Награда «Хорошее место 2026»." name="description"/>
@@ -184,7 +181,7 @@ body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+  font-family: 'Golos Text', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
@@ -195,10 +192,10 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 4100;
-  opacity: 0.03;
-  will-change: auto;
+  opacity: 0.4;
 }
 
 /* SKIP LINK (доступность) */
@@ -467,7 +464,7 @@ h1 em::after {
   border-radius: 3px;
   transition: transform 0.2s, box-shadow 0.2s;
   animation: pulse-ring 2.5s ease infinite;
-  animation-delay: 4s;
+  animation-delay: 2s;
   line-height: 1.2;
 }
 .btn-emoji {
@@ -614,11 +611,6 @@ h2 {
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-}
-
-#why, #reviews, #news, #contacts, #gallery, footer {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 .services-header {
   display: flex;
@@ -810,9 +802,6 @@ h2 {
   padding: 32px;
   border-radius: 4px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-}
 }
 .news-date {
   color: var(--accent);
@@ -1129,22 +1118,14 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   gap: 16px;
   margin-top: 40px;
 }
-.gallery-item {
+.gallery-item { aspect-ratio: 1/1 !important;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   border: 1px solid var(--border);
-  aspect-ratio: unset;
+  aspect-ratio: 1/1 !important;
   background: var(--surface);
   cursor: pointer;
-  height: 200px;
-}
-
-/* Десктоп */
-@media (min-width: 768px) {
-  .gallery-item {
-    height: 300px;
-  }
 }
 .gallery-item img {
   width: 100%;
@@ -1545,9 +1526,125 @@ html, body {
 
 /* MOBILE OPTIMIZATION FIX */
 /* BRANDING UPDATE */
-nav img, .nav-logo img { width: 52px; height: 52px; max-width: 52px; min-width: 52px; border-radius: 50%; object-fit: cover; }
-</style>
+nav img, header img {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+.logo-text {
+  font-family: 'Russo One', sans-serif !important;
+  font-size: 22px !important;
+  letter-spacing: 1px !important;
+}
 
+nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  background: #1a1a1a !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+    nav { 
+        display: flex !important; 
+        justify-content: space-between !important; 
+        align-items: center !important; 
+        width: 100% !important;
+    }
+    .burger { 
+        margin-left: auto !important; 
+        position: relative !important; 
+        right: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn, button, input[type="submit"] { 
+        width: 100% !important; 
+        display: block !important;
+        margin-bottom: 10px !important;
+    }
+    .nav-logo { font-size: 18px !important; gap: 5px !important; }
+    .nav-logo img { width: 32px !important; height: 32px !important; }
+    /* Убираем лишние отступы в шапке */
+    nav { padding: 10px 15px !important; }
+}
+
+@media (max-width: 480px) {
+    section, footer, header, nav { 
+        width: 100% !important; 
+        max-width: 100% !important; 
+        overflow: hidden !important;
+    }
+    .services-grid, .gallery-grid, .stats-container, .features-grid, .reviews-grid { 
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+    .service-card, .gallery-item, .stat-item, .feature-card, .review-card {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    /* Исправляем отступы для маленьких экранов */
+    section { padding: 40px 0 !important; }
+    .hero { padding: 100px 0 60px !important; }
+}
+
+* { box-sizing: border-box !important; }
+html, body { 
+    overflow-x: hidden !important; 
+    width: 100% !important; 
+    margin: 0 !important; 
+    padding: 0 !important; 
+}
+.container { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    padding-left: 15px !important; 
+    padding-right: 15px !important; 
+    margin: 0 auto !important;
+}
+img { 
+    max-width: 100% !important; 
+    height: auto !important; 
+}
+@media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none !important; }
+    .burger { display: flex !important; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: 28px !important; }
+    .hero p { font-size: 16px !important; }
+    .section-title { font-size: 24px !important; }
+    /* Все flex-блоки в колонку */
+    .flex-row, .grid-2, .grid-3 { 
+        display: flex !important; 
+        flex-direction: column !important; 
+    }
+    .flex-row > *, .grid-2 > *, .grid-3 > * { 
+        width: 100% !important; 
+        margin-left: 0 !important; 
+        margin-right: 0 !important; 
+    }
+}
+
+/* FORCE LOGO SIZE */
+nav img, .nav-logo img {
+  width: 52px !important;
+  height: 52px !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+}
+</style>
+<link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
+<link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -1593,17 +1690,7 @@ nav img, .nav-logo img { width: 52px; height: 52px; max-width: 52px; min-width: 
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img
-  alt="Профессиональный ремонт электроники и бытовой техники"
-  decoding="async"
-  fetchpriority="high"
-  src="hero_cover.webp"
-  srcset="hero_cover_mobile.webp 700w, hero_cover.webp 1200w"
-  sizes="(max-width: 768px) 700px, 1200px"
-  width="1200"
-  height="675"
-  class="hero-cover-img"
-/>
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" fetchpriority="high" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
@@ -2229,20 +2316,18 @@ nav img, .nav-logo img { width: 52px; height: 52px; max-width: 52px; min-width: 
 </footer>
 <script>
 // ─── Анимации при скролле ───────────────────────────────
-function initAnimations() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
-} else {
-  initAnimations();
-}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) el.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Сразу показываем hero-элементы
+document.querySelectorAll('.hero .fade-up').forEach(el => {
+  setTimeout(() => el.classList.add('visible'), 100);
+});
 
 // ─── Мобильное меню ────────────────────────────────────
 
@@ -2267,9 +2352,9 @@ document.addEventListener('keydown', (e) => {
     ym(109037763, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   }
   if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadMetrika, { timeout: 5000 });
+    requestIdleCallback(loadMetrika, { timeout: 3500 });
   } else {
-    window.addEventListener('load', function () { setTimeout(loadMetrika, 5000); }, { once: true });
+    window.addEventListener('load', function () { setTimeout(loadMetrika, 1500); }, { once: true });
   }
 })();
 </script>
