@@ -168,7 +168,9 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -2482,28 +2484,40 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-// Плавный скролл для всех ссылок с якорями
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        
-        const target = document.querySelector(href);
-        if (target) {
-            e.preventDefault();
-            // Закрываем мобильное меню если оно открыто
-            if (typeof closeMobileMenu === 'function') closeMobileMenu();
-            
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
         }
     });
+});
+</script>
+
+<script>
+// Универсальный плавный скролл
+document.addEventListener('click', function(e) {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    
+    const href = anchor.getAttribute('href');
+    if (href === '#' || href.startsWith('##')) return;
+    
+    const target = document.querySelector(href);
+    if (target) {
+        e.preventDefault();
+        
+        // Закрываем мобильное меню
+        if (typeof closeMobileMenu === 'function') closeMobileMenu();
+        
+        const header = document.querySelector('nav');
+        const headerHeight = header ? header.offsetHeight : 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Обновляем URL без прыжка
+        history.pushState(null, null, href);
+    }
 });
 </script>
 </body>

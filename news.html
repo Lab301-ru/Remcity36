@@ -63,7 +63,9 @@
   --accent2: #ffb347;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background: var(--bg);
@@ -706,6 +708,33 @@ burgerBtn.addEventListener('click', () => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMobileMenu();
+});
+</script>
+
+<script>
+// Универсальный плавный скролл
+document.addEventListener('click', function(e) {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    
+    const href = anchor.getAttribute('href');
+    if (href === '#' || href.startsWith('##')) return;
+    
+    const target = document.querySelector(href);
+    if (target) {
+        e.preventDefault();
+        if (typeof closeMobileMenu === 'function') closeMobileMenu();
+        
+        const header = document.querySelector('nav');
+        const headerHeight = header ? header.offsetHeight : 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        history.pushState(null, null, href);
+    }
 });
 </script>
 </body>
