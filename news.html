@@ -73,6 +73,9 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
+@media (max-width: 768px) {
+  body { padding-top: 60px; }
+}
 a { color: inherit; text-decoration: none; }
 /* НАВИГАЦИЯ */
 
@@ -672,11 +675,11 @@ nav img, .nav-logo img {
 <!-- ОСНОВНОЙ КОНТЕНТ -->
 <main role="main">
 <!-- НОВОСТИ -->
-<section aria-labelledby="news-heading" id="news">
+<section aria-labelledby="news-heading" id="news" style="padding-top: 16px; margin-top: 0;">
 <div class="container">
 <div class="news-header">
 
-<h1 id="news-heading">Новости и публикации</h1>
+<h1 id="news-heading" style="margin-top: 16px; padding-top: 0;">Новости и публикации</h1>
 <p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
 </div>
 <div class="news-grid">
