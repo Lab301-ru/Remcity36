@@ -1579,20 +1579,37 @@ section[id] {
 }
 </style>
 <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
-<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/></head>
+<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
+<script>
+window.closeMobileMenu = function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    if(btn) btn.classList.remove('open');
+    if(menu) menu.classList.remove('open');
+    document.body.style.overflow = '';
+};
+window.openMobileMenu = function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    if(btn) btn.classList.add('open');
+    if(menu) menu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
+</script>
+</head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
 <a class="skip-link" href="#main-content">Перейти к содержимому</a>
 <!-- МОБИЛЬНОЕ МЕНЮ -->
 <div aria-hidden="true" aria-label="Мобильное меню" class="mobile-menu" id="mobileMenu" role="dialog">
-<a href="#services" onclick="closeMobileMenu()">Услуги</a>
-<a href="news.html" onclick="closeMobileMenu()">Новости</a>
-<a href="#reviews" onclick="closeMobileMenu()">Отзывы</a>
-<a href="#gallery" onclick="closeMobileMenu()">Галерея</a>
-<a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
-<a href="#callback" onclick="closeMobileMenu()">Написать нам</a>
-<a href="#calculator" onclick="closeMobileMenu()">Калькулятор</a>
-<a href="#why" onclick="closeMobileMenu()">О нас</a>
+<a href="#services">Услуги</a>
+<a href="news.html">Новости</a>
+<a href="#reviews">Отзывы</a>
+<a href="#gallery">Галерея</a>
+<a href="#contacts">Контакты</a>
+<a href="#callback">Написать нам</a>
+<a href="#calculator">Калькулятор</a>
+<a href="#why">О нас</a>
 <a class="mobile-phone" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
 </div>
 <!-- НАВИГАЦИЯ -->
@@ -2264,28 +2281,7 @@ document.querySelectorAll('.hero .fade-up').forEach(el => {
 });
 
 // ─── Мобильное меню ────────────────────────────────────
-const burgerBtn   = document.getElementById('burgerBtn');
-const mobileMenu  = document.getElementById('mobileMenu');
 
-function openMobileMenu() {
-  burgerBtn.classList.add('open');
-  mobileMenu.classList.add('open');
-  mobileMenu.setAttribute('aria-hidden', 'false');
-  burgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMobileMenu() {
-  burgerBtn.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  mobileMenu.setAttribute('aria-hidden', 'true');
-  burgerBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-
-burgerBtn.addEventListener('click', () => {
-  burgerBtn.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-});
 
 // Закрытие по клавише Escape
 document.addEventListener('keydown', (e) => {
@@ -2471,78 +2467,67 @@ window.addEventListener('load', function () {
   }
 }, { once: true });
 </script>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+(function() {
+    function initMenu() {
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (!burgerBtn || !mobileMenu) return;
 
-    // Функции меню
-    window.openMobileMenu = function() {
-        burgerBtn.classList.add('open');
-        mobileMenu.classList.add('open');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        burgerBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    };
+        function openMenu() {
+            burgerBtn.classList.add('open');
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
 
-    window.closeMobileMenu = function() {
-        burgerBtn.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        burgerBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    };
+        function closeMenu() {
+            burgerBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
 
-    if (burgerBtn) {
-        burgerBtn.addEventListener('click', (e) => {
+        // Удаляем старые слушатели (на всякий случай)
+        const newBtn = burgerBtn.cloneNode(true);
+        burgerBtn.parentNode.replaceChild(newBtn, burgerBtn);
+
+        newBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            burgerBtn.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+            newBtn.classList.contains('open') ? closeMenu() : openMenu();
+        });
+
+        // Закрытие по клику на ссылки
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Плавный скролл
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const href = anchor.getAttribute('href');
+            if (href === '#' || href.startsWith('##')) return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                closeMenu();
+                const offset = 80;
+                const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                history.pushState(null, null, href);
+            }
         });
     }
 
-    // Закрытие по клику вне меню
-    document.addEventListener('click', (e) => {
-        if (mobileMenu && mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-            closeMobileMenu();
-        }
-    });
-
-    // Плавная навигация
-    document.addEventListener('click', (e) => {
-        const anchor = e.target.closest('a[href^="#"]');
-        if (!anchor) return;
-        
-        const href = anchor.getAttribute('href');
-        if (href === '#' || href.startsWith('##')) return;
-        
-        const target = document.querySelector(href);
-        if (target) {
-            e.preventDefault();
-            closeMobileMenu();
-            
-            const nav = document.querySelector('nav');
-            const offset = nav ? nav.offsetHeight : 80;
-            const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            
-            window.scrollTo({
-                top: targetPos,
-                behavior: 'smooth'
-            });
-            
-            history.pushState(null, null, href);
-        }
-    });
-
-    // Обработка ссылок на новости
-    document.querySelectorAll('a[href="/news.html"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth > 900) {
-                e.preventDefault();
-                window.open('/news.html', '_blank');
-            }
-        });
-    });
-});
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+        initMenu();
+    }
+})();
 </script>
 </body>
 </html>
