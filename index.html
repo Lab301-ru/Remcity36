@@ -169,10 +169,12 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 100px; scroll-behavior: smooth; }
 
 body {
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: 'Golos Text', sans-serif;
@@ -1443,6 +1445,43 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
 .form-footer .btn-primary { width: 100%; padding: 18px; font-size: 18px; font-weight: 700; border-radius: 14px; margin-bottom: 16px; cursor: pointer; background: var(--accent); color: white; border: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .form-note { font-size: 14px; color: var(--muted); line-height: 1.5; }
 @media (max-width: 600px) { .callback-form { padding: 24px 20px; border-radius: 20px; } .form-row { grid-template-columns: 1fr; gap: 0; } .form-group { margin-bottom: 20px; } .form-group input, .form-group textarea { padding: 14px 16px; font-size: 16px; } }
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .map-cta {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 12px;
+    text-align: center;
+  }
+  .map-cta-icon-wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 auto;
+  }
+  .map-cta-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .map-cta-btn {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .map-cta-text { font-size: 18px; }
+  .map-cta-sub { font-size: 15px; }
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
