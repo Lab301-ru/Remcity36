@@ -319,7 +319,23 @@
         .btn-primary:hover {
             background: var(--accent-hover);
         }
-    </style>
+    footer{background:#141414;border-top:1px solid rgba(255,255,255,0.08);padding:48px 40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap;gap:40px;text-align:center}
+.footer-logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:22px;margin-bottom:12px}
+.footer-logo span{color:#ff6b2b}
+address{font-style:normal;font-size:15px;color:#a0a0a0;line-height:1.8}
+address a{color:#ff6b2b;text-decoration:none}
+.footer-inn,.footer-copy{font-size:13px;color:#404055;margin-top:6px}
+.footer-messengers{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.footer-msg-link{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;transition:opacity 0.2s}
+.footer-msg-link:hover{opacity:0.82}
+.footer-msg-link img{width:28px;height:28px;border-radius:6px;display:block}
+.whatsapp{background:#25d366}.telegram{background:#0088cc}.max-msg{background:#6d4cff}
+.footer-map{width:100%;max-width:400px;height:220px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);overflow:hidden}
+.footer-map iframe{width:100%;height:100%;border:none}
+@media(max-width:768px){footer{padding:40px 16px}.footer-inner{flex-direction:column;align-items:center}.footer-map{max-width:100%}}
+
+</style>
 <link href="/sitemap.xml" rel="sitemap" type="application/xml"/>
 </head>
 <body>
@@ -398,17 +414,33 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="nav-logo">
-                <img alt="Логотип Ремсити36" src="logo-96.webp">
-                <div class="logo-text"><span>Ремсити</span><span>36</span></div>
-            </div>
-            <div class="copyright">
-                &copy; 2026 Ремсити36. Все права защищены. Воронеж.
-            </div>
-        </div>
-    </footer>
+    <footer role="contentinfo">
+<div class="footer-inner">
+<div>
+<div class="footer-logo">Ремсити<span>36</span></div>
+<address>ул. 9 Января, 233/20<br>Воронеж, 394020<br><br>
+<strong style="color:#fff">Телефон:</strong> <a href="tel:+79952507772">+7 (995) 250-77-72</a><br>
+<strong style="color:#fff">Email:</strong> <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a>
+</address>
+<div class="footer-inn">ИНН 312832732477</div>
+<div class="footer-copy">© 2026 Ремсити36. Все права защищены.</div>
+</div>
+<div>
+<div class="footer-logo" style="font-size:15px;margin-bottom:14px">🕐 График работы</div>
+<address>Понедельник: <strong style="color:#ff4444">Выходной</strong><br>Вт – Пт: <strong style="color:#fff">10:00 — 19:00</strong><br>Сб – Вс: <strong style="color:#fff">10:00 — 18:00</strong></address>
+<div style="font-size:13px;color:#a0a0a0;margin:14px 0 8px">Мессенджеры:</div>
+<div class="footer-messengers">
+<a class="footer-msg-link whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" target="_blank" rel="noopener noreferrer"><picture><source srcset="whatsapp_icon.webp" type="image/webp"><img src="whatsapp_icon.png" width="28" height="28" alt="WhatsApp" loading="lazy"></picture>WhatsApp</a>
+<a class="footer-msg-link telegram" href="https://t.me/remcity36" target="_blank" rel="noopener noreferrer"><picture><source srcset="telegram_icon.webp" type="image/webp"><img src="telegram_icon.png" width="28" height="28" alt="Telegram" loading="lazy"></picture>Telegram</a>
+<a class="footer-msg-link max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" target="_blank" rel="noopener noreferrer"><picture><source srcset="max_icon.webp" type="image/webp"><img src="max_icon.png" width="28" height="28" alt="Max" loading="lazy"></picture>Max</a>
+</div>
+</div>
+<div class="footer-map">
+<iframe src="https://yandex.ru/map-widget/v1/?ll=39.197777%2C51.640196&z=16&pt=39.197777,51.640196,pm2rdm&l=map" title="Ремсити36 на карте" loading="lazy" allowfullscreen></iframe>
+</div>
+</div>
+</footer>
+
 
     <script>
         function toggleMenu() {
