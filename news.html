@@ -1,932 +1,439 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ремонт телевизоров в Воронеже — Новости Ремсити36</title>
-<meta content="Профессиональный ремонт телевизоров в Воронеже: замена подсветки, ремонт на дому, все бренды. Быстро, качественно, с гарантией от Ремсити36." name="description"/>
-<meta content="ремонт телевизоров Воронеж, ремонт ТВ, замена подсветки телевизора, ремонт LED, ремонт OLED, ремонт телевизоров на дому, Ремсити36" name="keywords"/>
-<meta content="public, max-age=86400" http-equiv="Cache-Control"/>
-<meta content="index, follow" name="robots"/>
-<meta content="noodp" name="yandex"/>
-<meta content="#ff6b2b" name="theme-color"/>
-<link href="https://xn--36-mlcmaw0akk.xn--p1ai/news.html" rel="canonical"/>
-<link href="/sitemap.xml" rel="sitemap" type="application/xml"/>
-<link rel="apple-touch-icon" sizes="180x180" href="logo-96.webp">
-<link rel="icon" type="image/webp" sizes="32x32" href="logo-96.webp">
-<link rel="icon" type="image/webp" sizes="16x16" href="logo-96.webp">
-<!-- Геотеги для локального SEO Яндекса -->
-<meta content="RU-VOR" name="geo.region"/>
-<meta content="Воронеж, Россия" name="geo.placename"/>
-<meta content="51.680395;39.123536" name="geo.position"/>
-<meta content="51.680395, 39.123536" name="ICBM"/>
-<!-- Open Graph -->
-<meta content="Ремонт телевизоров в Воронеже — Ремсити36" property="og:title"/>
-<meta content="Профессиональный ремонт телевизоров в Воронеже: замена подсветки, ремонт на дому, все бренды. Быстро, качественно, с гарантией." property="og:description"/>
-<meta content="https://xn--36-mlcmaw0akk.xn--p1ai/news.html" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="ru_RU" property="og:locale"/>
-<meta content="https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg" property="og:image"/>
-<!-- Schema.org: NewsArticle -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": "Ремонт телевизоров в Воронеже: быстро, качественно, с гарантией",
-  "description": "Профессиональный ремонт телевизоров в Воронеже: замена подсветки, ремонт на дому, все бренды.",
-  "image": "https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg",
-  "datePublished": "2026-05-06",
-  "dateModified": "2026-05-06",
-  "author": {
-    "@type": "Organization",
-    "name": "Ремсити36",
-    "url": "https://xn--36-mlcmaw0akk.xn--p1ai"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Ремсити36",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://xn--36-mlcmaw0akk.xn--p1ai/logo.png"
-    }
-  }
-}
-</script>
-<style>
-:root {
-  --bg: #0a0a14;
-  --surface: #14141f;
-  --surface2: #1a1a26;
-  --border: #2a2a3a;
-  --text: #f5f5f5;
-  --muted: #a0a0c0;
-  --accent: #ff6b2b;
-  --accent2: #ffb347;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px; scroll-behavior: smooth; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-@media (max-width: 768px) {
-  body { padding-top: 60px; }
-}
-a { color: inherit; text-decoration: none; }
-/* НАВИГАЦИЯ */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости Ремсити36 — Ремонт бытовой техники в Воронеже</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --surface2: #1c1c1c;
+            --accent: #ff6b2b;
+            --accent-hover: #ff854d;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+            --border: rgba(255,255,255,0.08);
+        }
 
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 6000;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(10,10,15,0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,107,43,0.15);
-  height: 80px;
-}
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-links a {
-  font-size: 15px;
-  font-weight: 600;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
-  text-decoration: none;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-cta {
-  background: var(--accent);
-  color: white;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
+        /* НАВИГАЦИЯ (как на главной) */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-.nav-logo {
-  font-family: 'Unbounded', Arial Black, sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  letter-spacing: -0.02em;
-}
-.nav-logo span { color: var(--accent); }
-.nav-links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-.nav-links a {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-cta {
-  background: var(--accent);
-  color: white;
-  padding: 10px 24px;
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: opacity 0.2s;
-  border-radius: 2px;
-}
-.nav-cta:hover { opacity: 0.85; }
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
+        .logo-text {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
 
-	.burger { 
-	  display: none; 
-	  pointer-events: auto !important; 
-	  min-width: 44px; 
-	  min-height: 44px; 
-	  flex-direction: column; 
-	  justify-content: center; 
-	  align-items: center; 
-	  gap: 5px; 
-	  cursor: pointer; 
-	  background: none; 
-	  border: none; 
-	  z-index: 7000; 
-	  position: relative; 
-	}
-	.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-	.burger.open span:nth-child(2) { opacity: 0; }
-	.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .logo-text span:first-child { color: #fff; }
+        .logo-text span:last-child { color: var(--accent); }
 
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,15,0.98);
-  z-index: 5500;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 80px;
-  overflow-y: auto;
-}
-	.mobile-menu.open { display: flex; }
+        .nav-links a:hover { color: #fff; }
 
-.mobile-menu a {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  padding: 16px 0;
-  margin-top: 0;
-  text-align: center;
-  width: 100%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.mobile-menu a:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-.mobile-menu a:hover {
-  color: #ff6b2b;
-  background: rgba(255,107,43,0.05);
-}
+        .nav-cta {
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
 
-.mobile-menu a:hover { background: var(--surface2); }
-.mobile-menu a[href^="tel:"] {
-  background: var(--accent);
-  color: white;
-  text-align: center;
-  font-weight: 700;
-}
-.mobile-menu a[href^="tel:"]:hover {
-  background: #ff5500;
-}
-/* КОНТЕЙНЕР */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-/* НОВОСТИ */
-#news {
-  padding: 0 40px 80px;
-}
-.news-hero, .page-header, section:first-of-type {
-  margin-top: 0;
-  padding-top: 0;
-}
-.news-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.section-tag {
-  font-size: 21px;
-  font-family: 'Unbounded', sans-serif;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-  text-align: center;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,107,43,0.1);
-  border: 1px solid rgba(255,107,43,0.3);
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent2);
-  margin-bottom: 28px;
-}
-.hero-badge::before { content: '★'; color: var(--accent); }
+        .nav-cta:hover { background: var(--accent-hover); }
 
-h1 {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  font-size: clamp(33px, 4.2vw, 57px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-  text-align: center;
-}
-.section-desc {
-  font-size: 19px;
-  color: #8080a0;
-  max-width: 520px;
-  line-height: 1.7;
-  margin-bottom: 56px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-.news-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  max-width: 100%;
-  padding: 0 12px;
-}
-@media (max-width: 768px) {
-  .news-grid {
-    padding: 0 8px;
-    gap: 32px;
-  }
-}
-	.news-card {
-	  margin-bottom: 16px;
-	  background: var(--surface);
-	  border: 1px solid var(--border);
-	  border-radius: 16px;
-	  overflow: hidden;
-	  transition: transform 0.2s, box-shadow 0.2s;
-	}
-.news-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(255, 107, 43, 0.15);
-}
-.news-cover {
-  width: 100%;
-  height: 500px;
-  display: block;
-  margin-bottom: 24px;
-  border-radius: 0;
-  object-fit: cover;
-  object-position: center;
-  background: #0a0a0f;
-}
-.news-card > div:first-of-type,
-.news-card > h2,
-.news-card > p,
-.news-card > .news-section {
-  padding: 0 32px;
-}
-.news-card > div:first-of-type {
-  padding-top: 32px;
-}
-.news-date {
-  font-size: 15px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.news-title {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  margin-bottom: 16px;
-  color: var(--text);
-}
-.news-content {
-  font-size: 17px;
-  color: #a0a0c0;
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-.news-section {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-}
-.news-section h3 {
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--accent);
-}
-.news-section ul {
-  list-style: none;
-  padding-left: 0;
-}
-.news-section li {
-  font-size: 17px;
-  color: #a0a0c0;
-  line-height: 1.8;
-  margin-bottom: 8px;
-  padding-left: 20px;
-  position: relative;
-}
-.news-section li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: bold;
-}
-.news-section p {
-  font-size: 17px;
-  color: #a0a0c0;
-  line-height: 1.8;
-}
-.news-section a {
-  color: var(--accent);
-  font-weight: 600;
-  transition: opacity 0.2s;
-}
-.news-section a:hover { opacity: 0.8; }
-/* КОНТАКТЫ */
-#contacts {
-  padding: 80px 40px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-}
-.contacts-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.contacts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-}
-.contact-block {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.contact-block h3 {
-  font-family: 'Unbounded', sans-serif;
-  font-size: 21px;
-  font-weight: 900;
-  margin-bottom: 20px;
-  color: var(--text);
-}
-.hours-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-.hours-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  font-size: 17px;
-  color: #a0a0c0;
-  min-width: 240px;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-}
-.hours-day { font-weight: 600; white-space: nowrap; }
-.hours-time { color: var(--accent); white-space: nowrap; }
-.hours-closed { color: #ff6b6b; }
-/* ПОДВАЛ */
-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 48px 40px;
-}
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 32px;
-  text-align: center;
-}
-.footer-logo {
-  font-family: 'Russo One', sans-serif;
-  font-weight: 900;
-  font-size: 21px;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-.footer-logo span { color: var(--accent); }
-footer .logo-text {
-  font-family: 'Russo One', sans-serif;
-}
-address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8; }
-.footer-inn { font-size: 17px; color: #404055; margin-top: 8px; }
-.footer-messengers {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 400px;
-}
-.footer-msg-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: opacity 0.2s;
-  min-width: 130px;
-  flex: 1;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-}
-.footer-msg-link img {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  vertical-align: middle;
-  display: block;
-}
-.footer-msg-link:hover { opacity: 0.8; }
-.whatsapp { background: #25d366; }
-.telegram { background: #0088cc; }
-.max-msg { background: #6d4cff; }
-/* АДАПТИВНОСТЬ */
-@media (max-width: 900px) {
-  nav { padding: 16px 20px; height: 70px; }
-  .nav-links { display: none !important; }
-  .nav-cta { display: none !important; }
-  .burger { display: flex !important; }
-  footer { padding: 40px 20px; }
-  .footer-inner { flex-direction: column; align-items: center; }
-}
+        /* КОНТЕНТ НОВОСТЕЙ */
+        .news-container {
+            max-width: 900px;
+            margin: 100px auto 60px;
+            padding: 0 20px;
+        }
 
-/* MOBILE OPTIMIZATION FIX */
-/* BRANDING UPDATE */
-nav img, header img {
-  width: 52px !important;
-  height: 52px !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-}
-.logo-text {
-  font-family: 'Russo One', sans-serif !important;
-  font-size: 22px !important;
-  letter-spacing: 1px !important;
-}
+        .news-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-@media (max-width: 900px) {
-  nav {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 10px 16px !important;
-    background: #1a1a1a !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-}
+        .news-header h1 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
 
-@media (max-width: 900px) {
-    nav { 
-        display: flex !important; 
-        justify-content: space-between !important; 
-        align-items: center !important; 
-        width: 100% !important;
-    }
-    .burger { 
-        margin-left: auto !important; 
-        position: relative !important; 
-        right: 0 !important;
-    }
-}
+        .news-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+        }
 
-@media (max-width: 480px) {
-    .btn, button, input[type="submit"] { 
-        width: 100% !important; 
-        display: block !important;
-        margin-bottom: 10px !important;
-    }
-    .nav-logo { font-size: 18px !important; gap: 5px !important; }
-    .nav-logo img { width: 32px !important; height: 32px !important; }
-    /* Убираем лишние отступы в шапке */
-    nav { padding: 10px 15px !important; }
-}
+        .news-grid {
+            display: grid;
+            gap: 32px;
+        }
 
-@media (max-width: 480px) {
-    section, footer, header, nav { 
-        width: 100% !important; 
-        max-width: 100% !important; 
-        overflow: hidden !important;
-    }
-    .services-grid, .gallery-grid, .stats-container, .features-grid, .reviews-grid { 
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 20px !important;
-    }
-    .service-card, .gallery-item, .stat-item, .feature-card, .review-card {
-        width: 100% !important;
-        margin: 0 !important;
-    }
-    /* Исправляем отступы для маленьких экранов */
-    section { padding: 40px 0 !important; }
-    .hero { padding: 100px 0 60px !important; }
-}
+        .news-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
 
-* { box-sizing: border-box !important; }
-html, body { 
-    overflow-x: hidden !important; 
-    width: 100% !important; 
-    margin: 0 !important; 
-    padding: 0 !important; 
-}
-@media (max-width: 900px) {
-  .container { 
-      width: 100% !important; 
-      max-width: 100% !important; 
-      padding-left: 15px !important; 
-      padding-right: 15px !important; 
-      margin: 0 auto !important;
-  }
-}
-img { 
-    max-width: 100% !important; 
-    height: auto !important; 
-}
-@media (max-width: 900px) {
-    .nav-links, .nav-cta { display: none !important; }
-    .burger { display: flex !important; }
-}
-@media (max-width: 480px) {
-    .hero h1 { font-size: 28px !important; }
-    .hero p { font-size: 16px !important; }
-    .section-title { font-size: 24px !important; }
-    /* Все flex-блоки в колонку */
-    .flex-row, .grid-2, .grid-3 { 
-        display: flex !important; 
-        flex-direction: column !important; 
-    }
-    .flex-row > *, .grid-2 > *, .grid-3 > * { 
-        width: 100% !important; 
-        margin-left: 0 !important; 
-        margin-right: 0 !important; 
-    }
-}
+        .news-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,107,43,0.3);
+        }
 
-/* HEADER OVERLAP FIX */
-main { 
-    margin-top: 80px !important; 
-}
-@media (max-width: 480px) {
-    main { 
-        margin-top: 70px !important; 
-    }
-}
+        .news-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
 
-/* FORCE LOGO SIZE */
-nav img, .nav-logo img {
-  width: 64px !important;
-  height: 64px !important;
-  max-width: 64px !important;
-  max-height: 64px !important;
-  min-width: 64px !important;
-  min-height: 64px !important;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
+        .news-content {
+            padding: 32px;
+        }
 
-@media (min-width: 901px) {
-  .news-cover {
-    height: 420px !important;
-    object-fit: contain !important;
-  }
-}
-</style>
+        .news-date {
+            display: inline-block;
+            background: rgba(255,107,43,0.1);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .news-card h2 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .news-card p {
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .news-card ul {
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+
+        .news-card li {
+            margin-bottom: 8px;
+        }
+
+        .news-card b {
+            color: #fff;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: gap 0.2s;
+        }
+
+        .back-home:hover { gap: 12px; }
+
+        /* ФУТЕР */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            background: #080808;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright { color: var(--text-dim); font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .news-header h1 { font-size: 28px; }
+            .news-image { height: 250px; }
+            .news-content { padding: 24px; }
+            .news-card h2 { font-size: 20px; }
+            .footer-content { flex-direction: column; gap: 24px; text-align: center; }
+        }
+
+        /* МОБИЛЬНОЕ МЕНЮ */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .burger span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 900px) {
+            .burger { display: flex; }
+            .nav-links, .nav-cta { display: none; }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active { right: 0; }
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 32px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* СТИЛИ ДЛЯ КНОПОК И Т.Д. (для консистентности) */
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,107,43,0.3);
+        }
+
+        /* BRANDING UPDATE (из index.html) */
+        nav img, header img {
+          width: 52px !important;
+          height: 52px !important;
+          border-radius: 50% !important;
+          object-fit: cover !important;
+        }
+        .logo-text {
+          font-family: 'Russo One', sans-serif !important;
+          font-size: 22px !important;
+          letter-spacing: 1px !important;
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo { font-size: 18px !important; gap: 5px !important; }
+            .nav-logo img { width: 32px !important; height: 32px !important; }
+            nav { padding: 10px 15px !important; }
+            .news-header { margin-top: 70px !important; }
+        }
+
+        /* FORCE LOGO SIZE — desktop only */
+        @media (min-width: 901px) {
+          nav img, .nav-logo img {
+            width: 64px !important;
+            height: 64px !important;
+            max-width: 64px !important;
+            max-height: 64px !important;
+            min-width: 64px !important;
+            min-height: 64px !important;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+          }
+          
+          .news-cover {
+            height: 420px !important;
+            object-fit: contain !important;
+          }
+        }
+    </style>
 </head>
 <body>
-<!-- НАВИГАЦИЯ -->
+    <!-- НАВИГАЦИЯ -->
+    <nav aria-label="Основная навигация" role="navigation">
+        <a href="/" aria-label="Ремсити36 — главная" class="nav-logo">
+            <img alt="Логотип Ремсити36" src="logo-96.webp">
+            <div class="logo-text"><span>Ремсити</span><span>36</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#services">Услуги</a></li>
+            <li><a href="/#reviews">Отзывы</a></li>
+            <li><a href="/#gallery">Галерея</a></li>
+            <li><a href="/#contacts">Контакты</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="tel:+79952507772" class="nav-cta">Позвонить мастеру</a>
+    </nav>
 
-<nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
-<ul class="nav-links">
-<li><a href="/">На главную</a></li>
-<li><a href="/#services">Услуги</a></li>
-<li><a href="/news.html">Новости</a></li>
-<li><a href="/#reviews">Отзывы</a></li>
-<li><a href="/#gallery">Галерея</a></li>
-<li><a href="/#contacts">Контакты</a></li>
-</ul>
-<a aria-label="Позвонить нам" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
-<span></span>
-<span></span>
-<span></span>
-</button>
-</nav>
+    <!-- МОБИЛЬНОЕ МЕНЮ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-menu" onclick="toggleMenu()">&times;</div>
+        <a href="/" onclick="toggleMenu()">Главная</a>
+        <a href="/#services" onclick="toggleMenu()">Услуги</a>
+        <a href="/#reviews" onclick="toggleMenu()">Отзывы</a>
+        <a href="/#gallery" onclick="toggleMenu()">Галерея</a>
+        <a href="/#contacts" onclick="toggleMenu()">Контакты</a>
+        <a href="tel:+79952507772" style="color: var(--accent);">+7 (995) 250-77-72</a>
+    </div>
 
+    <div class="news-container">
+        <a href="/" class="back-home">← На главную</a>
+        
+        <div class="news-header">
+            <h1>Новости и полезные советы</h1>
+            <p>Следите за обновлениями нашего сервисного центра</p>
+        </div>
 
-<!-- МОБИЛЬНОЕ МЕНЮ -->
-<div aria-hidden="true" aria-label="Мобильное меню" class="mobile-menu" id="mobileMenu" role="dialog">
-<a href="/#services">Услуги</a>
-<a href="/news.html">Новости</a>
-<a href="/#reviews">Отзывы</a>
-<a href="/#gallery">Галерея</a>
-<a href="/#contacts">Контакты</a>
-<a href="/#callback">Написать нам</a>
-<a href="/#calculator">Калькулятор</a>
-<a href="/#why">О нас</a>
-<a class="mobile-phone" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
-</div>
-<!-- ОСНОВНОЙ КОНТЕНТ -->
-<main role="main">
-<!-- НОВОСТИ -->
-<section aria-labelledby="news-heading" id="news" style="padding-top: 16px; margin-top: 0;">
-<div class="container">
-<div class="news-header">
+        <div class="news-grid">
+            <!-- НОВОСТЬ 1 -->
+            <article class="news-card">
+                <img src="IMG_5829.webp" alt="Ремонт кофемашин" class="news-image news-cover">
+                <div class="news-content">
+                    <span class="news-date">24 марта 2024</span>
+                    <h2>Как продлить жизнь вашей кофемашине?</h2>
+                    <p>Кофемашина — сложный механизм, требующий регулярного ухода. Наши мастера подготовили список основных рекомендаций, которые помогут избежать дорогостоящего ремонта:</p>
+                    <ul>
+                        <li><b>Используйте фильтрованную воду.</b> Накипь — главный враг нагревательных элементов.</li>
+                        <li><b>Регулярная декальцинация.</b> Проводите чистку каждые 200-300 чашек кофе.</li>
+                        <li><b>Очистка заварочного блока.</b> Промывайте его под проточной водой раз в неделю.</li>
+                    </ul>
+                    <p>Если вы заметили странные звуки или вкус кофе изменился — не ждите поломки, обратитесь к профессионалам Ремсити36.</p>
+                    <a href="/#callback" class="btn-primary">Записаться на диагностику</a>
+                </div>
+            </article>
 
-<div aria-label="Награда Яндекс Карт" class="hero-badge">Хорошее место 2026 · Рейтинг 5.0</div>
-<h1 id="news-heading" style="margin-top: 16px; padding-top: 0;">Новости и публикации</h1>
-<p class="section-desc">Следите за нашими последними новостями и полезными советами по ремонту.</p>
-</div>
-<div class="news-grid">
-<!-- Новость 1 -->
-<article class="news-card" role="article">
-<img alt="Ремсити36 Воронеж - профессионалы в ремонте техники" class="news-cover" decoding="async" loading="lazy" src="og-image.jpg" width="1120" height="630"/>
-<div class="news-date">5 мая 2026</div>
-<h2 class="news-title">Ремсити36 — профессионалы в ремонте техники</h2>
-<p class="news-content">
-Ремсити36 — ремонт бытовой техники в Воронеже. Профессионально ремонтируем то, от чего другие отказываются! 🛠
-</p>
-<div class="news-section">
-<h3>Что мы ремонтируем:</h3>
-<ul>
-<li><strong>Крупную технику:</strong> духовые шкафы, варочные панели, вытяжки, бойлеры.</li>
-<li><strong>Мелкую бытовую:</strong> микроволновки, пылесосы, утюги, парогенераторы, блендеры, мясорубки.</li>
-<li><strong>Электронику:</strong> телевизоры, ноутбуки, мониторы, проекторы, аудио- и видеотехнику, умные колонки.</li>
-<li><strong>Кофемашины:</strong> ремонт любой сложности, декальцинация, чистка от накипи и засоров.</li>
-</ul>
-</div>
-<div class="news-section">
-<h3>⭐ Почему выбирают нас:</h3>
-<ul>
-<li><strong>Честные цены:</strong> называем точную стоимость ДО начала работ, никаких скрытых доплат.</li>
-<li><strong>Бесплатная диагностика</strong> (при согласии на ремонт).</li>
-<li><strong>Оперативность:</strong> сроки ремонта от 1 дня.</li>
-<li><strong>Надежность:</strong> даем официальную гарантию на работу и запчасти.</li>
-<li><strong>Удобство:</strong> работаем с выездом на дом по всему Воронежу. Принимаем наличные, карты, оплату по QR-коду и СБП.</li>
-</ul>
-</div>
-<div class="news-section">
-<h3>📍 Как нас найти:</h3>
-<p>
-<strong>Адрес:</strong> ул. 9 Января, 233/20<br/>
-<strong>Телефон:</strong> <a href="tel:+79952507772">+7 (995) 250-77-72</a><br/>
-<strong>Email:</strong> <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a>
-</p>
-</div>
-</article>
-<!-- МЕСТО ДЛЯ НОВЫХ НОВОСтЕЙ -->
-<article class="news-card" role="article">
-<img alt="Ремонт телевизоров в Воронеже - Ремсити36" class="news-cover" decoding="async" loading="lazy" src="IMG_5663-compressed.jpeg" width="1120" height="630"/>
-<div class="news-date">6 мая 2026</div>
-<h2 class="news-title">Ремонт телевизоров в Воронеже: быстро, качественно, с гарантией от Ремсити36</h2>
-<p class="news-content">
-Ваш телевизор перестал показывать, появились полосы на экране или пропал звук? Не спешите покупать новый! Сервисный центр «Ремсити36» предлагает профессиональный ремонт телевизоров в Воронеже с выездом мастера на дом. Мы восстановим работоспособность вашей техники, сэкономив ваше время и деньги.
-</p>
-<div class="news-section">
-<h3>Почему выбирают «Ремсити36» для ремонта ТВ?</h3>
-<ul>
-<li><strong>Опытные мастера:</strong> Наши специалисты имеют многолетний опыт работы с ЖК, LED и OLED телевизорами всех поколений.</li>
-<li><strong>Оперативный выезд:</strong> Мастер приедет к вам на дом в удобное время для диагностики и ремонта.</li>
-<li><strong>Бесплатная диагностика:</strong> При согласии на ремонт диагностика проводится бесплатно.</li>
-<li><strong>Гарантия:</strong> Предоставляем официальную гарантию на все выполненные работы и установленные запчасти.</li>
-<li><strong>Доступные цены:</strong> Честная стоимость ремонта без скрытых платежей.</li>
-</ul>
-</div>
-<div class="news-section">
-<h3>Частые неисправности телевизоров, которые мы устраняем:</h3>
-<ul>
-<li><strong>Нет изображения, но есть звук:</strong> Часто указывает на проблемы с подсветкой (LED-подсветка). Мы выполняем замену подсветки телевизора.</li>
-<li><strong>Нет звука, но есть изображение:</strong> Может быть связано с аудиопроцессором или динамиками.</li>
-<li><strong>Телевизор не включается:</strong> Проблемы с блоком питания или материнской платой.</li>
-<li><strong>Полосы или пятна на экране:</strong> Дефекты матрицы (в большинстве случаев ремонт нецелесообразен, но возможна замена).</li>
-<li><strong>Проблемы с Smart TV:</strong> Сбои программного обеспечения, проблемы с подключением к интернету.</li>
-</ul>
-</div>
-<div class="news-section">
-<h3>Ремонтируем телевизоры всех популярных брендов:</h3>
-<p>
-Мы работаем с телевизорами Samsung, LG, Sony, Philips, Xiaomi, TCL, Panasonic, Toshiba, Hisense и многими другими марками. Независимо от модели и года выпуска, наши мастера найдут решение проблемы.
-</p>
-</div>
-<div class="news-section">
-<h3>Как заказать ремонт телевизора в Воронеже?</h3>
-<p>
-Просто позвоните нам по телефону <a href="tel:+79952507772">+7 (995) 250-77-72</a> или оставьте заявку на сайте. Мы проконсультируем вас, согласуем удобное время для визита мастера и вернем ваш телевизор к жизни!
-</p>
-</div>
-</article>
+            <!-- НОВОСТЬ 2 -->
+            <article class="news-card">
+                <img src="IMG_5834.webp" alt="Сервисный центр" class="news-image news-cover">
+                <div class="news-content">
+                    <span class="news-date">15 марта 2024</span>
+                    <h2>Ремсити36 — «Хорошее место 2026»!</h2>
+                    <p>Мы рады сообщить, что наш сервисный центр получил почетную награду от Яндекса. Это стало возможным благодаря вашим положительным отзывам и высокому качеству нашей работы.</p>
+                    <p>Наш рейтинг 5.0 — это не просто цифра, а результат ежедневного труда всей команды. Мы продолжаем совершенствоваться, закупаем новейшее диагностическое оборудование и расширяем штат мастеров, чтобы ремонт вашей техники был еще быстрее и качественнее.</p>
+                    <p>Спасибо, что выбираете нас!</p>
+                </div>
+            </article>
+        </div>
+    </div>
 
-<!-- МЕСТО ДЛЯ НОВЫХ НОВОСТЕЙ -->
-</div>
-</div>
-</section>
-<!-- КОНТАКТЫ -->
-<section aria-labelledby="contacts-heading" id="contacts">
-<div class="container">
-<div class="contacts-header">
-<h2 id="contacts-heading">Как нас найти</h2>
-<p class="section-desc">Приходите в сервис или вызовите мастера на дом — работаем по всему Воронежу.</p>
-</div>
-<div class="contacts-grid">
-<div class="contact-block">
-<h3>📍 Адрес</h3>
-<address>
-ул. 9 Января, 233/20<br/>
-Воронеж, 394020<br/>
-Советский район
-</address>
-</div>
-<div class="contact-block">
-<h3>🕐 График работы</h3>
-<div class="hours-grid">
-<div class="hours-row">
-<span class="hours-day">Понедельник</span>
-<span class="hours-time hours-closed">Выходной</span>
-</div>
-<div class="hours-row">
-<span class="hours-day">Вторник – Пятница</span>
-<span class="hours-time">10:00 — 19:00</span>
-</div>
-<div class="hours-row">
-<span class="hours-day">Суббота – Воскресенье</span>
-<span class="hours-time">10:00 — 18:00</span>
-</div>
-</div>
-</div>
-<div class="contact-block">
-<h3>📞 Контакты</h3>
-<address>
-Телефон: <a href="tel:+79952507772">+7 (995) 250-77-72</a><br/>
-Email: <a href="mailto:remcity36@ya.ru">remcity36@ya.ru</a><br/>
-<br/>
-<strong>Мессенджеры:</strong>
-</address>
-<div class="footer-messengers">
-<a aria-label="WhatsApp" class="footer-msg-link whatsapp" href="https://wa.me/message/B6YTD4MBBHS2C1" rel="noopener noreferrer" target="_blank">
-<picture><source srcset="whatsapp_icon.webp" type="image/webp"><img src="whatsapp_icon.png" width="36" height="36" alt="WhatsApp" loading="lazy" decoding="async"></picture>
-WhatsApp
-</a>
-<a aria-label="Telegram" class="footer-msg-link telegram" href="https://t.me/remcity36" rel="noopener noreferrer" target="_blank">
-<picture><source srcset="telegram_icon.webp" type="image/webp"><img src="telegram_icon.png" width="36" height="36" alt="Telegram" loading="lazy" decoding="async"></picture>
-Telegram
-</a>
-<a aria-label="Max" class="footer-msg-link max-msg" href="https://max.ru/u/f9LHodD0cOKqYDJwML01Fagov92aNlDMuTZAidXlyIKoPXbxQyRV1VlLJJk" rel="noopener noreferrer" target="_blank">
-<picture><source srcset="max_icon.webp" type="image/webp"><img aria-hidden="true" decoding="async" height="36" loading="lazy" src="max_icon.png" width="36"/></picture>
-Max
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- ПОДВАЛ -->
-<footer role="contentinfo">
-<div class="footer-inner">
-<div>
-<div class="footer-logo">Ремсити<span>36</span></div>
-<address>
-ул. 9 Января, 233/20, Воронеж, 394020<br/>
-Телефон: <a href="tel:+79952507772">+7 (995) 250-77-72</a>
-</address>
-<div class="footer-inn">ИНН 312832732477</div>
-<div style="margin-top:16px; font-size: 17px; color:var(--muted);">Ремонт бытовой техники в Воронеже.</div>
-<div style="margin-top:12px; font-size: 17px; color:var(--muted);">© 2026 Ремсити36 сервисный центр.</div>
-</div>
-</div>
-</footer>
+    <footer>
+        <div class="footer-content">
+            <div class="nav-logo">
+                <img alt="Логотип Ремсити36" src="logo-96.webp">
+                <div class="logo-text"><span>Ремсити</span><span>36</span></div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Ремсити36. Все права защищены. Воронеж.
+            </div>
+        </div>
+    </footer>
 
-
-
-<script>
-// Глобальные функции управления меню
-window.toggleMobileMenu = function(e) {
-    if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-    const btn = document.getElementById('burgerBtn');
-    const menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
-    
-    if (btn.classList.contains('open')) {
-        btn.classList.remove('open');
-        menu.classList.remove('open');
-        document.body.style.overflow = '';
-    } else {
-        btn.classList.add('open');
-        menu.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-};
-
-window.closeMobileMenu = function() {
-    const btn = document.getElementById('burgerBtn');
-    const menu = document.getElementById('mobileMenu');
-    if (btn) btn.classList.remove('open');
-    if (menu) menu.classList.remove('open');
-    document.body.style.overflow = '';
-};
-
-// Навигация и скролл
-document.addEventListener('click', function(e) {
-    const anchor = e.target.closest('a[href*="#"]');
-    if (!anchor) return;
-    
-    const href = anchor.getAttribute('href');
-    if (href === '#' || href.startsWith('##')) return;
-    
-    // Внутренние якоря
-    const id = href.includes('#') ? href.split('#')[1] : null;
-    const target = id ? document.getElementById(id) : null;
-    
-    if (target) {
-        e.preventDefault();
-        window.closeMobileMenu();
-        const offset = 90;
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-        if (id) history.pushState(null, null, '#' + id);
-    } else if (href.startsWith('/#')) {
-        // Переход с news.html на главную
-        window.closeMobileMenu();
-    }
-});
-
-// Закрытие по Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') window.closeMobileMenu();
-});
-</script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
