@@ -297,6 +297,13 @@ nav {
   flex-shrink: 0;
 }
 .nav-cta:hover { opacity: 0.85; }
+@media (min-width: 901px) {
+  .nav-cta:hover {
+    opacity: 0.85;
+    box-shadow: 0 0 0 4px rgba(255,107,43,0.25), 0 0 20px rgba(255,107,43,0.45);
+    transition: opacity 0.2s, box-shadow 0.2s;
+  }
+}
 
 /* HAMBURGER */
 

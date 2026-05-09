@@ -150,6 +150,13 @@ nav {
   border-radius: 2px;
 }
 .nav-cta:hover { opacity: 0.85; }
+@media (min-width: 901px) {
+  .nav-cta:hover {
+    opacity: 0.85;
+    box-shadow: 0 0 0 4px rgba(255,107,43,0.25), 0 0 20px rgba(255,107,43,0.45);
+    transition: opacity 0.2s, box-shadow 0.2s;
+  }
+}
 
 
 	.burger { 
@@ -514,8 +521,8 @@ address { font-style: normal; font-size: 17px; color: #a0a0c0; line-height: 1.8;
 /* MOBILE OPTIMIZATION FIX */
 /* BRANDING UPDATE */
 nav img, header img {
-  width: 52px !important;
-  height: 52px !important;
+  width: 64px !important;
+  height: 64px !important;
   border-radius: 50% !important;
   object-fit: cover !important;
 }
@@ -654,12 +661,12 @@ main {
 
 /* FORCE LOGO SIZE */
 nav img, .nav-logo img {
-  width: 52px !important;
-  height: 52px !important;
-  max-width: 52px !important;
-  max-height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
 }
 
 @media (min-width: 901px) {
@@ -674,7 +681,7 @@ nav img, .nav-logo img {
 <!-- НАВИГАЦИЯ -->
 
 <nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="48" loading="eager" src="logo-96.webp" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="48"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
+<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
 <ul class="nav-links">
 <li><a href="/">Главная</a></li>
 <li><a href="/#services">Услуги</a></li>
