@@ -531,14 +531,16 @@ nav img, header img {
   letter-spacing: 1px !important;
 }
 
-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 10px 16px !important;
-  background: #1a1a1a !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+@media (max-width: 900px) {
+  nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    background: #1a1a1a !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 @media (max-width: 900px) {
@@ -645,6 +647,13 @@ nav img, .nav-logo img {
   min-width: 52px !important;
   min-height: 52px !important;
 }
+
+@media (min-width: 901px) {
+  .news-cover {
+    height: 420px !important;
+    object-fit: cover !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -660,11 +669,11 @@ nav img, .nav-logo img {
 <li><a href="/#contacts">Контакты</a></li>
 </ul>
 <a aria-label="Позвонить нам" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<div style="margin-left: auto;"><button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
+<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
 <span></span>
 <span></span>
 <span></span>
-</button></div>
+</button>
 </nav>
 
 
