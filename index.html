@@ -4,6 +4,8 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
+  <link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -36,146 +38,150 @@
 <meta content="1200" property="og:image:width"/>
 <meta content="675" property="og:image:height"/>
 <meta content="Ремсити36" property="og:site_name"/>
+<meta content="Сервисный центр Ремсити36 — ремонт бытовой техники в Воронеже" property="og:image:alt"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Ремсити36 — Ремонт бытовой техники в Воронеже"/>
 <meta name="twitter:description" content="Профессиональный ремонт бытовой техники и электроники. Рейтинг 5.0, 53 отзыва, награда «Хорошее место 2026»."/>
 <meta name="twitter:image" content="https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg"/>
-<!-- Schema.org: LocalBusiness + FAQPage -->
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#organization",
-    "name": "Ремсити36",
-    "url": "https://xn--36-mlcmaw0akk.xn--p1ai",
-    "telephone": "+7-995-250-77-72",
-    "image": "https://xn--36-mlcmaw0akk.xn--p1ai/logo.png",
-    "logo": "https://xn--36-mlcmaw0akk.xn--p1ai/logo.png",
-    "description": "Профессиональный ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом.",
-    "priceRange": "от 390 руб.",
-    "paymentAccepted": "Наличные, банковская карта",
-    "currenciesAccepted": "RUB",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "53",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Владислав Григорьев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Мастер продиагностировал неисправность, позвонил и согласовал стоимость, предложил несколько вариантов по стоимости запчастей. Ребята отлично понимают в том, что делают, рекомендую!"
-      },
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Федор Михеев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Приятные ребята, оперативно микроволновку починили, взяли меньше чем в центре. Рекомендую!"
-      },
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Никита Гостев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ул. 9 Января, 233/20",
-      "addressLocality": "Воронеж",
-      "addressRegion": "Воронежская область",
-      "postalCode": "394020",
-      "addressCountry": "RU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 51.680395,
-      "longitude": 39.123536
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "10:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday","Sunday"],
-        "opens": "10:00",
-        "closes": "18:00"
-      }
-    ],
-    "sameAs": [
-      "https://yandex.ru/maps/org/remsiti36/144825190316",
-      "https://t.me/remcity36",
-      "https://wa.me/message/B6YTD4MBBHS2C1"
-    ],
-    "hasMap": "https://yandex.ru/maps/org/remsiti36/144825190316",
-    "areaServed": {
-      "@type": "City",
-      "name": "Воронеж"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Сколько стоит ремонт бытовой техники в Воронеже?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Стоимость ремонта зависит от вида неисправности. Ремонт кофемашин — от 400 ₽, микроволновых печей — от 500 ₽, пылесосов — от 1 100 ₽, утюгов и парогенераторов — от 390 ₽. Точная стоимость согласовывается после диагностики."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Выезжает ли мастер на дом в Воронеже?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, мастер выезжает на дом по всему Воронежу. Не нужно везти тяжёлую технику в сервис — мастер приедет, проведёт диагностику и согласует стоимость ремонта на месте."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как быстро выполняется ремонт?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Большинство ремонтов выполняется в день обращения. Срочный ремонт — в приоритете. Мы понимаем, как важна работающая техника дома."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Какой режим работы сервисного центра?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Вторник–пятница: 10:00–19:00. Суббота–воскресенье: 10:00–18:00. Понедельник — выходной."
-        }
-      }
-    ]
-  }
-]
-</script>
+<meta name="twitter:image:width" content="1200"/>
+<meta name="twitter:image:height" content="675"/>
+<!-- Schema.org: LocalBusiness + FAQPage + WebSite -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#website",
-  "name": "Ремсити36",
-  "url": "https://xn--36-mlcmaw0akk.xn--p1ai/",
-  "inLanguage": "ru-RU",
-  "publisher": {"@type": "Organization", "name": "Ремсити36"}
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#organization",
+      "name": "Ремсити36",
+      "url": "https://xn--36-mlcmaw0akk.xn--p1ai",
+      "telephone": "+7-995-250-77-72",
+      "image": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg", "width": 1200, "height": 675},
+      "logo": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/logo-96.webp", "width": 96, "height": 96},
+      "description": "Профессиональный ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом.",
+      "priceRange": "от 390 руб.",
+      "paymentAccepted": "Наличные, банковская карта",
+      "currenciesAccepted": "RUB",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "53",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Владислав Григорьев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Мастер продиагностировал неисправность, позвонил и согласовал стоимость, предложил несколько вариантов по стоимости запчастей. Ребята отлично понимают в том, что делают, рекомендую!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Федор Михеев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Приятные ребята, оперативно микроволновку починили, взяли меньше чем в центре. Рекомендую!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Никита Гостев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. 9 Января, 233/20",
+        "addressLocality": "Воронеж",
+        "addressRegion": "Воронежская область",
+        "postalCode": "394020",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.680395,
+        "longitude": 39.123536
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://yandex.ru/maps/org/remsiti36/144825190316",
+        "https://t.me/remcity36",
+        "https://wa.me/message/B6YTD4MBBHS2C1"
+      ],
+      "hasMap": "https://yandex.ru/maps/org/remsiti36/144825190316",
+      "areaServed": {
+        "@type": "City",
+        "name": "Воронеж"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит ремонт бытовой техники в Воронеже?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость ремонта зависит от вида неисправности. Ремонт кофемашин — от 400 ₽, микроволновых печей — от 500 ₽, пылесосов — от 1 100 ₽, утюгов и парогенераторов — от 390 ₽. Точная стоимость согласовывается после диагностики."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Выезжает ли мастер на дом в Воронеже?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, мастер выезжает на дом по всему Воронежу. Не нужно везти тяжёлую технику в сервис — мастер приедет, проведёт диагностику и согласует стоимость ремонта на месте."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как быстро выполняется ремонт?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Большинство ремонтов выполняется в день обращения. Срочный ремонт — в приоритете. Мы понимаем, как важна работающая техника дома."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой режим работы сервисного центра?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Вторник–пятница: 10:00–19:00. Суббота–воскресенье: 10:00–18:00. Понедельник — выходной."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#website",
+      "name": "Ремсити36",
+      "url": "https://xn--36-mlcmaw0akk.xn--p1ai/",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ремсити36",
+        "logo": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/logo-96.webp", "width": 96, "height": 96}
+      }
+    }
+  ]
 }
 </script>
 
 <!-- Non-blocking font loading for performance -->
-
 <style>
 :root {
   --bg: #0a0a0f;
@@ -193,7 +199,8 @@
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; scroll-behavior: smooth; }
+  scroll-padding-top: 100px;
+}
 
 body {
   overflow-x: hidden;
@@ -202,7 +209,6 @@ body {
   font-family: 'Golos Text', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 /* GRAIN OVERLAY */
@@ -1140,12 +1146,12 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   gap: 16px;
   margin-top: 40px;
 }
-.gallery-item { aspect-ratio: 1/1 !important;
+.gallery-item {
+  aspect-ratio: 1/1;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   border: 1px solid var(--border);
-  aspect-ratio: 1/1 !important;
   background: var(--surface);
   cursor: pointer;
 }
@@ -1235,16 +1241,6 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   color: #9090b0;
   gap: 16px;
   flex-wrap: wrap;
-}
-.calc-label strong {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.calc-emoji {
-  display: inline-block;
-  font-size: 24px;
-  flex-shrink: 0;
 }
 .calc-label strong {
   font-family: 'Unbounded', sans-serif;
@@ -1585,10 +1581,28 @@ nav {
 }
 
 @media (max-width: 480px) {
-    .btn, button, input[type="submit"] { 
+    .btn, button:not(#burgerBtn), input[type="submit"] { 
         width: 100% !important; 
         display: block !important;
         margin-bottom: 10px !important;
+    }
+    #burgerBtn {
+        display: flex !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        margin: 0 !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 5px !important;
+        z-index: 7000 !important;
     }
     .nav-logo { font-size: 18px !important; gap: 5px !important; }
     .nav-logo img { width: 32px !important; height: 32px !important; }
@@ -1597,10 +1611,19 @@ nav {
 }
 
 @media (max-width: 480px) {
-    section, footer, header, nav { 
+    section, footer, header { 
         width: 100% !important; 
         max-width: 100% !important; 
         overflow: hidden !important;
+    }
+    nav {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
     }
     .services-grid, .gallery-grid, .stats-container, .features-grid, .reviews-grid { 
         display: flex !important;
@@ -1667,8 +1690,6 @@ nav img, .nav-logo img {
   image-rendering: crisp-edges;
 }
 </style>
-<link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
-<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -1696,11 +1717,11 @@ nav img, .nav-logo img {
 <li><a href="#contacts">Контакты</a></li>
 </ul>
 <a aria-label="Позвонить нам" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<div style="margin-left: auto;"><button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
+<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)">
 <span></span>
 <span></span>
 <span></span>
-</button></div>
+</button>
 </nav>
 <main id="main-content">
 <!-- ГЕРОЙ -->
@@ -2635,10 +2656,14 @@ window.toggleMobileMenu = function(e) {
     if (btn.classList.contains('open')) {
         btn.classList.remove('open');
         menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     } else {
         btn.classList.add('open');
         menu.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 };
@@ -2646,8 +2671,8 @@ window.toggleMobileMenu = function(e) {
 window.closeMobileMenu = function() {
     const btn = document.getElementById('burgerBtn');
     const menu = document.getElementById('mobileMenu');
-    if (btn) btn.classList.remove('open');
-    if (menu) menu.classList.remove('open');
+    if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    if (menu) { menu.classList.remove('open'); menu.setAttribute('aria-hidden', 'true'); }
     document.body.style.overflow = '';
 };
 
