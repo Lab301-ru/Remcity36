@@ -623,7 +623,8 @@ h2 {
 }
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  overflow: hidden;
   gap: 2px;
   background: var(--border);
 }
@@ -638,6 +639,8 @@ h2 {
   grid-template-rows: auto auto auto;
   gap: 0 16px;
   align-items: start;
+  min-width: 0;
+  word-break: break-word;
 }
 .service-card:hover { background: var(--surface2); }
 .service-card::after {
