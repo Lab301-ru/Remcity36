@@ -2,10 +2,11 @@
 
 <html lang="ru">
 <head>
-  <meta charset="utf-8"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="hero_cover.webp">
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
 <meta content="Ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом. Рейтинг 5.0. Награда «Хорошее место 2026»." name="description"/>
@@ -175,7 +176,7 @@
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; scroll-behavior: smooth; }
+  scroll-padding-top: 100px; }
 
 body {
   overflow-x: hidden;
@@ -184,17 +185,16 @@ body {
   font-family: 'Golos Text', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 /* GRAIN OVERLAY */
 body::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 4100;
+  z-index: 10;
   opacity: 0.4;
 }
 
@@ -227,7 +227,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,15,0.95);
+  background: rgba(10,10,15,0.97);
   border-bottom: 1px solid rgba(255,107,43,0.15);
 }
 
@@ -464,7 +464,7 @@ h1 em::after {
   border-radius: 3px;
   transition: transform 0.2s, box-shadow 0.2s;
   animation: pulse-ring 2.5s ease infinite;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
   line-height: 1.2;
 }
 .btn-emoji {
@@ -529,6 +529,8 @@ h1 em::after {
   line-height: 1;
   margin-bottom: 6px;
   animation: countUp 0.8s ease forwards;
+  animation-delay: 1.5s;
+  animation-fill-mode: both;
 }
 .stat-num span { color: var(--accent); }
 .stat-label {
@@ -1643,8 +1645,9 @@ nav img, .nav-logo img {
   min-height: 52px !important;
 }
 </style>
+
 <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
-<link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
+<link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -1690,7 +1693,7 @@ nav img, .nav-logo img {
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" fetchpriority="high" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" loading="eager" fetchpriority="high" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
@@ -2056,6 +2059,7 @@ nav img, .nav-logo img {
 <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
 
 <!-- ГАЛЕРЕЯ -->
+
 <section aria-labelledby="gallery-heading" id="gallery">
 <div class="container">
 <div class="section-tag">§ Наша работа</div>
@@ -2322,22 +2326,23 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll(’.fade-up’).forEach(el => observer.observe(el));
 
 // Сразу показываем hero-элементы
-document.querySelectorAll('.hero .fade-up').forEach(el => {
-  setTimeout(() => el.classList.add('visible'), 100);
+document.querySelectorAll(’.hero .fade-up’).forEach(el => {
+setTimeout(() => el.classList.add(‘visible’), 100);
 });
 
 // ─── Мобильное меню ────────────────────────────────────
 
-
 // Закрытие по клавише Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') window.closeMobileMenu();
+document.addEventListener(‘keydown’, (e) => {
+if (e.key === ‘Escape’) window.closeMobileMenu();
 });
 </script>
+
 <!-- Yandex.Metrika counter: delayed to protect FCP/LCP on mobile -->
+
 <script>
 (function () {
   function loadMetrika() {
@@ -2358,8 +2363,11 @@ document.addEventListener('keydown', (e) => {
   }
 })();
 </script>
+
 <noscript><div><img src="https://mc.yandex.ru/watch/109037763" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
 <!-- /Yandex.Metrika counter -->
+
 <script>
 async function submitForm(e) {
   e.preventDefault();
@@ -2509,6 +2517,7 @@ async function submitForm(e) {
   // Калькулятор теперь статично в HTML мобильного меню
 })();
 </script>
+
 <script defer>
 window.addEventListener('load', function () {
   if ('serviceWorker' in navigator) {
@@ -2577,5 +2586,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') window.closeMobileMenu();
 });
 </script>
+
 </body>
 </html>
