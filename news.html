@@ -316,7 +316,9 @@ h1 {
   display: block;
   margin-bottom: 24px;
   border-radius: 0;
-  object-fit: cover;
+  object-fit: contain;
+  background: #0a0a0f;
+  max-height: none;
 }
 .news-card > div:first-of-type,
 .news-card > h2,
@@ -642,18 +644,20 @@ main {
 
 /* FORCE LOGO SIZE */
 nav img, .nav-logo img {
-  width: 52px !important;
-  height: 52px !important;
-  max-width: 52px !important;
-  max-height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 @media (min-width: 901px) {
   .news-cover {
     height: 420px !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
   }
 }
 </style>
@@ -662,8 +666,9 @@ nav img, .nav-logo img {
 <!-- НАВИГАЦИЯ -->
 
 <nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="48" loading="eager" src="logo-96.webp" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="48"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
+<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
 <ul class="nav-links">
+<li><a href="/">На главную</a></li>
 <li><a href="/#services">Услуги</a></li>
 <li><a href="/news.html">Новости</a></li>
 <li><a href="/#reviews">Отзывы</a></li>

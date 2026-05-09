@@ -1634,12 +1634,14 @@ img {
 
 /* FORCE LOGO SIZE */
 nav img, .nav-logo img {
-  width: 52px !important;
-  height: 52px !important;
-  max-width: 52px !important;
-  max-height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 </style>
 <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
@@ -1662,7 +1664,7 @@ nav img, .nav-logo img {
 </div>
 <!-- НАВИГАЦИЯ -->
 <nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="48" loading="eager" src="logo-96.webp" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="48"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
+<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
 <ul class="nav-links">
 <li><a href="#services">Услуги</a></li>
 <li><a href="news.html">Новости</a></li>
@@ -2002,6 +2004,28 @@ nav img, .nav-logo img {
 </ul>
 <div class="service-price">от 500 ₽</div>
 </article>
+<article class="service-card">
+<span aria-hidden="true" class="service-icon">❄️</span>
+<h3 class="service-title">Кондиционеры и климат</h3>
+<ul class="service-list">
+<li>— Чистка и обслуживание</li>
+<li>— Заправка фреоном</li>
+<li>— Ремонт компрессора</li>
+<li>— Диагностика системы</li>
+</ul>
+<div class="service-price">от 500 ₽</div>
+</article>
+<article class="service-card">
+<span aria-hidden="true" class="service-icon">🔌</span>
+<h3 class="service-title">Электроинструменты</h3>
+<ul class="service-list">
+<li>— Дрели и перфораторы</li>
+<li>— Болгарки и пилы</li>
+<li>— Замена щёток</li>
+<li>— Ремонт обмотки</li>
+</ul>
+<div class="service-price">от 400 ₽</div>
+</article>
 </div>
 </div>
 </section>
@@ -2174,6 +2198,16 @@ nav img, .nav-logo img {
 <div aria-label="5 звёзд" class="review-stars">★★★★★</div>
 <p class="review-text">Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!</p>
 <div class="review-author">Никита Гостев</div>
+</article>
+<article class="review-card fade-up" style="transition-delay: 0.3s;">
+<div aria-label="5 звёзд" class="review-stars">★★★★★</div>
+<p class="review-text">Обратились с поломкой стиральной машины — не отжимала бельё. Мастер приехал быстро, всё починил прямо на месте. Цена адекватная, работа аккуратная. Очень довольны!</p>
+<div class="review-author">Марина Соколова</div>
+</article>
+<article class="review-card fade-up" style="transition-delay: 0.4s;">
+<div aria-label="5 звёзд" class="review-stars">★★★★★</div>
+<p class="review-text">Сдал ноутбук с разбитым экраном. Починили за день, цена оказалась ниже чем у конкурентов. Мастера вежливые, всё объяснили. Буду обращаться ещё!</p>
+<div class="review-author">Алексей Воронин</div>
 </article>
 </div>
 <div style="text-align: center; margin-top: 40px;">
