@@ -932,7 +932,8 @@ document.addEventListener('click', function(e) {
     if (target) {
         e.preventDefault();
         window.closeMobileMenu();
-        const offset = 90;
+        const nav = document.querySelector('nav');
+        const offset = nav ? nav.offsetHeight : 90;
         const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: targetPos, behavior: 'smooth' });
         if (id) history.pushState(null, null, '#' + id);
