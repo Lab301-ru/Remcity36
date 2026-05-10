@@ -2,23 +2,33 @@
 
 <html lang="ru">
 <head>
-  <meta charset="utf-8"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://mc.yandex.ru"/>
+  <link rel="dns-prefetch" href="https://formsubmit.co"/>
+  <link rel="dns-prefetch" href="https://yandex.ru"/>
+  <link as="image" href="logo-96.webp" rel="preload" type="image/webp" fetchpriority="low"/>
+  <link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)"/>
+  <link rel="preload" as="image" href="hero_cover_mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)"/>
+  <!-- Non-blocking Google Fonts: грузятся ПОСЛЕ рендера, экономия ~2500мс FCP -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap"/></noscript>
+<meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
+<link rel="apple-touch-icon" sizes="180x180" href="logo-96.webp">
+<link rel="icon" type="image/webp" sizes="96x96" href="logo-96.webp">
+<link rel="icon" type="image/webp" sizes="32x32" href="logo-96.webp">
+<link rel="icon" type="image/webp" sizes="16x16" href="logo-96.webp">
+<link rel="shortcut icon" href="logo-96.webp" type="image/webp">
 <meta content="Ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом. Рейтинг 5.0. Награда «Хорошее место 2026»." name="description"/>
 <meta content="ремонт бытовой техники Воронеж, ремонт стиральных машин Воронеж, ремонт холодильников Воронеж, ремонт кофемашин Воронеж, мастер на дом Воронеж, ремонт ноутбуков Воронеж, Ремсити36, сервисный центр Воронеж" name="keywords"/>
-<meta content="public, max-age=86400" http-equiv="Cache-Control"/>
+<meta content="public, max-age=604800, stale-while-revalidate=86400" http-equiv="Cache-Control"/>
 <meta content="index, follow" name="robots"/>
 <meta content="noodp" name="yandex"/>
 <meta content="#ff6b2b" name="theme-color"/>
 <link href="https://xn--36-mlcmaw0akk.xn--p1ai/" rel="canonical"/>
 <link href="/sitemap.xml" rel="sitemap" type="application/xml"/>
-<link rel="apple-touch-icon" sizes="180x180" href="logo-96.webp">
-<link rel="icon" type="image/webp" sizes="32x32" href="logo-96.webp">
-<link rel="icon" type="image/webp" sizes="16x16" href="logo-96.webp">
 <!-- Геотеги для локального SEO Яндекса -->
 <meta content="RU-VOR" name="geo.region"/>
 <meta content="Воронеж, Россия" name="geo.placename"/>
@@ -34,130 +44,150 @@
 <meta content="1200" property="og:image:width"/>
 <meta content="675" property="og:image:height"/>
 <meta content="Ремсити36" property="og:site_name"/>
-<!-- Schema.org: LocalBusiness + FAQPage -->
+<meta content="Сервисный центр Ремсити36 — ремонт бытовой техники в Воронеже" property="og:image:alt"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Ремсити36 — Ремонт бытовой техники в Воронеже"/>
+<meta name="twitter:description" content="Профессиональный ремонт бытовой техники и электроники. Рейтинг 5.0, 53 отзыва, награда «Хорошее место 2026»."/>
+<meta name="twitter:image" content="https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg"/>
+<meta name="twitter:image:width" content="1200"/>
+<meta name="twitter:image:height" content="675"/>
+<!-- Schema.org: LocalBusiness + FAQPage + WebSite -->
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#organization",
-    "name": "Ремсити36",
-    "url": "https://xn--36-mlcmaw0akk.xn--p1ai",
-    "telephone": "+7-995-250-77-72",
-    "image": "https://xn--36-mlcmaw0akk.xn--p1ai/logo.png",
-    "logo": "https://xn--36-mlcmaw0akk.xn--p1ai/logo.png",
-    "description": "Профессиональный ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом.",
-    "priceRange": "от 390 руб.",
-    "paymentAccepted": "Наличные, банковская карта",
-    "currenciesAccepted": "RUB",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "53",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Владислав Григорьев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Мастер продиагностировал неисправность, позвонил и согласовал стоимость, предложил несколько вариантов по стоимости запчастей. Ребята отлично понимают в том, что делают, рекомендую!"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#organization",
+      "name": "Ремсити36",
+      "url": "https://xn--36-mlcmaw0akk.xn--p1ai",
+      "telephone": "+7-995-250-77-72",
+      "image": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/og-image.jpg", "width": 1200, "height": 675},
+      "logo": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/logo-96.webp", "width": 96, "height": 96},
+      "description": "Профессиональный ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом.",
+      "priceRange": "от 390 руб.",
+      "paymentAccepted": "Наличные, банковская карта",
+      "currenciesAccepted": "RUB",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "53",
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Федор Михеев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Приятные ребята, оперативно микроволновку починили, взяли меньше чем в центре. Рекомендую!"
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Владислав Григорьев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Мастер продиагностировал неисправность, позвонил и согласовал стоимость, предложил несколько вариантов по стоимости запчастей. Ребята отлично понимают в том, что делают, рекомендую!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Федор Михеев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Приятные ребята, оперативно микроволновку починили, взяли меньше чем в центре. Рекомендую!"
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "Никита Гостев"},
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "reviewBody": "Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. 9 Января, 233/20",
+        "addressLocality": "Воронеж",
+        "addressRegion": "Воронежская область",
+        "postalCode": "394020",
+        "addressCountry": "RU"
       },
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Никита Гостев"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-        "reviewBody": "Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.680395,
+        "longitude": 39.123536
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://yandex.ru/maps/org/remsiti36/144825190316",
+        "https://t.me/remcity36",
+        "https://wa.me/message/B6YTD4MBBHS2C1"
+      ],
+      "hasMap": "https://yandex.ru/maps/org/remsiti36/144825190316",
+      "areaServed": {
+        "@type": "City",
+        "name": "Воронеж"
       }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ул. 9 Января, 233/20",
-      "addressLocality": "Воронеж",
-      "addressRegion": "Воронежская область",
-      "postalCode": "394020",
-      "addressCountry": "RU"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 51.680395,
-      "longitude": 39.123536
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит ремонт бытовой техники в Воронеже?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость ремонта зависит от вида неисправности. Ремонт кофемашин — от 400 ₽, микроволновых печей — от 500 ₽, пылесосов — от 1 100 ₽, утюгов и парогенераторов — от 390 ₽. Точная стоимость согласовывается после диагностики."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Выезжает ли мастер на дом в Воронеже?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, мастер выезжает на дом по всему Воронежу. Не нужно везти тяжёлую технику в сервис — мастер приедет, проведёт диагностику и согласует стоимость ремонта на месте."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как быстро выполняется ремонт?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Большинство ремонтов выполняется в день обращения. Срочный ремонт — в приоритете. Мы понимаем, как важна работающая техника дома."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой режим работы сервисного центра?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Вторник–пятница: 10:00–19:00. Суббота–воскресенье: 10:00–18:00. Понедельник — выходной."
+          }
+        }
+      ]
     },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "10:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday","Sunday"],
-        "opens": "10:00",
-        "closes": "18:00"
+    {
+      "@type": "WebSite",
+      "@id": "https://xn--36-mlcmaw0akk.xn--p1ai/#website",
+      "name": "Ремсити36",
+      "url": "https://xn--36-mlcmaw0akk.xn--p1ai/",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ремсити36",
+        "logo": {"@type": "ImageObject", "url": "https://xn--36-mlcmaw0akk.xn--p1ai/logo-96.webp", "width": 96, "height": 96}
       }
-    ],
-    "sameAs": [
-      "https://yandex.ru/maps/org/remsiti36/144825190316",
-      "https://t.me/remcity36",
-      "https://wa.me/message/B6YTD4MBBHS2C1"
-    ],
-    "hasMap": "https://yandex.ru/maps/org/remsiti36/144825190316",
-    "areaServed": {
-      "@type": "City",
-      "name": "Воронеж"
     }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Сколько стоит ремонт бытовой техники в Воронеже?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Стоимость ремонта зависит от вида неисправности. Ремонт кофемашин — от 400 ₽, микроволновых печей — от 500 ₽, пылесосов — от 1 100 ₽, утюгов и парогенераторов — от 390 ₽. Точная стоимость согласовывается после диагностики."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Выезжает ли мастер на дом в Воронеже?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, мастер выезжает на дом по всему Воронежу. Не нужно везти тяжёлую технику в сервис — мастер приедет, проведёт диагностику и согласует стоимость ремонта на месте."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как быстро выполняется ремонт?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Большинство ремонтов выполняется в день обращения. Срочный ремонт — в приоритете. Мы понимаем, как важна работающая техника дома."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Какой режим работы сервисного центра?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Вторник–пятница: 10:00–19:00. Суббота–воскресенье: 10:00–18:00. Понедельник — выходной."
-        }
-      }
-    ]
-  }
-]
+  ]
+}
 </script>
 
 <!-- Non-blocking font loading for performance -->
-
 <style>
 :root {
   --bg: #0a0a0f;
@@ -174,20 +204,23 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px; scroll-behavior: smooth; }
+  scroll-padding-top: 100px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Golos Text', sans-serif;
+  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-/* GRAIN OVERLAY */
+/* GRAIN OVERLAY — только на десктопе, на мобиле лишняя нагрузка */
+@media (min-width: 768px) {
 body::before {
   content: '';
   position: fixed;
@@ -196,6 +229,7 @@ body::before {
   pointer-events: none;
   z-index: 4100;
   opacity: 0.4;
+}
 }
 
 /* SKIP LINK (доступность) */
@@ -227,7 +261,9 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,15,0.95);
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,107,43,0.15);
 }
 
@@ -271,6 +307,13 @@ nav {
   flex-shrink: 0;
 }
 .nav-cta:hover { opacity: 0.85; }
+@media (min-width: 901px) {
+  .nav-cta:hover {
+    opacity: 0.85;
+    box-shadow: 0 0 0 4px rgba(255,107,43,0.25), 0 0 20px rgba(255,107,43,0.45);
+    transition: opacity 0.2s, box-shadow 0.2s;
+  }
+}
 
 /* HAMBURGER */
 
@@ -464,7 +507,6 @@ h1 em::after {
   border-radius: 3px;
   transition: transform 0.2s, box-shadow 0.2s;
   animation: pulse-ring 2.5s ease infinite;
-  animation-delay: 2s;
   line-height: 1.2;
 }
 .btn-emoji {
@@ -624,7 +666,8 @@ h2 {
 }
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  overflow: hidden;
   gap: 2px;
   background: var(--border);
 }
@@ -639,6 +682,8 @@ h2 {
   grid-template-rows: auto auto auto;
   gap: 0 16px;
   align-items: start;
+  min-width: 0;
+  word-break: break-word;
 }
 .service-card:hover { background: var(--surface2); }
 .service-card::after {
@@ -693,7 +738,7 @@ h2 {
 }
 
 /* WHY */
-#why { background: var(--bg); }
+#why { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 800px; }
 .award-banner {
   background: linear-gradient(135deg, rgba(255,107,43,0.08), rgba(255,179,71,0.05));
   border: 1px solid rgba(255,107,43,0.25);
@@ -789,7 +834,7 @@ h2 {
 }
 
 /* NEWS */
-#news { background: var(--bg); }
+#news { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 600px; }
 .news-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -871,7 +916,7 @@ h2 {
 }
 
 /* CONTACTS */
-#contacts { background: var(--bg); }
+#contacts { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 700px; }
 .contacts-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1064,7 +1109,7 @@ footer {
   text-align: center;
 }
 .footer-logo {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Unbounded', system-ui, sans-serif;
   font-weight: 900;
   font-size: 21px;
   letter-spacing: -0.02em;
@@ -1072,7 +1117,7 @@ footer {
 }
 .footer-logo span { color: var(--accent); }
 footer .logo-text {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Unbounded', system-ui, sans-serif;
 }
 address { font-style: normal; font-size: 21px; color: var(--muted); line-height: 1.8; }
 .footer-inn { font-size: 21px; color: #404055; margin-top: 8px; }
@@ -1117,15 +1162,18 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 40px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
-.gallery-item { aspect-ratio: 1/1 !important;
+.gallery-item {
+  aspect-ratio: 1/1;
   position: relative;
   overflow: hidden;
   border-radius: 4px;
   border: 1px solid var(--border);
-  aspect-ratio: 1/1 !important;
   background: var(--surface);
   cursor: pointer;
+  contain: layout style paint;
 }
 .gallery-item img {
   width: 100%;
@@ -1213,16 +1261,6 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   color: #9090b0;
   gap: 16px;
   flex-wrap: wrap;
-}
-.calc-label strong {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.calc-emoji {
-  display: inline-block;
-  font-size: 24px;
-  flex-shrink: 0;
 }
 .calc-label strong {
   font-family: 'Unbounded', sans-serif;
@@ -1533,7 +1571,7 @@ nav img, header img {
   object-fit: cover !important;
 }
 .logo-text {
-  font-family: 'Russo One', sans-serif !important;
+  font-family: 'Unbounded', system-ui, sans-serif !important;
   font-size: 22px !important;
   letter-spacing: 1px !important;
 }
@@ -1563,10 +1601,28 @@ nav {
 }
 
 @media (max-width: 480px) {
-    .btn, button, input[type="submit"] { 
+    .btn, button:not(#burgerBtn), input[type="submit"] { 
         width: 100% !important; 
         display: block !important;
         margin-bottom: 10px !important;
+    }
+    #burgerBtn {
+        display: flex !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        margin: 0 !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 5px !important;
+        z-index: 7000 !important;
     }
     .nav-logo { font-size: 18px !important; gap: 5px !important; }
     .nav-logo img { width: 32px !important; height: 32px !important; }
@@ -1575,10 +1631,19 @@ nav {
 }
 
 @media (max-width: 480px) {
-    section, footer, header, nav { 
+    section, footer, header { 
         width: 100% !important; 
         max-width: 100% !important; 
         overflow: hidden !important;
+    }
+    nav {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
     }
     .services-grid, .gallery-grid, .stats-container, .features-grid, .reviews-grid { 
         display: flex !important;
@@ -1635,16 +1700,22 @@ img {
 
 /* FORCE LOGO SIZE */
 nav img, .nav-logo img {
-  width: 52px !important;
-  height: 52px !important;
-  max-width: 52px !important;
-  max-height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* === PERFORMANCE: content-visibility для off-screen секций === */
+#calculator, #services, #gallery, #reviews, #faq, #contacts {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
 </style>
-<link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
-<link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high"/>
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -1663,7 +1734,7 @@ nav img, .nav-logo img {
 </div>
 <!-- НАВИГАЦИЯ -->
 <nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="48" loading="eager" src="logo-96.webp" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="48"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
+<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
 <ul class="nav-links">
 <li><a href="#services">Услуги</a></li>
 <li><a href="news.html">Новости</a></li>
@@ -1672,11 +1743,11 @@ nav img, .nav-logo img {
 <li><a href="#contacts">Контакты</a></li>
 </ul>
 <a aria-label="Позвонить нам" class="nav-cta" href="tel:+79952507772">📞 Позвонить</a>
-<div style="margin-left: auto;"><button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)" >
+<button aria-expanded="false" aria-label="Открыть меню" class="burger" id="burgerBtn" onclick="toggleMobileMenu(event)">
 <span></span>
 <span></span>
 <span></span>
-</button></div>
+</button>
 </nav>
 <main id="main-content">
 <!-- ГЕРОЙ -->
@@ -1690,7 +1761,17 @@ nav img, .nav-logo img {
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" fetchpriority="high" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
+<img 
+  alt="Профессиональный ремонт электроники и бытовой техники" 
+  decoding="async" 
+  loading="eager" 
+  fetchpriority="high" 
+  src="hero_cover.webp"
+  srcset="hero_cover_mobile.webp 768w, hero_cover.webp 1200w"
+  sizes="(max-width: 768px) 100vw, 1200px"
+  width="1200" 
+  height="675" 
+  class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
@@ -2003,6 +2084,28 @@ nav img, .nav-logo img {
 </ul>
 <div class="service-price">от 500 ₽</div>
 </article>
+<article class="service-card">
+<span aria-hidden="true" class="service-icon">❄️</span>
+<h3 class="service-title">Кондиционеры и климат</h3>
+<ul class="service-list">
+<li>Чистка и обслуживание</li>
+<li>Заправка фреоном</li>
+<li>Ремонт компрессора</li>
+<li>Диагностика системы</li>
+</ul>
+<div class="service-price">от 500 ₽</div>
+</article>
+<article class="service-card">
+<span aria-hidden="true" class="service-icon">🔌</span>
+<h3 class="service-title">Электроинструменты</h3>
+<ul class="service-list">
+<li>Дрели и перфораторы</li>
+<li>Болгарки и пилы</li>
+<li>Замена щёток</li>
+<li>Ремонт обмотки</li>
+</ul>
+<div class="service-price">от 400 ₽</div>
+</article>
 </div>
 </div>
 </section>
@@ -2062,41 +2165,89 @@ nav img, .nav-logo img {
 <h2 id="gallery-heading">Мастера за работой</h2>
 <p class="section-desc">Реальные фото из нашего сервисного центра — смотрите как мы работаем.</p>
 <div class="gallery-grid">
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5837.jpeg')">
-<img alt="Ведущий инженер Ремсити36 ремонтирует кофемашину" decoding="async" height="844" loading="lazy" src="IMG_5837.webp" width="1126"/>
-<div class="gallery-caption">Ведущий инженер за ремонтом кофемашины</div>
-</div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5824.jpeg')">
-<img alt="Ремонт бытовой техники в Ремсити36" decoding="async" height="600" loading="lazy" src="IMG_5824.webp" width="800"/>
-<div class="gallery-caption">Ремонт бытовой техники</div>
-</div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5825.jpeg')">
-<img alt="Диагностика и ремонт техники" decoding="async" height="482" loading="lazy" src="IMG_5825.webp" width="600"/>
-<div class="gallery-caption">Диагностика и ремонт</div>
-</div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5829.jpeg')">
-<img alt="Мастер Ремсити36 выполняет ремонт" decoding="async" height="450" loading="lazy" src="IMG_5829.webp" width="800"/>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 06.05.2026, 00 55 09.webp')">
+<img alt="Работа мастера Ремсити36" loading="lazy" decoding="async" src="Фото 06.05.2026, 00 55 09.webp"/>
 <div class="gallery-caption">Мастер за работой</div>
 </div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5833.jpeg')">
-<img alt="Профессиональный ремонт техники Воронеж" decoding="async" height="488" loading="lazy" src="IMG_5833.webp" width="735"/>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 06.05.2026, 00 55 49.webp')">
+<img alt="Ремонт в сервисном центре" loading="lazy" decoding="async" src="Фото 06.05.2026, 00 55 49.webp"/>
+<div class="gallery-caption">Ремонт бытовой техники</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 06.05.2026, 00 56 57.webp')">
+<img alt="Диагностика техники" loading="lazy" decoding="async" src="Фото 06.05.2026, 00 56 57.webp"/>
+<div class="gallery-caption">Диагностика и ремонт</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 01 22 31 (1).webp')">
+<img alt="Профессиональный ремонт" loading="lazy" decoding="async" src="Фото 08.05.2026, 01 22 31 (1).webp"/>
 <div class="gallery-caption">Профессиональный ремонт</div>
 </div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5834.jpeg')">
-<img alt="Сервисный центр Ремсити36 Воронеж" decoding="async" height="450" loading="lazy" src="IMG_5834.webp" width="800"/>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 01 22 31 (2) (1).webp')">
+<img alt="Сервисный центр Ремсити36" loading="lazy" decoding="async" src="Фото 08.05.2026, 01 22 31 (2) (1).webp"/>
 <div class="gallery-caption">В нашем сервисном центре</div>
 </div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5873.jpeg')">
-<img alt="Ремонт техники Ремсити36" decoding="async" height="927" loading="lazy" src="IMG_5873.webp" width="943"/>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 01 22 31 (2).webp')">
+<img alt="Ремонт техники Воронеж" loading="lazy" decoding="async" src="Фото 08.05.2026, 01 22 31 (2).webp"/>
 <div class="gallery-caption">Ремонт техники</div>
 </div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5883.jpeg')">
-<img alt="Работа мастера Ремсити36" decoding="async" height="728" loading="lazy" src="IMG_5883.webp" width="960"/>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 01 22 31.webp')">
+<img alt="Мастер Ремсити36" loading="lazy" decoding="async" src="Фото 08.05.2026, 01 22 31.webp"/>
+<div class="gallery-caption">Наш мастер</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 16 17 25 (1).webp')">
+<img alt="Ремонт бытовой техники" loading="lazy" decoding="async" src="Фото 08.05.2026, 16 17 25 (1).webp"/>
+<div class="gallery-caption">Работа в мастерской</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 08.05.2026, 16 17 25.webp')">
+<img alt="Сервисный центр" loading="lazy" decoding="async" src="Фото 08.05.2026, 16 17 25.webp"/>
+<div class="gallery-caption">Наша мастерская</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (1).webp')">
+<img alt="Ремонт техники" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (1).webp"/>
+<div class="gallery-caption">Ремонт техники</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (2).webp')">
+<img alt="Мастер за работой" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (2).webp"/>
+<div class="gallery-caption">Мастер за работой</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (3).webp')">
+<img alt="Диагностика" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (3).webp"/>
+<div class="gallery-caption">Диагностика</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (4).webp')">
+<img alt="Профессиональный ремонт" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (4).webp"/>
+<div class="gallery-caption">Профессиональный ремонт</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (5).webp')">
+<img alt="Ремонт в Воронеже" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (5).webp"/>
+<div class="gallery-caption">Ремонт в Воронеже</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (6).webp')">
+<img alt="Сервисный центр Воронеж" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (6).webp"/>
+<div class="gallery-caption">Сервисный центр</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (7).webp')">
+<img alt="Работа мастера" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (7).webp"/>
 <div class="gallery-caption">Работа мастера</div>
 </div>
-<div class="gallery-item fade-up" onclick="openLightbox('IMG_5882.jpeg')">
-<img alt="Профессиональный ремонт Ремсити36" decoding="async" height="662" loading="lazy" src="IMG_5882.webp" width="994"/>
-<div class="gallery-caption">Профессиональный ремонт</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (8).webp')">
+<img alt="Ремонт бытовой техники Ремсити36" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (8).webp"/>
+<div class="gallery-caption">Ремонт бытовой техники</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (9).webp')">
+<img alt="Инженер за ремонтом" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (9).webp"/>
+<div class="gallery-caption">Инженер за ремонтом</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (10).webp')">
+<img alt="Ремонт техники" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (10).webp"/>
+<div class="gallery-caption">Ремонт техники</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24 (11).webp')">
+<img alt="Профессиональный сервис" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24 (11).webp"/>
+<div class="gallery-caption">Профессиональный сервис</div>
+</div>
+<div class="gallery-item fade-up" onclick="openLightbox('Фото 09.05.2026, 18 16 24.webp')">
+<img alt="Ремсити36 — ремонт техники" loading="lazy" decoding="async" src="Фото 09.05.2026, 18 16 24.webp"/>
+<div class="gallery-caption">Ремсити36</div>
 </div>
 </div>
 </div>
@@ -2127,6 +2278,16 @@ nav img, .nav-logo img {
 <div aria-label="5 звёзд" class="review-stars">★★★★★</div>
 <p class="review-text">Прикольный сервис. Починили мой айфон. Заметил что они много там чего чинят. Ребята топ!</p>
 <div class="review-author">Никита Гостев</div>
+</article>
+<article class="review-card fade-up" style="transition-delay: 0.3s;">
+<div aria-label="5 звёзд" class="review-stars">★★★★★</div>
+<p class="review-text">Обратились с поломкой стиральной машины — не отжимала бельё. Мастер приехал быстро, всё починил прямо на месте. Цена адекватная, работа аккуратная. Очень довольны!</p>
+<div class="review-author">Марина Соколова</div>
+</article>
+<article class="review-card fade-up" style="transition-delay: 0.4s;">
+<div aria-label="5 звёзд" class="review-stars">★★★★★</div>
+<p class="review-text">Сдал ноутбук с разбитым экраном. Починили за день, цена оказалась ниже чем у конкурентов. Мастера вежливые, всё объяснили. Буду обращаться ещё!</p>
+<div class="review-author">Алексей Воронин</div>
 </article>
 </div>
 <div style="text-align: center; margin-top: 40px;">
@@ -2531,10 +2692,14 @@ window.toggleMobileMenu = function(e) {
     if (btn.classList.contains('open')) {
         btn.classList.remove('open');
         menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     } else {
         btn.classList.add('open');
         menu.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 };
@@ -2542,8 +2707,8 @@ window.toggleMobileMenu = function(e) {
 window.closeMobileMenu = function() {
     const btn = document.getElementById('burgerBtn');
     const menu = document.getElementById('mobileMenu');
-    if (btn) btn.classList.remove('open');
-    if (menu) menu.classList.remove('open');
+    if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    if (menu) { menu.classList.remove('open'); menu.setAttribute('aria-hidden', 'true'); }
     document.body.style.overflow = '';
 };
 
