@@ -2716,24 +2716,34 @@ window.closeMobileMenu = function() {
 document.addEventListener('click', function(e) {
     const anchor = e.target.closest('a[href*="#"]');
     if (!anchor) return;
-    
+
     const href = anchor.getAttribute('href');
     if (href === '#' || href.startsWith('##')) return;
-    
-    // Внутренние якоря
+
     const id = href.includes('#') ? href.split('#')[1] : null;
     const target = id ? document.getElementById(id) : null;
-    
+
     if (target) {
         e.preventDefault();
+        const menuWasOpen = document.getElementById('mobileMenu')?.classList.contains('open');
         window.closeMobileMenu();
-        const nav = document.querySelector('nav');
-        const offset = nav ? nav.offsetHeight : 90;
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+
+        const doScroll = function() {
+            const nav = document.querySelector('nav');
+            const offset = (nav ? nav.offsetHeight : 90) + 8;
+            // scrollIntoView корректно работает с content-visibility:auto
+            target.style.scrollMarginTop = offset + 'px';
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        if (menuWasOpen) {
+            setTimeout(doScroll, 50);
+        } else {
+            doScroll();
+        }
+
         if (id) history.pushState(null, null, '#' + id);
     } else if (href.startsWith('/#')) {
-        // Переход с news.html на главную
         window.closeMobileMenu();
     }
 });
