@@ -188,6 +188,7 @@
 </script>
 
 <!-- Non-blocking font loading for performance -->
+
 <style>
 :root {
   --bg: #0a0a0f;
@@ -204,7 +205,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   overflow-x: hidden;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
@@ -1716,6 +1717,7 @@ nav img, .nav-logo img {
   contain-intrinsic-size: 0 500px;
 }
 </style>
+
 </head>
 <body>
 <!-- Пропустить навигацию (для скринридеров и доступности) -->
@@ -2159,6 +2161,7 @@ nav img, .nav-logo img {
 <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
 
 <!-- ГАЛЕРЕЯ -->
+
 <section aria-labelledby="gallery-heading" id="gallery">
 <div class="container">
 <div class="section-tag">§ Наша работа</div>
@@ -2483,22 +2486,23 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll(’.fade-up’).forEach(el => observer.observe(el));
 
 // Сразу показываем hero-элементы
-document.querySelectorAll('.hero .fade-up').forEach(el => {
-  setTimeout(() => el.classList.add('visible'), 100);
+document.querySelectorAll(’.hero .fade-up’).forEach(el => {
+setTimeout(() => el.classList.add(‘visible’), 100);
 });
 
 // ─── Мобильное меню ────────────────────────────────────
 
-
 // Закрытие по клавише Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') window.closeMobileMenu();
+document.addEventListener(‘keydown’, (e) => {
+if (e.key === ‘Escape’) window.closeMobileMenu();
 });
 </script>
+
 <!-- Yandex.Metrika counter: delayed to protect FCP/LCP on mobile -->
+
 <script>
 (function () {
   function loadMetrika() {
@@ -2519,8 +2523,11 @@ document.addEventListener('keydown', (e) => {
   }
 })();
 </script>
+
 <noscript><div><img src="https://mc.yandex.ru/watch/109037763" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
 <!-- /Yandex.Metrika counter -->
+
 <script>
 async function submitForm(e) {
   e.preventDefault();
@@ -2670,6 +2677,7 @@ async function submitForm(e) {
   // Калькулятор теперь статично в HTML мобильного меню
 })();
 </script>
+
 <script defer>
 window.addEventListener('load', function () {
   if ('serviceWorker' in navigator) {
@@ -2727,7 +2735,8 @@ document.addEventListener('click', function(e) {
     if (target) {
         e.preventDefault();
         window.closeMobileMenu();
-        const offset = 90;
+        const navbar = document.querySelector('.navbar') || document.querySelector('nav') || document.querySelector('header');
+        const offset = navbar ? navbar.getBoundingClientRect().height + 8 : 80;
         const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: targetPos, behavior: 'smooth' });
         if (id) history.pushState(null, null, '#' + id);
@@ -2742,5 +2751,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') window.closeMobileMenu();
 });
 </script>
+
 </body>
 </html>
