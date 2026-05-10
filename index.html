@@ -4,15 +4,9 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="dns-prefetch" href="https://mc.yandex.ru"/>
-  <link rel="dns-prefetch" href="https://formsubmit.co"/>
-  <link rel="dns-prefetch" href="https://yandex.ru"/>
-  <link as="image" href="logo-96.webp" rel="preload" type="image/webp" fetchpriority="low"/>
-  <link rel="preload" as="image" href="hero_cover.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)"/>
-  <link rel="preload" as="image" href="hero_cover_mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)"/>
-  <!-- Non-blocking Google Fonts: грузятся ПОСЛЕ рендера, экономия ~2500мс FCP -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap"/></noscript>
+  <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
+  <link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
@@ -23,7 +17,7 @@
 <link rel="shortcut icon" href="logo-96.webp" type="image/webp">
 <meta content="Ремонт бытовой техники и электроники в Воронеже. Ремонт стиральных машин, холодильников, кофемашин, пылесосов, ноутбуков. Выезд мастера на дом. Рейтинг 5.0. Награда «Хорошее место 2026»." name="description"/>
 <meta content="ремонт бытовой техники Воронеж, ремонт стиральных машин Воронеж, ремонт холодильников Воронеж, ремонт кофемашин Воронеж, мастер на дом Воронеж, ремонт ноутбуков Воронеж, Ремсити36, сервисный центр Воронеж" name="keywords"/>
-<meta content="public, max-age=604800, stale-while-revalidate=86400" http-equiv="Cache-Control"/>
+<meta content="public, max-age=86400" http-equiv="Cache-Control"/>
 <meta content="index, follow" name="robots"/>
 <meta content="noodp" name="yandex"/>
 <meta content="#ff6b2b" name="theme-color"/>
@@ -204,23 +198,20 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   overflow-x: hidden;
-  scroll-padding-top: 120px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+  font-family: 'Golos Text', sans-serif;
   font-weight: 400;
   line-height: 1.6;
 }
 
-/* GRAIN OVERLAY — только на десктопе, на мобиле лишняя нагрузка */
-@media (min-width: 768px) {
+/* GRAIN OVERLAY */
 body::before {
   content: '';
   position: fixed;
@@ -229,7 +220,6 @@ body::before {
   pointer-events: none;
   z-index: 4100;
   opacity: 0.4;
-}
 }
 
 /* SKIP LINK (доступность) */
@@ -738,7 +728,7 @@ h2 {
 }
 
 /* WHY */
-#why { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 800px; }
+#why { background: var(--bg); }
 .award-banner {
   background: linear-gradient(135deg, rgba(255,107,43,0.08), rgba(255,179,71,0.05));
   border: 1px solid rgba(255,107,43,0.25);
@@ -834,7 +824,7 @@ h2 {
 }
 
 /* NEWS */
-#news { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 600px; }
+#news { background: var(--bg); }
 .news-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -916,7 +906,7 @@ h2 {
 }
 
 /* CONTACTS */
-#contacts { background: var(--bg); content-visibility: auto; contain-intrinsic-size: 0 700px; }
+#contacts { background: var(--bg); }
 .contacts-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1109,7 +1099,7 @@ footer {
   text-align: center;
 }
 .footer-logo {
-  font-family: 'Unbounded', system-ui, sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-weight: 900;
   font-size: 21px;
   letter-spacing: -0.02em;
@@ -1117,7 +1107,7 @@ footer {
 }
 .footer-logo span { color: var(--accent); }
 footer .logo-text {
-  font-family: 'Unbounded', system-ui, sans-serif;
+  font-family: 'Russo One', sans-serif;
 }
 address { font-style: normal; font-size: 21px; color: var(--muted); line-height: 1.8; }
 .footer-inn { font-size: 21px; color: #404055; margin-top: 8px; }
@@ -1162,8 +1152,6 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 40px;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 .gallery-item {
   aspect-ratio: 1/1;
@@ -1173,7 +1161,6 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   border: 1px solid var(--border);
   background: var(--surface);
   cursor: pointer;
-  contain: layout style paint;
 }
 .gallery-item img {
   width: 100%;
@@ -1526,7 +1513,6 @@ html, body {
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
-  html { scroll-padding-top: 120px; }
   nav { padding: 16px 20px; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
@@ -1572,7 +1558,7 @@ nav img, header img {
   object-fit: cover !important;
 }
 .logo-text {
-  font-family: 'Unbounded', system-ui, sans-serif !important;
+  font-family: 'Russo One', sans-serif !important;
   font-size: 22px !important;
   letter-spacing: 1px !important;
 }
@@ -1588,7 +1574,6 @@ nav {
 }
 
 @media (max-width: 900px) {
-  html { scroll-padding-top: 120px; }
     nav { 
         display: flex !important; 
         justify-content: space-between !important; 
@@ -1681,7 +1666,6 @@ img {
     height: auto !important; 
 }
 @media (max-width: 900px) {
-  html { scroll-padding-top: 120px; }
     .nav-links, .nav-cta { display: none !important; }
     .burger { display: flex !important; }
 }
@@ -1712,15 +1696,6 @@ nav img, .nav-logo img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
-
-/* === PERFORMANCE: content-visibility для off-screen секций === */
-#calculator, #services, #gallery, #reviews, #faq, #contacts {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 500px;
-}
-
-/* Anchor navigation fix */
-section { scroll-margin-top: 100px; }
 </style>
 </head>
 <body>
@@ -1767,17 +1742,7 @@ section { scroll-margin-top: 100px; }
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img 
-  alt="Профессиональный ремонт электроники и бытовой техники" 
-  decoding="async" 
-  loading="eager" 
-  fetchpriority="high" 
-  src="hero_cover.webp"
-  srcset="hero_cover_mobile.webp 768w, hero_cover.webp 1200w"
-  sizes="(max-width: 768px) 100vw, 1200px"
-  width="1200" 
-  height="675" 
-  class="hero-cover-img"/>
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" loading="lazy" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
@@ -2728,16 +2693,15 @@ document.addEventListener('click', function(e) {
     
     // Внутренние якоря
     const id = href.includes('#') ? href.split('#')[1] : null;
+    const target = id ? document.getElementById(id) : null;
     
-    if (id) {
-        const target = document.getElementById(id);
-        if (target) {
-            e.preventDefault();
-            window.closeMobileMenu();
-            // Let the browser handle scrolling with CSS scroll-padding-top
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, null, '#' + id);
-        }
+    if (target) {
+        e.preventDefault();
+        window.closeMobileMenu();
+        const offset = 90;
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        if (id) history.pushState(null, null, '#' + id);
     } else if (href.startsWith('/#')) {
         // Переход с news.html на главную
         window.closeMobileMenu();
