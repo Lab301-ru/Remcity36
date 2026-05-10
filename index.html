@@ -204,10 +204,10 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   overflow-x: hidden;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 120px;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 }
 
 body {
@@ -1526,7 +1526,7 @@ html, body {
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
-  html { scroll-padding-top: 90px; }
+  html { scroll-padding-top: 120px; }
   nav { padding: 16px 20px; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
@@ -1588,7 +1588,7 @@ nav {
 }
 
 @media (max-width: 900px) {
-  html { scroll-padding-top: 90px; }
+  html { scroll-padding-top: 120px; }
     nav { 
         display: flex !important; 
         justify-content: space-between !important; 
@@ -1681,7 +1681,7 @@ img {
     height: auto !important; 
 }
 @media (max-width: 900px) {
-  html { scroll-padding-top: 90px; }
+  html { scroll-padding-top: 120px; }
     .nav-links, .nav-cta { display: none !important; }
     .burger { display: flex !important; }
 }
@@ -2728,15 +2728,16 @@ document.addEventListener('click', function(e) {
     
     // Внутренние якоря
     const id = href.includes('#') ? href.split('#')[1] : null;
-    const target = id ? document.getElementById(id) : null;
     
-    if (target) {
-        e.preventDefault();
-        window.closeMobileMenu();
-        const offset = 120;
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-        if (id) history.pushState(null, null, '#' + id);
+    if (id) {
+        const target = document.getElementById(id);
+        if (target) {
+            e.preventDefault();
+            window.closeMobileMenu();
+            // Let the browser handle scrolling with CSS scroll-padding-top
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, null, '#' + id);
+        }
     } else if (href.startsWith('/#')) {
         // Переход с news.html на главную
         window.closeMobileMenu();
