@@ -207,7 +207,7 @@ html {
   scroll-padding-top: 100px;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 }
 
 body {
@@ -1526,6 +1526,7 @@ html, body {
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
+  html { scroll-padding-top: 90px; }
   nav { padding: 16px 20px; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
@@ -1587,6 +1588,7 @@ nav {
 }
 
 @media (max-width: 900px) {
+  html { scroll-padding-top: 90px; }
     nav { 
         display: flex !important; 
         justify-content: space-between !important; 
@@ -1679,6 +1681,7 @@ img {
     height: auto !important; 
 }
 @media (max-width: 900px) {
+  html { scroll-padding-top: 90px; }
     .nav-links, .nav-cta { display: none !important; }
     .burger { display: flex !important; }
 }
@@ -1715,6 +1718,9 @@ nav img, .nav-logo img {
   content-visibility: auto;
   contain-intrinsic-size: 0 500px;
 }
+
+/* Anchor navigation fix */
+section { scroll-margin-top: 100px; }
 </style>
 </head>
 <body>
