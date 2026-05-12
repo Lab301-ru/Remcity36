@@ -182,20 +182,22 @@ nav {
 
 
 	.burger { 
-	  display: none; 
-	  pointer-events: auto !important; 
-	  min-width: 44px; 
-	  min-height: 44px; 
-	  flex-direction: column; 
-	  justify-content: center; 
-	  align-items: center; 
-	  gap: 5px; 
-	  cursor: pointer; 
-	  background: none; 
-	  border: none; 
-	  z-index: 7000; 
-	  position: relative; 
-	}
+  display: none; 
+  pointer-events: auto !important; 
+  min-width: 44px; 
+  min-height: 44px; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 5px; 
+  cursor: pointer; 
+  background: none; 
+  border: none; 
+  z-index: 7000; 
+  position: relative;
+  align-self: center;
+  height: 100%;
+}
 	.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
 	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 	.burger.open span:nth-child(2) { opacity: 0; }
