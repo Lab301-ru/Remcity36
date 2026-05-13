@@ -671,14 +671,14 @@ h2 {
 }
 .service-card {
   background: var(--bg);
-  padding: 36px 32px;
+  padding: 20px 12px;
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto;
-  gap: 0 16px;
+  gap: 0 8px;
   align-items: start;
   min-width: 0;
   word-break: break-word;
@@ -696,7 +696,7 @@ h2 {
 }
 .service-card:hover::after { transform: scaleX(1); }
 .service-icon {
-  font-size: 42px;
+  font-size: 28px;
   display: inline-block;
   grid-column: 1;
   grid-row: 1 / 4;
@@ -705,22 +705,22 @@ h2 {
 }
 .service-title {
   font-family: 'Unbounded', sans-serif;
-  font-size: 21px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 10px;
-  line-height: 1.3;
+  margin-bottom: 8px;
+  line-height: 1.35;
   grid-column: 2;
   grid-row: 1;
 }
 .service-list {
   list-style: none;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   grid-column: 2;
   grid-row: 2;
 }
 .service-list li {
-  font-size: 21px;
+  font-size: 13px;
   color: var(--muted);
   padding: 3px 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -728,7 +728,7 @@ h2 {
 .service-list li::before { content: '— '; color: var(--accent); opacity: 0.6; }
 .service-price {
   font-family: 'Unbounded', sans-serif;
-  font-size: 19px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--accent2);
   grid-column: 2;
