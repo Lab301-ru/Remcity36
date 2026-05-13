@@ -247,14 +247,16 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 6000;
-  padding: 20px 40px;
+  height: 72px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10,10,15,0.9);
+  background: rgba(10,10,15,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,107,43,0.15);
+  box-sizing: border-box;
 }
 
 .nav-logo {
@@ -282,7 +284,8 @@ nav {
   transition: color 0.2s;
   white-space: nowrap;
 }
-.nav-links a:hover { color: var(--text); }
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent); }
 .nav-cta {
   background: var(--accent);
   color: white;
@@ -306,26 +309,31 @@ nav {
 }
 
 /* HAMBURGER */
-
-	.burger { 
-	  display: none; 
-	  pointer-events: auto !important; 
-	  min-width: 44px; 
-	  min-height: 44px; 
-	  flex-direction: column; 
-	  justify-content: center; 
-	  align-items: center; 
-	  gap: 5px; 
-	  cursor: pointer; 
-	  background: none; 
-	  border: none; 
-	  z-index: 7000; 
-	  position: relative; 
-	}
-	.burger span { display: block; width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-	.burger.open span:nth-child(2) { opacity: 0; }
-	.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  z-index: 7000;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 
 .mobile-menu {
@@ -1513,10 +1521,10 @@ html, body {
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none !important; }
-  .nav-cta { display: none !important; }
-  .burger { display: flex !important; }
+  nav { padding: 0 16px; height: 64px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .burger { display: flex; }
   .hero { padding: 100px 20px 60px; }
   .hero-content { gap: 32px; }
   .contacts-grid { grid-template-columns: 1fr; }
@@ -1549,152 +1557,18 @@ html, body {
 }
 
 
-/* MOBILE OPTIMIZATION FIX */
-/* BRANDING UPDATE */
-nav img, header img {
-  width: 52px !important;
-  height: 52px !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-}
-.logo-text {
-  font-family: 'Russo One', sans-serif !important;
-  font-size: 22px !important;
-  letter-spacing: 1px !important;
-}
-
-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 10px 16px !important;
-  background: #1a1a1a !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
+/* АДАПТИВНОСТЬ */
 @media (max-width: 900px) {
-    nav { 
-        display: flex !important; 
-        justify-content: space-between !important; 
-        align-items: center !important; 
-        width: 100% !important;
-    }
-    .burger { 
-        margin-left: auto !important; 
-        position: relative !important; 
-        right: 0 !important;
-    }
+  .container { padding-left: 16px; padding-right: 16px; }
 }
-
-@media (max-width: 480px) {
-    .btn, button:not(#burgerBtn), input[type="submit"] { 
-        width: 100% !important; 
-        display: block !important;
-        margin-bottom: 10px !important;
-    }
-    #burgerBtn {
-        display: flex !important;
-        width: 44px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
-        height: 44px !important;
-        min-height: 44px !important;
-        position: absolute !important;
-        right: 15px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        margin: 0 !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 5px !important;
-        z-index: 7000 !important;
-    }
-    .nav-logo { font-size: 18px !important; gap: 5px !important; }
-    .nav-logo img { width: 32px !important; height: 32px !important; }
-    /* Убираем лишние отступы в шапке */
-    nav { padding: 10px 15px !important; }
-}
-
-@media (max-width: 480px) {
-    section, footer, header { 
-        width: 100% !important; 
-        max-width: 100% !important; 
-        overflow: hidden !important;
-    }
-    nav {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: visible !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-    }
-    .services-grid, .gallery-grid, .stats-container, .features-grid, .reviews-grid { 
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 20px !important;
-    }
-    .service-card, .gallery-item, .stat-item, .feature-card, .review-card {
-        width: 100% !important;
-        margin: 0 !important;
-    }
-    /* Исправляем отступы для маленьких экранов */
-    section { padding: 40px 0 !important; }
-    .hero { padding: 100px 0 60px !important; }
-}
-
-* { box-sizing: border-box !important; }
-html, body { 
-    overflow-x: hidden !important; 
-    width: 100% !important; 
-    margin: 0 !important; 
-    padding: 0 !important; 
-}
-.container { 
-    width: 100% !important; 
-    max-width: 100% !important; 
-    padding-left: 15px !important; 
-    padding-right: 15px !important; 
-    margin: 0 auto !important;
-}
-img { 
-    max-width: 100% !important; 
-    height: auto !important; 
-}
-@media (max-width: 900px) {
-    .nav-links, .nav-cta { display: none !important; }
-    .burger { display: flex !important; }
-}
-@media (max-width: 480px) {
-    .hero h1 { font-size: 28px !important; }
-    .hero p { font-size: 16px !important; }
-    .section-title { font-size: 24px !important; }
-    /* Все flex-блоки в колонку */
-    .flex-row, .grid-2, .grid-3 { 
-        display: flex !important; 
-        flex-direction: column !important; 
-    }
-    .flex-row > *, .grid-2 > *, .grid-3 > * { 
-        width: 100% !important; 
-        margin-left: 0 !important; 
-        margin-right: 0 !important; 
-    }
-}
-
-/* FORCE LOGO SIZE */
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
 nav img, .nav-logo img {
-  width: 64px !important;
-  height: 64px !important;
-  max-width: 64px !important;
-  max-height: 64px !important;
-  min-width: 64px !important;
-  min-height: 64px !important;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 </style>
 </head>
@@ -1715,10 +1589,10 @@ nav img, .nav-logo img {
 </div>
 <!-- НАВИГАЦИЯ -->
 <nav aria-label="Основная навигация" role="navigation">
-<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="64" loading="eager" src="logo-96.webp" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="64"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
+<a href="/" aria-label="Ремсити36 — главная" class="nav-logo" style="display:flex;align-items:center;gap:0;min-height:48px;text-decoration:none;cursor:pointer;"><img alt="Логотип Ремсити36" decoding="async" fetchpriority="high" height="48" loading="eager" src="logo-96.webp" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-right: 10px;" width="48"/><div style="display:flex;align-items:baseline;gap:0;font-family:'Unbounded',sans-serif;font-weight:900;font-size: 24px;letter-spacing:-0.02em;line-height:1;" class="logo-text"><span style="color:#ffffff;">Ремсити</span><span style="color:#ff6b2b;">36</span></div></a>
 <ul class="nav-links">
 <li><a href="#services">Услуги</a></li>
-<li><a href="news.html">Новости</a></li>
+<li><a href="/news.html">Новости</a></li>
 <li><a href="#reviews">Отзывы</a></li>
 <li><a href="#gallery">Галерея</a></li>
 <li><a href="#contacts">Контакты</a></li>
