@@ -6,7 +6,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link as="image" href="logo-96.webp" rel="preload" type="image/webp"/>
   <link rel="preload" as="image" href="hero_cover.webp" type="image/webp"/>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Unbounded:wght@900&family=Golos+Text:wght@400;500;600;700&display=swap"/></noscript>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ремсити36 — Ремонт бытовой техники в Воронеже | Выезд мастера на дом</title>
@@ -1466,9 +1468,9 @@ address { font-style: normal; font-size: 21px; color: var(--muted); line-height:
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(255,107,43,0.4); }
-  70%  { box-shadow: 0 0 0 12px rgba(255,107,43,0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,107,43,0); }
+  0%   { transform: translateY(-2px) scale(1);   opacity: 1; }
+  50%  { transform: translateY(-2px) scale(1.03); opacity: 0.92; }
+  100% { transform: translateY(-2px) scale(1);   opacity: 1; }
 }
 
 .callback-form { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px; }
@@ -1557,6 +1559,24 @@ html, body {
 }
 
 
+/* MOBILE PERFORMANCE — убираем дорогостоящие эффекты */
+@media (max-width: 768px) {
+  /* Grain overlay — лишний compositing layer */
+  body::before { display: none; }
+  /* backdrop-filter — дорогой GPU на мобильных */
+  nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10,10,15,0.97);
+  }
+  /* pulse-ring через box-shadow вызывает paint на каждом кадре */
+  .btn-primary { animation: none; }
+  /* Декоративные фоны героя */
+  .hero-bg, .hero-grid { display: none; }
+  /* will-change: auto где не нужен — освобождаем GPU-память */
+  .fade-up { will-change: auto; }
+}
+
 /* АДАПТИВНОСТЬ */
 @media (max-width: 900px) {
   section { padding-left: 20px; padding-right: 20px; }
@@ -1617,7 +1637,7 @@ nav img, .nav-logo img {
 <p class="hero-desc">Профессиональный ремонт и обслуживание любой бытовой техники и электроники в Воронеже. Быстро, качественно, с гарантией.</p>
 <!-- HERO COVER IMAGE -->
 <div class="hero-cover-wrapper fade-up" style="transition-delay: 0.2s;">
-<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="async" loading="lazy" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
+<img alt="Профессиональный ремонт электроники и бытовой техники" decoding="sync" fetchpriority="high" loading="eager" src="hero_cover.webp" width="1200" height="675" class="hero-cover-img"/>
 </div>
 <div class="hero-actions">
 <a aria-label="Позвонить: плюс 7 995 250 77 72" class="btn-primary" href="tel:+79952507772">📞 +7 (995) 250-77-72</a>
@@ -2331,10 +2351,8 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Сразу показываем hero-элементы
-document.querySelectorAll('.hero .fade-up').forEach(el => {
-  setTimeout(() => el.classList.add('visible'), 100);
-});
+// Hero-элементы показываем без задержки — не блокируем LCP
+document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
 
 // ─── Мобильное меню ────────────────────────────────────
 
