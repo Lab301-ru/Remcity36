@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
 
-Sitemap: https://xn--36-mlcmaw0akk.xn--p1ai/sitemap.xml
-Host: xn--36-mlcmaw0akk.xn--p1ai
+Sitemap: https://remcity36.ru/sitemap.xml
+Host: remcity36.ru
