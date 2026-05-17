@@ -227,12 +227,37 @@ nav.main .wrap{ height: 100%; display: flex; align-items: center; justify-conten
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--muted);
 }
 .mobile-menu .m-cta{
-  margin-top: 32px; background: var(--accent); color: #000;
-  padding: 18px 20px;
-  display: inline-flex; align-items: center; gap: 12px; justify-content: center;
-  font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
-  text-transform: uppercase; border-bottom: 0; border-radius: 3px; font-weight: 600;
+  margin-top: 32px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+  padding: 32px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 0;
+  border-radius: 3px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 0 24px rgba(255,255,255,0.16), 0 0 8px rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
 }
+.mobile-menu .m-cta::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0; width: 55%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+  transform: translateX(-200%);
+  animation: nav-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+.mobile-menu .m-cta .m-cta-ico{ color: #22c55e; flex-shrink: 0; display: block; }
 
 main{ padding-top: 92px; }
 
@@ -732,7 +757,7 @@ footer{ padding: 80px 0 32px; background: #050505; }
   <a href="index.html#process"><span>Процесс</span></a>
   <a href="news.html"><span>Журнал</span></a>
   <a href="index.html#comms"><span>Связь</span></a>
-  <a href="tel:+79952507772" class="m-cta">→ +7 (995) 250-77-72</a>
+  <a href="tel:+79952507772" class="m-cta"><svg class="m-cta-ico" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>Позвонить</a>
 </div>
 
 <main>

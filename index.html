@@ -345,7 +345,7 @@ nav.main .wrap{
   background: var(--accent);
   border: 1px solid var(--accent);
   color: #fff;
-  padding: 16px 24px;
+  padding: 32px 24px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -442,10 +442,13 @@ main{ padding-top: 92px; }
 .hero-top .meta b{ color: var(--text); font-weight: 500; }
 
 .hero-grid{
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 56px;
+  display: flex;
   align-items: stretch;
+  gap: 56px;
+}
+.hero-main{
+  flex: 1 1 0;
+  min-width: 0;
 }
 .hero-title{
   font-family: var(--display);
@@ -1349,7 +1352,8 @@ footer{
    RESPONSIVE
 ───────────────────────────────────── */
 @media (max-width: 1100px){
-  .hero-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .hero-grid{ flex-direction: column; gap: 40px; }
+  .hero-grid aside{ width: 100% !important; margin-right: 0 !important; }
   .svc{ grid-template-columns: repeat(2, 1fr); }
   .big-stats{ grid-template-columns: repeat(2, 1fr); }
   .process{ grid-template-columns: repeat(2, 1fr); }
@@ -1520,7 +1524,7 @@ footer{
         </div>
       </div>
 
-      <aside class="hero-side reveal" style="transition-delay:.15s">
+      <aside class="hero-side reveal" style="transition-delay:.15s; width:360px; flex-shrink:0; margin-right:0;">
         <div class="panel hero-stats">
           <div class="panel-head">
             <span>STATION 36 / TELEMETRY</span>
