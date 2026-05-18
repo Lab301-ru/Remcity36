@@ -1,0 +1,29 @@
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # index.html → чистый корень /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # Чистые URL для секций главной страницы
+  RewriteRule ^services/?$  /#services  [R=301,L]
+  RewriteRule ^cases/?$     /#cases     [R=301,L]
+  RewriteRule ^numbers/?$   /#numbers   [R=301,L]
+  RewriteRule ^process/?$   /#process   [R=301,L]
+  RewriteRule ^comms/?$     /#comms     [R=301,L]
+
+  # news.html → /news
+  RewriteCond %{THE_REQUEST} \s/+news\.html[\s?] [NC]
+  RewriteRule ^news\.html$ /news [R=301,L]
+
+  RewriteRule ^news/?$ news.html [L]
+
+  # Убираем .html из любого файла
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
