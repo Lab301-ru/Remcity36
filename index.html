@@ -158,7 +158,7 @@ h1,h2,h3,h4{ font-family: var(--display); font-weight: 800; letter-spacing: -0.0
   border-radius: 50%;
   background: var(--signal);
   box-shadow: 0 0 8px var(--signal);
-  animation: blink 2s infinite;
+  animation: blink 3s ease-in-out infinite;
 }
 @keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
 .status-bar .sep{ width: 1px; height: 12px; background: var(--line-2); }
@@ -167,6 +167,7 @@ h1,h2,h3,h4{ font-family: var(--display); font-weight: 800; letter-spacing: -0.0
 .status-bar .ticker{
   display: inline-block;
   white-space: nowrap;
+  will-change: transform;
   animation: marq 39.6s linear infinite;
   color: var(--text-dim);
 }
@@ -271,8 +272,11 @@ nav.main .wrap{
   width: 55%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
   transform: translateX(-200%);
-  animation: nav-sweep 3s ease-in-out infinite;
+  animation: none;
   pointer-events: none;
+}
+.nav-cta:hover::before{
+  animation: nav-sweep 0.7s ease-out forwards;
 }
 .nav-cta:hover{
   background: var(--accent-2);
@@ -370,8 +374,11 @@ nav.main .wrap{
   top: 0; left: 0; bottom: 0; width: 55%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
   transform: translateX(-200%);
-  animation: nav-sweep 3s ease-in-out infinite;
+  animation: none;
   pointer-events: none;
+}
+.mobile-menu .m-cta:hover::before{
+  animation: nav-sweep 0.7s ease-out forwards;
 }
 .mobile-menu .m-cta .m-cta-ico{ color: #22c55e; flex-shrink: 0; display: block; }
 
@@ -623,6 +630,7 @@ main{ padding-top: 92px; }
   display: flex;
   gap: 8px;
   width: max-content;
+  will-change: transform;
   animation: hero-scroll 20s linear infinite;
 }
 .hero-img-row:hover{ animation-play-state: paused; }
@@ -682,6 +690,7 @@ main{ padding-top: 92px; }
   display: flex;
   gap: 0;
   white-space: nowrap;
+  will-change: transform;
   animation: ticker 30s linear infinite;
 }
 .ticker-row span{
@@ -1412,6 +1421,14 @@ footer{
   .ticker-row span{ font-size: 28px; padding: 0 18px; }
   .s-title{ font-size: clamp(36px, 11vw, 56px); }
 }
+
+@media (prefers-reduced-motion: reduce){
+  .dot{ animation: none; opacity: 1; }
+  .hero-img-row{ animation: none; }
+  .ticker-row{ animation: none; }
+  .status-bar .ticker{ animation: none; }
+  .nav-cta::before, .mobile-menu .m-cta::before{ display: none; }
+}
 </style>
 </head>
 <body>
@@ -2114,15 +2131,19 @@ footer{
 (function(){
   const el = document.getElementById('clock');
   if(!el) return;
+  let tid;
+  const pad = n => String(n).padStart(2,'0');
   function tick(){
     const d = new Date();
-    // Moscow time (UTC+3)
     const u = d.getTime() + d.getTimezoneOffset()*60000;
     const m = new Date(u + 3*3600*1000);
-    const pad = n => String(n).padStart(2,'0');
     el.textContent = pad(m.getHours())+':'+pad(m.getMinutes())+':'+pad(m.getSeconds());
+    tid = setTimeout(tick, 1000 - (Date.now() % 1000));
   }
-  tick(); setInterval(tick, 1000);
+  function start(){ if(!tid) tick(); }
+  function stop(){ clearTimeout(tid); tid = null; }
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  start();
 })();
 
 /* ─── MOBILE MENU ─── */
