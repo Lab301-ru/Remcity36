@@ -682,7 +682,7 @@ main{ padding-top: 92px; }
   display: flex;
   gap: 0;
   white-space: nowrap;
-  will-change: transform;
+  animation: ticker 30s linear infinite;
 }
 .ticker-row span{
   font-family: var(--display);
@@ -2193,23 +2193,7 @@ document.addEventListener('click', e => {
 </script>
 
 <script>
-(function(){
-  var row = document.querySelector('.ticker-row');
-  if(!row) return;
-  var pos = 0;
-  var speed = 0.6; // px per frame
-  var halfW = 0;
-  function measure(){ halfW = row.scrollWidth / 2; }
-  measure();
-  window.addEventListener('resize', measure);
-  function step(){
-    pos -= speed;
-    if(Math.abs(pos) >= halfW) pos = 0;
-    row.style.transform = 'translateX(' + pos + 'px)';
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-})();
+/* JS-тикер заменён на CSS animation — убрано для снижения нагрузки на CPU */;
 </script>
 
 <!-- Yandex.Metrika counter -->
