@@ -1,16 +1,17 @@
-## Hi there 👋😁
+# Remcity36 — Appliance Repair Service
 
-<!--
-**remcity36/Remcity36** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Corporate website for Remcity36 appliance repair service in Voronezh.
 
-Here are some ideas to get you started:
+🌐 **Live:** https://remcity36.ru
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Features
+- Service catalog with pricing
+- Online request form
+- Cases and reviews
+- Yandex Maps integration
+
+## Stack
+HTML · CSS · JavaScript · Avif/WebP
+
+## Made by
+[LAB301 Digital Studio](https://lab301.ru)
