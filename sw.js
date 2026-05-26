@@ -1,4 +1,4 @@
-const CACHE_NAME = 'remsiti36-static-v20260506-1';
+const CACHE_NAME = 'remsiti36-static-v20260526-1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -6,7 +6,6 @@ const STATIC_ASSETS = [
   '/apple-touch-icon.png',
   '/logo-96.webp',
   '/og-image.jpg',
-  '/max_icon.webp',
   '/hero_cover.webp',
   '/news.html',
   '/IMG_5824.webp',
