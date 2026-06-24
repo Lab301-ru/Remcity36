@@ -1,4 +1,4 @@
-const CACHE_NAME = 'remsiti36-static-v20260526-1';
+const CACHE_NAME = 'remsiti36-static-v20260624-esap';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
   '/logo-96.webp',
   '/og-image.jpg',
   '/hero_cover.webp',
+  '/assets/journal.css',
   '/news.html',
   '/IMG_5824.webp',
   '/IMG_5825.webp',
