@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Админка журнала · Ремсити36</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/logo-96.webp" type="image/webp">
+<style>
+  :root{
+    --bg:#0c0d10; --panel:#15171c; --panel-2:#1c1f26; --line:#272b34;
+    --text:#eceef2; --dim:#9aa0ad; --muted:#6b7280; --accent:#ff5b1f;
+    --ok:#46d369; --err:#ff5252; --radius:8px;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5}
+  a{color:var(--accent)}
+  h1,h2,h3{margin:0;font-weight:700}
+  button{font:inherit;cursor:pointer;border:0;border-radius:6px;padding:10px 16px;background:var(--panel-2);color:var(--text);border:1px solid var(--line);transition:.15s}
+  button:hover{border-color:var(--accent)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  button.primary:hover{filter:brightness(1.08)}
+  button.ghost{background:transparent}
+  button.danger{color:var(--err);border-color:#48262b}
+  button.danger:hover{background:#2a181b;border-color:var(--err)}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  input,textarea,select{
+    width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);
+    border-radius:6px;padding:10px 12px;font:inherit;font-size:14px
+  }
+  input:focus,textarea:focus{outline:0;border-color:var(--accent)}
+  textarea{resize:vertical;font-family:var(--mono);font-size:13px;line-height:1.6}
+  label{display:block;font-size:12px;color:var(--dim);margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+  .field{margin-bottom:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .hint{font-size:12px;color:var(--muted);margin-top:5px}
+  .topbar{display:flex;align-items:center;gap:14px;padding:14px 22px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  .topbar .brand{font-weight:800;letter-spacing:-.02em}
+  .topbar .brand span{color:var(--accent)}
+  .topbar .spacer{flex:1}
+  .pill{font-family:var(--mono);font-size:12px;color:var(--dim);padding:5px 10px;border:1px solid var(--line);border-radius:20px}
+  .pill.on{color:var(--ok);border-color:#1f3a28}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 22px 80px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:20px}
+  .card h2{font-size:16px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .grid2{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+  @media(max-width:900px){.grid2{grid-template-columns:1fr}.row,.row3{grid-template-columns:1fr}}
+  .list{display:flex;flex-direction:column;gap:8px}
+  .post-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;cursor:pointer}
+  .post-item:hover{border-color:var(--accent)}
+  .post-item.active{border-color:var(--accent);background:#22150f}
+  .post-item .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+  .post-item .d{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .toast{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;flex-direction:column;gap:8px}
+  .toast .t{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 16px;border-radius:6px;max-width:360px;box-shadow:0 8px 30px rgba(0,0,0,.4);font-size:13px}
+  .toast .t.ok{border-left-color:var(--ok)}
+  .toast .t.err{border-left-color:var(--err)}
+  iframe{width:100%;height:70vh;border:1px solid var(--line);border-radius:8px;background:#0a0a0a}
+  .gate{max-width:480px;margin:8vh auto;padding:0 20px}
+  .errbox{background:#2a181b;border:1px solid #48262b;color:#ffb4b4;padding:10px 12px;border-radius:6px;font-size:13px;margin-top:10px;white-space:pre-wrap}
+  details summary{cursor:pointer;color:var(--dim);font-size:13px;margin-bottom:10px}
+  code{font-family:var(--mono);background:var(--panel-2);padding:2px 6px;border-radius:4px;font-size:12px}
+  .tabs{display:flex;gap:6px;margin-bottom:14px}
+  .tabs button{padding:8px 14px;font-size:13px}
+  .tabs button.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ───────────────────── LOGIN GATE ───────────────────── -->
+<div id="gate" class="gate">
+  <div class="card">
+    <h2>🔐 Админка журнала · Ремсити36</h2>
+    <p style="color:var(--dim);font-size:14px;margin:0 0 18px">
+      Войдите, чтобы редактировать новости. Для публикации на сайт нужен GitHub-токен
+      (создаётся один раз). Можно работать и без токена — тогда файлы скачиваются вручную.
+    </p>
+    <div class="field">
+      <label>Пароль входа</label>
+      <input id="gatePass" type="password" placeholder="Введите пароль" autocomplete="current-password">
+      <div class="hint">Пароль по умолчанию: <code>remcity36</code> — смените его в коде (<code>ADMIN_PASS</code>).</div>
+    </div>
+    <button class="primary" id="gateBtn" style="width:100%">Войти</button>
+    <div id="gateErr" class="errbox" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ───────────────────── APP ───────────────────── -->
+<div id="app" style="display:none">
+  <div class="topbar">
+    <span class="brand">Ремсити<span>·36</span> · Журнал</span>
+    <span id="ghPill" class="pill">GitHub: не подключён</span>
+    <span class="spacer"></span>
+    <button class="ghost" id="newBtn">+ Новая новость</button>
+    <button class="ghost" id="settingsBtn">⚙ Настройки</button>
+    <button class="primary" id="publishBtn">🚀 Опубликовать</button>
+  </div>
+
+  <div class="wrap">
+
+    <!-- SETTINGS -->
+    <div class="card" id="settingsCard" style="display:none">
+      <h2>⚙ Подключение к GitHub</h2>
+      <p style="color:var(--dim);font-size:13px;margin:0 0 16px">
+        Токен нужен, чтобы кнопка «Опубликовать» сама записывала изменения в репозиторий —
+        сайт обновится через ~1 минуту. Токен хранится только в этом браузере.
+      </p>
+      <div class="row3">
+        <div class="field"><label>Владелец (owner)</label><input id="cfgOwner" placeholder="lab301-ru"></div>
+        <div class="field"><label>Репозиторий</label><input id="cfgRepo" placeholder="remcity36"></div>
+        <div class="field"><label>Ветка</label><input id="cfgBranch" placeholder="main"></div>
+      </div>
+      <div class="field">
+        <label>GitHub Personal Access Token</label>
+        <input id="cfgToken" type="password" placeholder="github_pat_…">
+        <div class="hint">
+          Создать: <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">github.com/settings/tokens</a> →
+          Fine-grained token → доступ к репозиторию <code>remcity36</code> →
+          Repository permissions → <b>Contents: Read and write</b>.
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="primary" id="cfgSave">Сохранить</button>
+        <button class="danger" id="cfgForget">Забыть токен</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <!-- LEFT: post list -->
+      <div class="card">
+        <h2>Новости <span id="postCount" class="pill"></span></h2>
+        <div id="postList" class="list"></div>
+      </div>
+
+      <!-- RIGHT: editor / preview -->
+      <div class="card">
+        <div class="tabs">
+          <button id="tabEdit" class="sel">✏ Редактор</button>
+          <button id="tabPreview">👁 Превью</button>
+        </div>
+
+        <div id="editorPane">
+          <div class="field">
+            <label>Заголовок *</label>
+            <input id="f_title" placeholder="Например: Ремонт духовых шкафов в Воронеже">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Адрес страницы (slug) *</label>
+              <input id="f_slug" placeholder="remont-duhovyh-shkafov-voronezh">
+              <div class="hint">Страница: <code id="urlPreview">/news/…</code></div>
+            </div>
+            <div class="field">
+              <label>Дата публикации *</label>
+              <input id="f_date" type="date">
+            </div>
+          </div>
+          <div class="row3">
+            <div class="field"><label>Категория</label><input id="f_category" placeholder="ovens"></div>
+            <div class="field"><label>Тег (для карточки)</label><input id="f_tag" placeholder="OVENS"></div>
+            <div class="field"><label>Время чтения</label><input id="f_read" placeholder="~3 мин"></div>
+          </div>
+          <div class="field">
+            <label>Обложка (путь к картинке) *</label>
+            <input id="f_cover" placeholder="/IMG_5531.webp">
+            <div class="hint">Загрузите фото в репозиторий и укажите путь от корня, напр. <code>/og-image.jpg</code></div>
+          </div>
+          <div class="field">
+            <label>Alt-текст обложки</label>
+            <input id="f_coverAlt" placeholder="Ремонт духового шкафа в Ремсити36, Воронеж">
+          </div>
+          <div class="field">
+            <label>Краткое описание (для Яндекса / SEO) *</label>
+            <textarea id="f_desc" rows="2" placeholder="1–2 предложения, появятся в поиске Яндекса"></textarea>
+          </div>
+          <div class="field">
+            <label>Лид (первый абзац)</label>
+            <textarea id="f_lede" rows="3" placeholder="Вводный абзац статьи"></textarea>
+          </div>
+          <div class="field">
+            <label>Текст статьи</label>
+            <textarea id="f_content" rows="14" placeholder="## Заголовок раздела&#10;Обычный абзац текста.&#10;- пункт списка&#10;- ещё пункт&#10;&#10;## Следующий раздел&#10;Ещё абзац."></textarea>
+            <div class="hint">Разметка: <code>## Заголовок</code> — новый раздел · строка <code>- ...</code> — пункт списка · пустая строка — новый абзац. Можно использовать <code>&lt;b&gt;</code>, <code>&lt;a href&gt;</code>.</div>
+          </div>
+          <details>
+            <summary>Дополнительно (углы обложки, CTA, отображаемый заголовок)</summary>
+            <div class="row3">
+              <div class="field"><label>Угол ↖</label><input id="f_ctl" placeholder="CASE №…"></div>
+              <div class="field"><label>Угол ↗</label><input id="f_ctr" placeholder="CLOSED"></div>
+              <div class="field"><label>Угол ↘</label><input id="f_cbr" placeholder="VRN · …"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label>Кнопка — текст</label><input id="f_ctaText" placeholder="Вызвать мастера"></div>
+              <div class="field"><label>Кнопка — ссылка</label><input id="f_ctaHref" placeholder="tel:+79952507772"></div>
+            </div>
+            <div class="field">
+              <label>Отображаемый заголовок (HTML, необязательно)</label>
+              <input id="f_titleHtml" placeholder="Ремонт духовых шкафов<br>в&amp;nbsp;<em>Воронеже.</em>">
+            </div>
+          </details>
+
+          <div style="display:flex;gap:10px;margin-top:8px">
+            <button class="primary" id="saveBtn">💾 Сохранить новость</button>
+            <button class="danger" id="deleteBtn">🗑 Удалить</button>
+          </div>
+        </div>
+
+        <div id="previewPane" style="display:none">
+          <iframe id="previewFrame" title="Превью"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <details class="card">
+      <summary>📦 Публикация без токена (скачать файлы вручную)</summary>
+      <p style="color:var(--dim);font-size:13px;margin:10px 0">
+        Нажмите, чтобы скачать архив изменённых файлов, затем загрузите их в репозиторий через GitHub.
+      </p>
+      <button id="downloadBtn">⬇ Скачать все файлы</button>
+    </details>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="generator.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════════
+   Ремсити36 — admin logic
+════════════════════════════════════════════════════════════ */
+const ADMIN_PASS = 'remcity36';            // ← смените при желании
+const G = window.Generator;
+const LS = {
+  token:'rc36_gh_token', owner:'rc36_gh_owner', repo:'rc36_gh_repo',
+  branch:'rc36_gh_branch', auth:'rc36_auth'
+};
+
+let DATA = null;          // { site, posts: [] }
+let current = -1;         // index of post being edited (-1 = new)
+let originalSlugs = [];   // slugs present at load (for delete tracking)
+
+/* ── utils ──────────────────────────────────────────────── */
+const $ = (id) => document.getElementById(id);
+function toast(msg, kind){
+  const el = document.createElement('div');
+  el.className = 't' + (kind ? ' ' + kind : '');
+  el.textContent = msg;
+  $('toast').appendChild(el);
+  setTimeout(() => el.remove(), kind === 'err' ? 8000 : 4000);
+}
+function dDisplay(iso){
+  if(!iso) return '';
+  const p = iso.split('-');
+  return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
+}
+
+/* ── content <-> blocks ─────────────────────────────────── */
+function blocksToText(blocks){
+  return (blocks || []).map(b => {
+    let out = '## ' + (b.h || '');
+    (b.parts || []).forEach(p => {
+      if(p.type === 'ul'){ (p.items||[]).forEach(i => out += '\n- ' + i); }
+      else { out += '\n\n' + (p.html || ''); }
+    });
+    return out;
+  }).join('\n\n');
+}
+function textToBlocks(text){
+  const lines = (text || '').replace(/\r/g,'').split('\n');
+  const blocks = []; let cur = null; let n = 0;
+  const newBlock = (h) => { n++; cur = { n:'/ ' + String(n).padStart(2,'0'), h:h, parts:[] }; blocks.push(cur); };
+  lines.forEach(line => {
+    const t = line.trim();
+    if(t.indexOf('## ') === 0){ newBlock(t.slice(3).trim()); return; }
+    if(!cur) newBlock('');
+    if(t.indexOf('- ') === 0){
+      let last = cur.parts[cur.parts.length-1];
+      if(!last || last.type !== 'ul'){ last = { type:'ul', items:[] }; cur.parts.push(last); }
+      last.items.push(t.slice(2).trim());
+    } else if(t){
+      cur.parts.push({ type:'p', html:t });
+    }
+  });
+  // drop empty leading block
+  return blocks.filter(b => b.h || (b.parts && b.parts.length));
+}
+
+/* ── editor binding ─────────────────────────────────────── */
+function blankPost(){
+  return { num:0, slug:'', date:new Date().toISOString().slice(0,10), category:'',
+    categoryTag:'', title:'', titleHtml:'', tocTitle:'', readTime:'~3 мин',
+    author:'STN VRN-36', file:'', cover:'', coverAlt:'', corners:{tl:'',tr:'',br:''},
+    description:'', lede:'', blocks:[], cta:{text:'Вызвать мастера',href:'tel:+79952507772'} };
+}
+function loadEditor(p){
+  $('f_title').value = G.plain(p.title || '');
+  $('f_slug').value = p.slug || '';
+  $('f_date').value = p.date || '';
+  $('f_category').value = p.category || '';
+  $('f_tag').value = p.categoryTag || '';
+  $('f_read').value = p.readTime || '';
+  $('f_cover').value = p.cover || '';
+  $('f_coverAlt').value = p.coverAlt || '';
+  $('f_desc').value = G.plain(p.description || '');
+  $('f_lede').value = p.lede || '';
+  $('f_content').value = blocksToText(p.blocks);
+  $('f_ctl').value = (p.corners&&p.corners.tl) || '';
+  $('f_ctr').value = (p.corners&&p.corners.tr) || '';
+  $('f_cbr').value = (p.corners&&p.corners.br) || '';
+  $('f_ctaText').value = (p.cta&&p.cta.text) || '';
+  $('f_ctaHref').value = (p.cta&&p.cta.href) || '';
+  $('f_titleHtml').value = p.titleHtml || '';
+  updateUrlPreview();
+}
+function readEditor(base){
+  const p = Object.assign(blankPost(), base || {});
+  p.title = $('f_title').value.trim();
+  p.slug = $('f_slug').value.trim();
+  p.date = $('f_date').value;
+  p.dateDisplay = dDisplay(p.date);
+  p.category = $('f_category').value.trim().toLowerCase();
+  p.categoryTag = ($('f_tag').value.trim() || p.category).toUpperCase();
+  p.readTime = $('f_read').value.trim() || '~3 мин';
+  p.cover = $('f_cover').value.trim();
+  p.coverAlt = $('f_coverAlt').value.trim();
+  p.description = $('f_desc').value.trim();
+  p.lede = $('f_lede').value.trim();
+  p.blocks = textToBlocks($('f_content').value);
+  p.corners = { tl:$('f_ctl').value.trim(), tr:$('f_ctr').value.trim(), br:$('f_cbr').value.trim() };
+  p.cta = { text:$('f_ctaText').value.trim() || 'Вызвать мастера', href:$('f_ctaHref').value.trim() || 'tel:+79952507772' };
+  p.titleHtml = $('f_titleHtml').value.trim() || G.esc(p.title);
+  p.tocTitle = p.tocTitle || G.esc(p.title);
+  p.id = p.id || ('post-' + Date.now());
+  return p;
+}
+function updateUrlPreview(){
+  const s = $('f_slug').value.trim() || '…';
+  $('urlPreview').textContent = '/news/' + s;
+}
+
+/* ── render post list ───────────────────────────────────── */
+function renderList(){
+  const list = $('postList'); list.innerHTML = '';
+  const sorted = DATA.posts.map((p,i)=>({p,i})).sort((a,b)=>(b.p.date||'').localeCompare(a.p.date||''));
+  sorted.forEach(({p,i}) => {
+    const div = document.createElement('div');
+    div.className = 'post-item' + (i === current ? ' active' : '');
+    div.innerHTML = '<span class="t">' + G.esc(G.plain(p.title) || '(без названия)') +
+                    '</span><span class="d">' + (p.dateDisplay || dDisplay(p.date) || '') + '</span>';
+    div.onclick = () => { current = i; loadEditor(p); renderList(); showTab('edit'); };
+    list.appendChild(div);
+  });
+  $('postCount').textContent = DATA.posts.length;
+}
+
+/* ── tabs ───────────────────────────────────────────────── */
+function showTab(which){
+  const edit = which === 'edit';
+  $('editorPane').style.display = edit ? '' : 'none';
+  $('previewPane').style.display = edit ? 'none' : '';
+  $('tabEdit').classList.toggle('sel', edit);
+  $('tabPreview').classList.toggle('sel', !edit);
+  if(!edit){
+    const p = readEditor(current >= 0 ? DATA.posts[current] : {});
+    $('previewFrame').srcdoc = G.articlePage(p, DATA.site);
+  }
+}
+
+/* ── actions ────────────────────────────────────────────── */
+function newPost(){ current = -1; loadEditor(blankPost()); renderList(); showTab('edit'); toast('Новая новость — заполните поля и сохраните'); }
+
+function savePost(){
+  const base = current >= 0 ? DATA.posts[current] : {};
+  const p = readEditor(base);
+  const otherSlugs = DATA.posts.filter((_,i)=>i!==current).map(x=>x.slug);
+  const errs = G.validatePost(p, otherSlugs);
+  if(errs.length){ toast(errs[0], 'err'); return; }
+  if(current >= 0){ DATA.posts[current] = p; }
+  else {
+    p.num = (DATA.posts.reduce((m,x)=>Math.max(m, x.num||0), 0)) + 1;
+    p.file = p.file || ('FILE / ' + p.date.slice(2,4) + String(p.num).padStart(2,'0') + '-X · CLOSED');
+    DATA.posts.push(p);
+    current = DATA.posts.length - 1;
+  }
+  renderList();
+  toast('Сохранено локально. Нажмите «Опубликовать», чтобы выложить на сайт.', 'ok');
+}
+
+function deletePost(){
+  if(current < 0){ loadEditor(blankPost()); return; }
+  if(!confirm('Удалить эту новость?')) return;
+  DATA.posts.splice(current, 1);
+  current = -1; loadEditor(blankPost()); renderList();
+  toast('Новость удалена. Опубликуйте, чтобы применить.', 'ok');
+}
+
+/* ── build file set ─────────────────────────────────────── */
+function buildFiles(){
+  const posts = DATA.posts.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const files = {};
+  files['news/posts.json'] = JSON.stringify({ site:DATA.site, posts:posts }, null, 2) + '\n';
+  posts.forEach(p => { files['news/' + p.slug + '/index.html'] = G.articlePage(p, DATA.site); });
+  files['news.html'] = G.newsListingPage(posts, DATA.site, { asIndex:false });
+  files['news/index.html'] = G.newsListingPage(posts, DATA.site, { asIndex:true });
+  files['sitemap.xml'] = G.sitemapXml(posts, DATA.site);
+  return files;
+}
+function deletedSlugs(){
+  const live = DATA.posts.map(p=>p.slug);
+  return originalSlugs.filter(s => live.indexOf(s) === -1);
+}
+
+/* ── GitHub publish (Git Data API, single commit) ───────── */
+function gh(){ return { token:localStorage.getItem(LS.token), owner:localStorage.getItem(LS.owner)||'lab301-ru', repo:localStorage.getItem(LS.repo)||'remcity36', branch:localStorage.getItem(LS.branch)||'main' }; }
+async function api(path, opt){
+  const c = gh();
+  const res = await fetch('https://api.github.com' + path, Object.assign({
+    headers: { 'Authorization':'Bearer '+c.token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }
+  }, opt));
+  if(!res.ok){ const txt = await res.text(); throw new Error('GitHub ' + res.status + ': ' + txt); }
+  return res.json();
+}
+async function publishGitHub(){
+  const c = gh();
+  const base = '/repos/' + c.owner + '/' + c.repo;
+  toast('Публикуем…');
+  // 1. current ref + tree
+  const ref = await api('/git/ref/heads/' + c.branch + '?ts=' + Date.now());
+  const headSha = ref.object.sha;
+  const headCommit = await api('/git/commits/' + headSha);
+  // 2. bump sw.js (fetch current from raw site, fallback to repo)
+  let swText = '';
+  try { swText = await (await fetch('/sw.js?ts=' + Date.now())).text(); } catch(e){}
+  // 3. assemble files
+  const files = buildFiles();
+  if(swText) files['sw.js'] = G.bumpSw(swText);
+  // 4. blobs
+  const tree = [];
+  for(const path in files){
+    const blob = await api(base + '/git/blobs', { method:'POST', body: JSON.stringify({ content: files[path], encoding:'utf-8' }) });
+    tree.push({ path, mode:'100644', type:'blob', sha: blob.sha });
+  }
+  // 5. deletions
+  deletedSlugs().forEach(s => tree.push({ path:'news/' + s + '/index.html', mode:'100644', type:'blob', sha:null }));
+  // 6. tree + commit + ref
+  const newTree = await api(base + '/git/trees', { method:'POST', body: JSON.stringify({ base_tree: headCommit.tree.sha, tree }) });
+  const commit = await api(base + '/git/commits', { method:'POST', body: JSON.stringify({
+    message: 'news: обновление журнала (' + DATA.posts.length + ' материалов)', tree: newTree.sha, parents:[headSha] }) });
+  await api(base + '/git/refs/heads/' + c.branch, { method:'PATCH', body: JSON.stringify({ sha: commit.sha }) });
+  originalSlugs = DATA.posts.map(p=>p.slug);
+}
+
+async function publish(){
+  const c = gh();
+  if(!c.token){ $('settingsCard').style.display=''; toast('Добавьте GitHub-токен в настройках — или используйте «Скачать файлы».', 'err'); return; }
+  const btn = $('publishBtn'); btn.disabled = true; const old = btn.textContent; btn.textContent='Публикуем…';
+  try {
+    await publishGitHub();
+    toast('✅ Опубликовано! Сайт обновится в течение ~1 минуты.', 'ok');
+  } catch(e){
+    console.error(e);
+    toast('Ошибка публикации: ' + e.message, 'err');
+  } finally { btn.disabled=false; btn.textContent=old; }
+}
+
+/* ── download fallback ──────────────────────────────────── */
+function downloadAll(){
+  const files = buildFiles();
+  let i = 0;
+  for(const path in files){
+    setTimeout(() => {
+      const blob = new Blob([files[path]], { type:'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = path.replace(/\//g,'__');   // flatten; rename after download
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, i++ * 300);
+  }
+  toast('Скачиваем ' + Object.keys(files).length + ' файлов. Имена со «__» — это путь, восстановите папки при загрузке.', 'ok');
+}
+
+/* ── settings ───────────────────────────────────────────── */
+function loadSettings(){
+  $('cfgOwner').value = localStorage.getItem(LS.owner) || 'lab301-ru';
+  $('cfgRepo').value = localStorage.getItem(LS.repo) || 'remcity36';
+  $('cfgBranch').value = localStorage.getItem(LS.branch) || 'main';
+  $('cfgToken').value = localStorage.getItem(LS.token) || '';
+  refreshGhPill();
+}
+function refreshGhPill(){
+  const has = !!localStorage.getItem(LS.token);
+  $('ghPill').textContent = has ? ('GitHub: ' + (localStorage.getItem(LS.owner)||'') + '/' + (localStorage.getItem(LS.repo)||'')) : 'GitHub: не подключён';
+  $('ghPill').classList.toggle('on', has);
+}
+
+/* ── boot ───────────────────────────────────────────────── */
+async function loadData(){
+  try {
+    const res = await fetch('/news/posts.json?ts=' + Date.now());
+    DATA = await res.json();
+  } catch(e){
+    DATA = { site:{ name:'Ремсити36', origin:'https://remcity36.ru', phone:'+7 (995) 250-77-72', phoneHref:'tel:+79952507772', author:'STN VRN-36' }, posts:[] };
+  }
+  if(!DATA.posts) DATA.posts = [];
+  originalSlugs = DATA.posts.map(p=>p.slug);
+  renderList();
+  loadEditor(blankPost());
+}
+
+function enterApp(){
+  $('gate').style.display='none'; $('app').style.display='';
+  loadSettings(); loadData();
+}
+
+/* events */
+$('gateBtn').onclick = () => {
+  if($('gatePass').value === ADMIN_PASS){ sessionStorage.setItem(LS.auth,'1'); enterApp(); }
+  else { $('gateErr').style.display=''; $('gateErr').textContent='Неверный пароль'; }
+};
+$('gatePass').addEventListener('keydown', e => { if(e.key==='Enter') $('gateBtn').click(); });
+$('newBtn').onclick = newPost;
+$('saveBtn').onclick = savePost;
+$('deleteBtn').onclick = deletePost;
+$('publishBtn').onclick = publish;
+$('downloadBtn').onclick = downloadAll;
+$('settingsBtn').onclick = () => { const c=$('settingsCard'); c.style.display = c.style.display==='none' ? '' : 'none'; };
+$('tabEdit').onclick = () => showTab('edit');
+$('tabPreview').onclick = () => showTab('preview');
+$('f_slug').addEventListener('input', updateUrlPreview);
+$('f_title').addEventListener('blur', () => { if(!$('f_slug').value.trim() && $('f_title').value.trim()){ $('f_slug').value = G.slugify($('f_title').value); updateUrlPreview(); } });
+$('cfgSave').onclick = () => {
+  localStorage.setItem(LS.owner, $('cfgOwner').value.trim());
+  localStorage.setItem(LS.repo, $('cfgRepo').value.trim());
+  localStorage.setItem(LS.branch, $('cfgBranch').value.trim() || 'main');
+  if($('cfgToken').value.trim()) localStorage.setItem(LS.token, $('cfgToken').value.trim());
+  refreshGhPill(); toast('Настройки сохранены', 'ok');
+};
+$('cfgForget').onclick = () => { localStorage.removeItem(LS.token); $('cfgToken').value=''; refreshGhPill(); toast('Токен удалён из браузера', 'ok'); };
+
+/* auto-enter if already authed this session */
+if(sessionStorage.getItem(LS.auth) === '1') enterApp();
+</script>
+</body>
+</html>

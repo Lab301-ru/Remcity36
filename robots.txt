@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /404.html
+Disallow: /admin/
 
 Sitemap: https://remcity36.ru/sitemap.xml
 Host: remcity36.ru
