@@ -713,6 +713,13 @@ footer{ padding: 80px 0 32px; background: #050505; }
   background: rgba(6,6,6,.7); padding: 5px 9px; border-radius: 2px;
 }
 .card-body{ display: flex; flex-direction: column; gap: 12px; padding: 24px; flex: 1; }
+.card .tag-inline{
+  align-self: flex-start;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--line-2); padding: 4px 9px; border-radius: 2px;
+}
+.card-nocover{ border-left: 2px solid var(--accent); }
 .card-meta{
   display: flex; gap: 14px; align-items: center;
   font-family: var(--mono); font-size: 11px; letter-spacing: .08em;

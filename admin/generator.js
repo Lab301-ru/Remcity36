@@ -218,7 +218,10 @@
   function articlePage(post, site) {
     var origin = site.origin;
     var url = origin + '/news/' + post.slug;
-    var coverAbs = /^https?:/.test(post.cover) ? post.cover : origin + post.cover;
+    var hasCover = !!post.cover;
+    var coverAbs = hasCover
+      ? (/^https?:/.test(post.cover) ? post.cover : origin + post.cover)
+      : origin + '/og-image.jpg';
     var titlePlain = plain(post.title);
     var ld = {
       '@context': 'https://schema.org',
@@ -294,12 +297,13 @@ articleAside(post) + '\n\n' +
 '      <div class="article-body">\n' +
 '        <div class="article-cat">Field report · ' + String(post.num).padStart(2, '0') + '</div>\n' +
 '        <h1>' + (post.titleHtml || esc(post.title)) + '</h1>\n' +
+(hasCover ?
 '        <div class="article-cover">\n' +
 '          <img src="' + esc(post.cover) + '" alt="' + esc(post.coverAlt || titlePlain) + '" width="1200" height="675">\n' +
 '          <div class="corner tl">' + (post.corners && post.corners.tl || '') + '</div>\n' +
 '          <div class="corner tr">' + (post.corners && post.corners.tr || '') + '</div>\n' +
 '          <div class="corner br">' + (post.corners && post.corners.br || '') + '</div>\n' +
-'        </div>\n' +
+'        </div>\n' : '') +
 '        <p class="lede">' + (post.lede || '') + '</p>\n\n' +
 renderBlocks(post.blocks) + '\n\n' +
 '        <a class="article-cta" href="' + esc(post.cta && post.cta.href || 'tel:+79952507772') + '">' +
@@ -348,10 +352,13 @@ METRIKA + '\n\n' +
   function cards(posts) {
     return posts.map(function (p) {
       return (
-'      <article class="card reveal">\n' +
+'      <article class="card' + (p.cover ? '' : ' card-nocover') + ' reveal">\n' +
 '        <a class="card-link" href="/news/' + esc(p.slug) + '" aria-label="' + esc(plain(p.title)) + '"></a>\n' +
-'        <div class="card-cover"><img src="' + esc(p.cover) + '" alt="' + esc(p.coverAlt || plain(p.title)) + '" loading="lazy"><span class="tag">' + esc(p.categoryTag || '') + '</span></div>\n' +
+(p.cover ?
+'        <div class="card-cover"><img src="' + esc(p.cover) + '" alt="' + esc(p.coverAlt || plain(p.title)) + '" loading="lazy"><span class="tag">' + esc(p.categoryTag || '') + '</span></div>\n' : '') +
 '        <div class="card-body">\n' +
+(p.cover ? '' :
+'          <span class="tag tag-inline">' + esc(p.categoryTag || '') + '</span>\n') +
 '          <div class="card-meta"><span>' + esc(p.dateDisplay) + '</span><span>' + esc(p.readTime) + '</span></div>\n' +
 '          <h3>' + esc(plain(p.title)) + '</h3>\n' +
 '          <p>' + esc(plain(p.description).slice(0, 150)) + '…</p>\n' +
@@ -502,7 +509,6 @@ body + '\n' +
     else if (!/^[a-z0-9-]+$/.test(p.slug)) errs.push('Slug может содержать только латиницу, цифры и дефис');
     else if (existingSlugs && existingSlugs.indexOf(p.slug) !== -1) errs.push('Такой slug уже используется');
     if (!plain(p.description)) errs.push('Добавьте короткое описание (для SEO)');
-    if (!p.cover) errs.push('Укажите обложку');
     if (!p.date) errs.push('Укажите дату');
     return errs;
   }
