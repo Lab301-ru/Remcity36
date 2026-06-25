@@ -1,4 +1,4 @@
-const CACHE_NAME = 'remsiti36-static-v20260624-a7ut';
+const CACHE_NAME = 'remsiti36-static-v20260625-auzc';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -41,6 +41,8 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  // Админка и данные новостей всегда из сети (без кэша), чтобы не залипали.
+  if (url.pathname.startsWith('/admin') || url.pathname === '/news/posts.json') return;
 
   event.respondWith(
     caches.match(request).then(cached => {

@@ -304,8 +304,10 @@ articleAside(post) + '\n\n' +
 '          <div class="corner tr">' + (post.corners && post.corners.tr || '') + '</div>\n' +
 '          <div class="corner br">' + (post.corners && post.corners.br || '') + '</div>\n' +
 '        </div>\n' : '') +
-'        <p class="lede">' + (post.lede || '') + '</p>\n\n' +
-renderBlocks(post.blocks) + '\n\n' +
+(post.lede ? '        <p class="lede">' + post.lede + '</p>\n\n' : '') +
+(post.bodyHtml
+  ? '        <div class="article-richtext">\n' + post.bodyHtml + '\n        </div>'
+  : renderBlocks(post.blocks)) + '\n\n' +
 '        <a class="article-cta" href="' + esc(post.cta && post.cta.href || 'tel:+79952507772') + '">' +
         esc(post.cta && post.cta.text || 'Вызвать мастера') + ' <span class="arr">→</span></a>\n\n' +
 '        <a class="back-link" href="/news">← Все материалы журнала</a>\n' +
@@ -500,6 +502,27 @@ body + '\n' +
     return swText.replace(/const CACHE_NAME = '[^']*';/, "const CACHE_NAME = '" + v + "';");
   }
 
+  /* ── block → HTML (migrate old posts into the rich editor) ── */
+
+  function blocksToHtml(blocks) {
+    return (blocks || []).map(function (b) {
+      var parts = (b.parts || []).map(function (p) {
+        if (p.type === 'ul') {
+          return '<ul>' + (p.items || []).map(function (it) { return '<li>' + it + '</li>'; }).join('') + '</ul>';
+        }
+        return '<p>' + (p.html || '') + '</p>';
+      }).join('');
+      return (b.h ? '<h2>' + b.h + '</h2>' : '') + parts;
+    }).join('');
+  }
+
+  // Rough reading-time estimate from HTML/plain content.
+  function estimateReadTime(html) {
+    var words = plain(html).split(/\s+/).filter(Boolean).length;
+    var min = Math.max(1, Math.round(words / 170));
+    return '~' + min + ' мин';
+  }
+
   /* ── validation ──────────────────────────────────────────── */
 
   function validatePost(p, existingSlugs) {
@@ -520,6 +543,8 @@ body + '\n' +
     sitemapXml: sitemapXml,
     bumpSw: bumpSw,
     validatePost: validatePost,
-    renderBlocks: renderBlocks
+    renderBlocks: renderBlocks,
+    blocksToHtml: blocksToHtml,
+    estimateReadTime: estimateReadTime
   };
 });
