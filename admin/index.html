@@ -114,13 +114,32 @@
       </div>
       <div class="field">
         <label>GitHub Personal Access Token</label>
-        <input id="cfgToken" type="password" placeholder="github_pat_…">
+        <input id="cfgToken" type="password" placeholder="github_pat_… или ghp_…">
         <div class="hint">
-          Создать: <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">github.com/settings/tokens</a> →
-          Fine-grained token → доступ к репозиторию <code>remcity36</code> →
-          Repository permissions → <b>Contents: Read and write</b>.
+          Подходит <b>любой</b> токен — и classic, и fine-grained. Подробности ниже.
         </div>
       </div>
+      <details style="margin-bottom:14px">
+        <summary>🔑 Classic-токен (рекомендуется для репозитория организации)</summary>
+        <div class="hint" style="margin-top:8px;line-height:1.6">
+          Для репозиториев организации fine-grained токен часто не работает (его нужно отдельно
+          одобрять админом организации). Проще создать <b>classic</b>-токен:<br>
+          1. <a href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">github.com/settings/tokens/new</a> (Tokens → classic → Generate new token).<br>
+          2. Отметьте галочку <b>repo</b> (полный доступ к репозиториям).<br>
+          3. Сгенерируйте и скопируйте токен (начинается с <code>ghp_</code>).<br>
+          4. Если включён SSO организации — на странице токена нажмите <b>«Configure SSO» → «Authorize»</b> рядом с нужной организацией.
+        </div>
+      </details>
+      <details style="margin-bottom:14px">
+        <summary>🔒 Fine-grained токен</summary>
+        <div class="hint" style="margin-top:8px;line-height:1.6">
+          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">github.com/settings/tokens</a> →
+          Fine-grained token → Resource owner: <b>организация-владелец</b> → доступ к репозиторию
+          <code>remcity36</code> → Repository permissions → <b>Contents: Read and write</b>.<br>
+          ⚠️ Для репозитория организации токен должен быть <b>одобрен администратором</b> организации,
+          иначе будет ошибка 403/404 — в этом случае используйте classic-токен.
+        </div>
+      </details>
       <div style="display:flex;gap:10px">
         <button class="primary" id="cfgSave">Сохранить</button>
         <button class="danger" id="cfgForget">Забыть токен</button>
@@ -414,10 +433,16 @@ function deletedSlugs(){
 
 /* ── GitHub publish (Git Data API, single commit) ───────── */
 function gh(){ return { token:localStorage.getItem(LS.token), owner:localStorage.getItem(LS.owner)||'lab301-ru', repo:localStorage.getItem(LS.repo)||'remcity36', branch:localStorage.getItem(LS.branch)||'main' }; }
+function authHeader(token){
+  // classic-токены (ghp_/gho_/40-hex) — схема "token"; fine-grained (github_pat_) — "Bearer".
+  const t = (token || '').trim();
+  const classic = /^gh[po]_/.test(t) || /^[0-9a-f]{40}$/.test(t);
+  return (classic ? 'token ' : 'Bearer ') + t;
+}
 async function api(path, opt){
   const c = gh();
   const res = await fetch('https://api.github.com' + path, Object.assign({
-    headers: { 'Authorization':'Bearer '+c.token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }
+    headers: { 'Authorization':authHeader(c.token), 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }
   }, opt));
   if(!res.ok){ const txt = await res.text(); throw new Error('GitHub ' + res.status + ': ' + txt); }
   return res.json();
