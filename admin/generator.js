@@ -64,7 +64,7 @@
 '  <div class="wrap">\n' +
 '    <span class="live"><span class="dot"></span> станция активна</span>\n' +
 '    <span class="sep"></span>\n' +
-'    <span class="item meta-extra">журнал · field notes</span>\n' +
+'    <span class="item meta-extra">новости · field notes</span>\n' +
 '    <span class="sep meta-extra"></span>\n' +
 '    <span class="grow"><span class="ticker" aria-hidden="true">' +
 '<span>раздел · field journal</span><span class="sgl">+</span>' +
@@ -96,7 +96,7 @@
 '      <li><a href="/index.html#cases">Кейсы</a></li>\n' +
 '      <li><a href="/index.html#numbers">Цифры</a></li>\n' +
 '      <li><a href="/index.html#process">Процесс</a></li>\n' +
-'      <li><a href="/news" class="active">Журнал</a></li>\n' +
+'      <li><a href="/news" class="active">Новости</a></li>\n' +
 '      <li><a href="/index.html#comms">Связь</a></li>\n' +
 '    </ul>\n' +
 '    <a href="tel:+79952507772" class="nav-cta">' + PHONE_SVG + 'Позвонить</a>\n' +
@@ -109,7 +109,7 @@
 '  <a href="/index.html#cases"><span>Кейсы</span></a>\n' +
 '  <a href="/index.html#numbers"><span>Цифры</span></a>\n' +
 '  <a href="/index.html#process"><span>Процесс</span></a>\n' +
-'  <a href="/news"><span>Журнал</span></a>\n' +
+'  <a href="/news"><span>Новости</span></a>\n' +
 '  <a href="/index.html#comms"><span>Связь</span></a>\n' +
 '  <a href="tel:+79952507772" class="m-cta">' + PHONE_SVG.replace('nav-cta-ico','m-cta-ico') + 'Позвонить</a>\n' +
 '</div>');
@@ -130,7 +130,7 @@
 '        <a href="/index.html#services">Услуги</a>\n' +
 '        <a href="/index.html#cases">Кейсы</a>\n' +
 '        <a href="/index.html#numbers">Цифры</a>\n' +
-'        <a href="/news">Журнал</a>\n' +
+'        <a href="/news">Новости</a>\n' +
 '      </div>\n' +
 '      <div class="foot-col">\n' +
 '        <h5>Связь</h5>\n' +
@@ -243,7 +243,7 @@
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Главная', item: origin + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Журнал', item: origin + '/news' },
+        { '@type': 'ListItem', position: 2, name: 'Новости', item: origin + '/news' },
         { '@type': 'ListItem', position: 3, name: titlePlain, item: url }
       ]
     };
@@ -288,7 +288,7 @@ nav() + '\n\n' +
 '    <div class="crumbs reveal" style="margin-bottom:32px">\n' +
 '      <a href="/">Ремсити·36</a>\n' +
 '      <span class="sl">/</span>\n' +
-'      <a href="/news">Журнал</a>\n' +
+'      <a href="/news">Новости</a>\n' +
 '      <span class="sl">/</span>\n' +
 '      <span class="cur">' + esc(post.categoryTag || '') + '</span>\n' +
 '    </div>\n\n' +
@@ -310,7 +310,7 @@ articleAside(post) + '\n\n' +
   : renderBlocks(post.blocks)) + '\n\n' +
 '        <a class="article-cta" href="' + esc(post.cta && post.cta.href || 'tel:+79952507772') + '">' +
         esc(post.cta && post.cta.text || 'Вызвать мастера') + ' <span class="arr">→</span></a>\n\n' +
-'        <a class="back-link" href="/news">← Все материалы журнала</a>\n' +
+'        <a class="back-link" href="/news">← Все новости</a>\n' +
 '      </div>\n' +
 '    </article>\n\n' +
 '  </div>\n' +
@@ -378,7 +378,7 @@ METRIKA + '\n\n' +
     var blogLd = {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: 'Журнал Ремсити36',
+      name: 'Новости Ремсити36',
       url: origin + '/news',
       description: 'Полевые заметки сервисной мастерской Ремсити36 — о ремонте техники в Воронеже.',
       blogPost: posts.map(function (p) {
@@ -399,14 +399,14 @@ METRIKA + '\n\n' +
 '<meta charset="utf-8">\n' +
 (opts.asIndex ? '<base href="/">\n' : '') +
 '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
-'<title>Журнал — Ремсити36 | Ремонт бытовой техники в Воронеже</title>\n' +
+'<title>Новости — Ремсити36 | Ремонт бытовой техники в Воронеже</title>\n' +
 '<meta name="description" content="Полевые заметки сервисной мастерской Ремсити36 — о ремонте телевизоров, стиральных машин, игровых консолей и другой техники в Воронеже.">\n' +
 '<meta name="theme-color" content="#0a0a0a">\n' +
 '<link rel="icon" href="/logo-96.webp" type="image/webp">\n' +
 '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n' +
 '<link rel="canonical" href="' + origin + '/news">\n' +
 '<meta property="og:type" content="website">\n' +
-'<meta property="og:title" content="Журнал Ремсити36 — заметки из мастерской">\n' +
+'<meta property="og:title" content="Новости Ремсити36 — заметки из мастерской">\n' +
 '<meta property="og:description" content="О ремонте техники в Воронеже: телевизоры, стиральные машины, консоли и другое.">\n' +
 '<meta property="og:url" content="' + origin + '/news">\n' +
 '<meta property="og:image" content="' + origin + '/og-image.jpg">\n' +
@@ -425,11 +425,11 @@ nav() + '\n\n' +
 '    <div class="crumbs">\n' +
 '      <a href="/">Ремсити·36</a>\n' +
 '      <span class="sl">/</span>\n' +
-'      <span class="cur">Журнал</span>\n' +
+'      <span class="cur">Новости</span>\n' +
 '      <span class="sl">/</span>\n' +
 '      <span>2026</span>\n' +
 '    </div>\n' +
-'    <h1 class="reveal"><span class="stroke">Полевой</span><br><em>журнал нашей мастерской</em></h1>\n' +
+'    <h1 class="reveal"><span class="stroke">Новости</span><br><em>нашей мастерской</em></h1>\n' +
 '    <div class="lead reveal">\n' +
 '      <p><b>Заметки из мастерской.</b> Что мы чиним, как мы это делаем, какие неисправности встречаются чаще всего и почему не стоит откладывать ремонт. Без воды — только из практики мастерской.</p>\n' +
 '      <div class="meta">\n' +
