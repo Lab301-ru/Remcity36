@@ -22,10 +22,18 @@
 ## Публикация
 
 ### Вариант 1 — автоматически (рекомендуется)
-В **⚙ Настройки** вставьте GitHub Personal Access Token:
-- https://github.com/settings/tokens?type=beta → **Fine-grained token**
-- доступ к репозиторию `lab301-ru/remcity36`
-- Repository permissions → **Contents: Read and write**
+В **⚙ Настройки** вставьте GitHub Personal Access Token. Подходит **любой** тип:
+
+**Classic-токен** (надёжнее для репозитория организации):
+- https://github.com/settings/tokens/new → Tokens (classic) → Generate new token
+- отметьте scope **`repo`**
+- если в организации включён SSO — на странице токена нажмите **«Configure SSO» → «Authorize»**
+
+**Fine-grained токен:**
+- https://github.com/settings/tokens?type=beta → Resource owner: организация-владелец
+- доступ к репозиторию `lab301-ru/remcity36` → Repository permissions → **Contents: Read and write**
+- ⚠️ для репозитория организации токен должен быть **одобрен администратором** организации,
+  иначе ошибка 403/404 — тогда используйте classic-токен
 
 После этого кнопка «Опубликовать» сама делает коммит, и сайт обновляется через ~1 минуту.
 Токен хранится только в вашем браузере.
