@@ -1,4 +1,4 @@
-const CACHE_NAME = 'remsiti36-static-v20260627-e7sy';
+const CACHE_NAME = 'remsiti36-static-v20260628-8d5t';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
