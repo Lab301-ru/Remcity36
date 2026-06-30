@@ -247,24 +247,24 @@ nav.main .wrap{
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 32px;
+  padding: 13px 30px;
   line-height: 1;
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 2px;
+  background: rgba(10,10,12,0.92);
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
   font-family: var(--mono);
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
-  transition: background .2s, box-shadow .2s;
+  transition: background .2s, box-shadow .2s, border-color .2s;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 14px rgba(255,91,31,0.28), 0 0 4px rgba(255,91,31,0.12);
+  box-shadow: 0 0 18px rgba(255,91,31,0.55), 0 0 4px rgba(255,91,31,0.35), inset 0 0 12px rgba(255,91,31,0.08);
 }
-.nav-cta-ico{ color: #22c55e; flex-shrink: 0; display: block; }
+.nav-cta-ico{ color: var(--accent); flex-shrink: 0; display: block; }
 .nav-cta::before{
   content: '';
   position: absolute;
@@ -279,9 +279,9 @@ nav.main .wrap{
   animation: nav-sweep 0.7s ease-out forwards;
 }
 .nav-cta:hover{
-  background: var(--accent-2);
+  background: rgba(20,16,14,0.95);
   border-color: var(--accent-2);
-  box-shadow: 0 0 22px rgba(255,91,31,0.42), 0 0 8px rgba(255,91,31,0.22);
+  box-shadow: 0 0 26px rgba(255,91,31,0.75), 0 0 8px rgba(255,179,71,0.45), inset 0 0 16px rgba(255,91,31,0.14);
 }
 @keyframes nav-sweep{
   0%   { transform: translateX(-200%); }
