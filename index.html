@@ -242,6 +242,7 @@ nav.main .wrap{
 .nav-links a .idx{ color: var(--dim); font-size: 10px; }
 .nav-links a:hover{ color: var(--text); background: rgba(255,255,255,.04); }
 .nav-links a:hover .idx{ color: var(--accent); }
+@property --nav-angle{ syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 .nav-cta{
   display: inline-flex;
   align-items: center;
@@ -250,7 +251,7 @@ nav.main .wrap{
   padding: 13px 30px;
   line-height: 1;
   background: rgba(10,10,12,0.92);
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid rgba(255,91,31,0.45);
   border-radius: 999px;
   font-family: var(--mono);
   font-size: 13px;
@@ -258,35 +259,65 @@ nav.main .wrap{
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
-  transition: background .2s, box-shadow .2s, border-color .2s;
+  transition: background .2s, border-color .2s;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 18px rgba(255,91,31,0.55), 0 0 4px rgba(255,91,31,0.35), inset 0 0 12px rgba(255,91,31,0.08);
+  isolation: isolate;
+  animation: nav-cta-pulse 3.4s ease-in-out infinite;
 }
+.nav-cta > *{ position: relative; z-index: 2; }
 .nav-cta-ico{ color: var(--accent); flex-shrink: 0; display: block; }
+/* Snake border — running orange arc */
+.nav-cta::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--nav-angle),
+    transparent 0deg,
+    transparent 230deg,
+    var(--accent) 300deg,
+    #ffd28a 340deg,
+    var(--accent) 355deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: nav-snake 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Inner sheen sweep */
 .nav-cta::before{
   content: '';
   position: absolute;
   top: 0; left: 0; bottom: 0;
   width: 55%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
   transform: translateX(-200%);
-  animation: none;
+  animation: nav-sweep 2.6s ease-in-out infinite;
   pointer-events: none;
-}
-.nav-cta:hover::before{
-  animation: nav-sweep 0.7s ease-out forwards;
+  z-index: 1;
 }
 .nav-cta:hover{
-  background: rgba(20,16,14,0.95);
-  border-color: var(--accent-2);
-  box-shadow: 0 0 26px rgba(255,91,31,0.75), 0 0 8px rgba(255,179,71,0.45), inset 0 0 16px rgba(255,91,31,0.14);
+  background: rgba(22,16,14,0.96);
+  border-color: rgba(255,179,71,0.7);
 }
+.nav-cta:hover::after{ animation-duration: 1.4s; }
+@keyframes nav-cta-pulse{
+  0%,100% { box-shadow: 0 0 16px rgba(255,91,31,0.45), 0 0 4px rgba(255,91,31,0.25), inset 0 0 12px rgba(255,91,31,0.08); }
+  50%     { box-shadow: 0 0 28px rgba(255,91,31,0.75), 0 0 10px rgba(255,179,71,0.4), inset 0 0 18px rgba(255,91,31,0.18); }
+}
+@keyframes nav-snake{ to{ --nav-angle: 360deg; } }
 @keyframes nav-sweep{
   0%   { transform: translateX(-200%); }
-  18%  { transform: translateX(300%); }
-  100% { transform: translateX(-200%); }
+  28%  { transform: translateX(300%); }
+  100% { transform: translateX(300%); }
 }
 
 /* MOBILE BURGER */
@@ -1426,7 +1457,7 @@ footer{
 @media (prefers-reduced-motion: reduce){
   .dot{ animation: none; opacity: 1; }
   .status-bar .ticker{ animation: none; }
-  .nav-cta::before, .mobile-menu .m-cta::before{ display: none; }
+  .nav-cta, .nav-cta::before, .nav-cta::after, .mobile-menu .m-cta::before{ animation: none !important; }
 }
 </style>
 </head>
