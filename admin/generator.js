@@ -440,14 +440,6 @@ nav() + '\n\n' +
 '    </div>\n' +
 '  </div>\n' +
 '</section>\n\n' +
-'<section class="toc">\n' +
-'  <div class="wrap">\n' +
-'    <h3>Содержание <span>/ ' + countStr + ' материала</span></h3>\n' +
-'    <div class="toc-list">\n' +
-tocRows(posts) + '\n' +
-'    </div>\n' +
-'  </div>\n' +
-'</section>\n\n' +
 '<section class="cards">\n' +
 '  <div class="wrap">\n' +
 '    <div class="cards-grid">\n' +
