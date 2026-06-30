@@ -686,7 +686,7 @@ footer{ padding: 80px 0 32px; background: #050505; }
 /* ─────────────────────────────────────────────────────────────
    NEWS INDEX CARDS  (added for admin / per-article pages)
 ─────────────────────────────────────────────────────────────── */
-.cards{ padding: 80px 0 100px; }
+.cards{ padding: 40px 0 100px; }
 .cards-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
