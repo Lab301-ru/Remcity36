@@ -1,4 +1,4 @@
-const CACHE_NAME = 'remsiti36-static-v20260721-xipo';
+const CACHE_NAME = 'remsiti36-static-v20260721-lpid';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
