@@ -4,7 +4,28 @@
     "origin": "https://remcity36.ru",
     "phone": "+7 (995) 250-77-72",
     "phoneHref": "tel:+79952507772",
-    "author": "STN VRN-36"
+    "author": "STN VRN-36",
+    "seoDefaults": {
+      "titleTemplate": "%Ремонт бытовой техники в Воронеже% — %Ремсити36%",
+      "metaDescription": "Ремонт бытовой техники в Воронеже от 500р. Ремонтируем пылесосы, роботы-пылесосы,  парогенераторы, утюги, кофемашины, телевизоры. Ремонт и диагностика.",
+      "ogImage": "/assets/news/site-og-msc7mvw3.webp",
+      "ogType": "article",
+      "ogLocale": "ru_RU",
+      "twitterCard": "summary_large_image",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "organizationSchema": {},
+      "socialLinks": {
+        "telegram": "https://t.me/remcity36"
+      },
+      "aiDirectivesDefault": {
+        "allowAiOverview": true,
+        "allowGenerativeAnswers": true,
+        "allowModelTraining": true,
+        "allowedAiCrawlers": [],
+        "disallowedAiCrawlers": []
+      }
+    }
   },
   "posts": [
     {
