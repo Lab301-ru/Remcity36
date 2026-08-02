@@ -114,7 +114,10 @@ code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px;font-
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
         <h3>Новости</h3>
-        <button id="newBtn" class="btn sm">+ Новая новость</button>
+        <div style="display:flex;gap:9px;flex-wrap:wrap">
+          <button id="siteSeoBtn" class="btn ghost sm">⚙ SEO сайта</button>
+          <button id="newBtn" class="btn sm">+ Новая новость</button>
+        </div>
       </div>
       <div id="list" style="margin-top:16px"><p class="muted">Загрузка…</p></div>
     </div>
@@ -158,18 +161,42 @@ code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px;font-
       <trix-editor input="trixInput"></trix-editor>
       <div class="hint">Картинки можно перетаскивать прямо в текст — они загрузятся в репозиторий и сожмутся в WebP автоматически.</div>
 
+      <!-- SEO-панель: монтируется после открытия редактора -->
+      <div id="seoPanelHost" style="margin-top:26px"></div>
+
       <div class="toolbar">
         <button id="saveBtn" class="btn">Опубликовать</button>
         <button id="cancelBtn" class="btn ghost">Отмена</button>
       </div>
       <p class="hint">После публикации страница появится на сайте обычно за ~1 минуту по адресу выше.</p>
     </div>
+
+    <!-- ГЛОБАЛЬНЫЕ SEO-НАСТРОЙКИ -->
+    <div id="siteSeoCard" class="card hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Глобальные SEO-настройки сайта</h3>
+        <button id="closeSiteSeo" class="btn ghost sm">Закрыть</button>
+      </div>
+      <p class="muted" style="margin:10px 0 0">
+        Значения по умолчанию для всех страниц. Если поле страницы пустое — берётся отсюда.
+      </p>
+      <div id="siteSeoHost" style="margin-top:18px"></div>
+      <div class="toolbar">
+        <button id="saveSiteSeo" class="btn">Сохранить глобальные настройки</button>
+      </div>
+    </div>
   </section>
 </div>
 
 <div id="toast"></div>
 
-<script src="/admin/generator.js?v=3"></script>
+<link rel="stylesheet" href="/admin/seo/seo.css?v=1">
+<script src="/admin/seo/domain.js?v=1"></script>
+<script src="/admin/seo/application.js?v=1"></script>
+<script src="/admin/seo/fields.js?v=1"></script>
+<script src="/admin/seo/ui.js?v=1"></script>
+<script src="/admin/seo/widgets.js?v=1"></script>
+<script src="/admin/generator.js?v=4"></script>
 <script>
 const OWNER='lab301-ru', REPO='remcity36', BRANCH='main';
 const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
@@ -260,6 +287,7 @@ async function loadList(){
     const f=await getFile('news/posts.json');
     DATA=f?JSON.parse(f.text):{site:defaultSite(),posts:[]};
     if(!DATA.site)DATA.site=defaultSite();if(!DATA.posts)DATA.posts=[];
+    loadSeoSidecars();   // редиректы и история — в фоне, список не ждёт
     const posts=DATA.posts.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
     if(!posts.length){box.innerHTML='<p class="muted">Пока нет ни одной новости. Нажмите «+ Новая новость».</p>';return;}
     box.innerHTML='';
@@ -278,6 +306,18 @@ async function loadList(){
 }
 function defaultSite(){return{name:'Ремсити36',origin:'https://remcity36.ru',phone:'+7 (995) 250-77-72',phoneHref:'tel:+79952507772',author:'STN VRN-36'};}
 
+/** Подтянуть редиректы и историю SEO-изменений (файлы могут отсутствовать). */
+async function loadSeoSidecars(){
+  try{
+    const r=await getFile('seo/redirects.json');
+    redirectsCache=r?JSON.parse(r.text):[];
+  }catch(e){redirectsCache=[];}
+  try{
+    const h=await getFile('seo/changelog.json');
+    historyCache=h?JSON.parse(h.text):[];
+  }catch(e){historyCache=[];}
+}
+
 /* ── редактор ──────────────────────────────────────────────── */
 function setBody(html){document.querySelector('trix-editor').editor.loadHTML(html||'');}
 function showEditor(){$('editor').classList.remove('hidden');$('editor').scrollIntoView({behavior:'smooth'});}
@@ -291,9 +331,13 @@ function resetForm(){
 }
 function openEditor(slug){
   showEditor();
-  if(!slug){resetForm();return;}
+  // Черновик SEO всегда берётся у открываемой новости, иначе
+  // данные предыдущей утекли бы в текущую.
+  seoDraft=null;
+  if(!slug){resetForm();mountSeoPanel();return;}
   const n=(DATA.posts||[]).find(p=>p.slug===slug);
   if(!n){toast('Новость не найдена',true);return;}
+  seoDraft=n.seo?JSON.parse(JSON.stringify(n.seo)):null;
   editingSlug=n.slug;$('editorTitle').textContent='Редактирование';
   $('fTitle').value=G.plain(n.title)||'';$('fSlug').value=n.slug||'';$('fSlug').disabled=true;$('fSlug').dataset.touched='1';
   $('fDesc').value=G.plain(n.description)||'';$('fTags').value=(n.categoryTag||'').toLowerCase();
@@ -301,6 +345,49 @@ function openEditor(slug){
   if(n.cover){const p=$('coverPrev');p.src=n.cover;p.style.display='block';}else{$('coverPrev').style.display='none';}
   const html=n.bodyHtml||G.blocksToHtml(n.blocks)||'';
   setBody(html);updateSlugPreview();
+  mountSeoPanel();
+}
+
+/* ── SEO-панель ────────────────────────────────────────────── */
+let seoPanel=null;      // смонтированная панель
+let seoDraft=null;      // черновик post.seo (публикуется вместе с новостью)
+let redirectsCache=null, historyCache=null;
+
+/**
+ * Смонтировать SEO-панель для текущей новости.
+ * Панель работает с черновиком: на сервер он уезжает только
+ * при нажатии «Опубликовать» — отдельного коммита на каждый чих нет.
+ */
+function mountSeoPanel(){
+  const host=$('seoPanelHost');
+  if(!window.SeoUI){host.innerHTML='<p class="muted">SEO-модуль не загрузился</p>';return;}
+  const post=buildPost();
+  seoDraft=JSON.parse(JSON.stringify(post.seo||{}));
+
+  seoPanel=window.SeoUI.mount(host,{
+    post, site:DATA.site||defaultSite(),
+    getAllPosts:()=>DATA.posts||[],
+    uploadImage:file=>uploadImage(file,$('fTitle').value||'seo'),
+    getRedirects:()=>redirectsCache||[],
+    getHistory:()=>historyCache||[],
+    onSaveRedirects:rules=>{redirectsCache=rules;toast('Редиректы применятся при публикации');},
+    // Изменение поля — запись в историю (кто/когда/что было/что стало)
+    onFieldChange:(field,oldValue,newValue)=>{
+      historyCache=historyCache||[];
+      historyCache.unshift({
+        slug:post.slug, field, oldValue, newValue,
+        user:(localStorage.getItem('rc36_gh_user')||'admin'),
+        createdAt:new Date().toISOString()
+      });
+    },
+    // «Сохранение» = обновление черновика в памяти
+    onSave:seo=>{seoDraft=JSON.parse(JSON.stringify(seo));}
+  });
+}
+
+function unmountSeoPanel(){
+  if(seoPanel){seoPanel.destroy();seoPanel=null;}
+  $('seoPanelHost').innerHTML='';
 }
 
 /* ── собрать объект новости из формы ───────────────────────── */
@@ -326,7 +413,9 @@ function buildPost(){
     coverAlt:title,
     corners:prev.corners||{tl:(tag||'NEWS').toUpperCase(),tr:'● NEW',br:'VRN · '+dDisplay(date)},
     lede:'', bodyHtml, blocks:undefined,
-    cta:prev.cta||{text:'Вызвать мастера',href:'tel:+79952507772'}
+    cta:prev.cta||{text:'Вызвать мастера',href:'tel:+79952507772'},
+    // SEO-черновик из панели; пока панель не открыта — сохранённые данные
+    seo:seoDraft||prev.seo||undefined
   });
 }
 
@@ -343,10 +432,46 @@ async function save(){
     const message='news: '+(editingSlug?'обновление «':'публикация «')+post.slug+'»';
     await writeText('news/'+post.slug+'/index.html',G.articlePage(post,DATA.site||defaultSite()),message);
     await writeListing(message);
+    await writeSeoSidecars(message);
     toast('✅ Опубликовано! Страница появится на сайте за ~1 минуту.');
-    hideEditor();setTimeout(loadList,1000);
+    hideEditor();unmountSeoPanel();setTimeout(loadList,1000);
   }catch(e){toast(e.message,true);}
   finally{btn.disabled=false;btn.innerHTML=old;}
+}
+
+/**
+ * Записать сопутствующие SEO-файлы: robots.txt, историю изменений
+ * и страницы-редиректы. Вызывается после публикации новости.
+ */
+async function writeSeoSidecars(message){
+  const site=DATA.site||defaultSite();
+
+  // robots.txt — с учётом глобальных AI-директив
+  if(window.SeoApp){
+    const ai=(site.seoDefaults||{}).aiDirectivesDefault;
+    await writeText('robots.txt',window.SeoApp.robotsTxt(site,ai),message);
+  }
+
+  // История изменений SEO-полей
+  if(historyCache&&historyCache.length){
+    let prev=[];
+    const f=await getFile('seo/changelog.json');
+    if(f){try{prev=JSON.parse(f.text)}catch(e){}}
+    // Ограничиваем файл, чтобы он не рос бесконечно
+    const merged=historyCache.concat(prev).slice(0,2000);
+    await writeText('seo/changelog.json',JSON.stringify(merged,null,2)+'\n',message);
+    historyCache=merged;
+  }
+
+  // Редиректы: список + страницы переадресации
+  if(redirectsCache){
+    await writeText('seo/redirects.json',JSON.stringify(redirectsCache,null,2)+'\n',message);
+    for(const rule of redirectsCache){
+      const path=rule.fromPath.replace(/^\/+|\/+$/g,'');
+      if(!path)continue;
+      await writeText(path+'/index.html',window.SeoApp.redirectPageHtml(rule,site),message);
+    }
+  }
 }
 
 async function removeNews(slug){
@@ -410,7 +535,65 @@ $('connectBtn').onclick=async()=>{
 };
 $('logoutBtn').onclick=()=>{localStorage.removeItem('rc36_gh_token');location.reload();};
 $('newBtn').onclick=()=>openEditor(null);
-$('closeEditor').onclick=hideEditor;$('cancelBtn').onclick=hideEditor;$('saveBtn').onclick=save;
+$('closeEditor').onclick=()=>{hideEditor();unmountSeoPanel();};
+$('cancelBtn').onclick=()=>{hideEditor();unmountSeoPanel();};
+$('saveBtn').onclick=save;
+
+/* ── Глобальные SEO-настройки сайта ────────────────────────── */
+let siteSeoDraft=null;
+
+$('siteSeoBtn').onclick=()=>{
+  const card=$('siteSeoCard');
+  if(!card.classList.contains('hidden')){card.classList.add('hidden');return;}
+  card.classList.remove('hidden');
+  card.scrollIntoView({behavior:'smooth'});
+  renderSiteSeo();
+};
+$('closeSiteSeo').onclick=()=>$('siteSeoCard').classList.add('hidden');
+
+function renderSiteSeo(){
+  const host=$('siteSeoHost');
+  if(!window.SeoUI){host.innerHTML='<p class="muted">SEO-модуль не загрузился</p>';return;}
+  const U=window.SeoUI, D=window.SeoDomain, F=window.SeoFields;
+  siteSeoDraft=Object.assign({},D.emptySiteDefaults(),(DATA.site||{}).seoDefaults||{});
+
+  // Лёгкий «стор» поверх черновика глобальных настроек
+  const store={
+    get:p=>F.getPath(siteSeoDraft,p),
+    set:(p,v)=>F.setPath(siteSeoDraft,p,v),
+    state:{site:DATA.site||defaultSite()}
+  };
+  host.innerHTML='';
+  const panel=document.createElement('div');
+  panel.className='seo-panel';
+  F.siteDefaultsSections.forEach((sec,i)=>{
+    const inner=document.createElement('div');
+    (sec.fields||[]).forEach(f=>inner.appendChild(
+      U.renderField(f,store,{uploadImage:file=>uploadImage(file,'site-og')})));
+    panel.appendChild(U.collapsibleSection('site:'+i,sec.title,inner,sec.collapsed));
+  });
+  host.appendChild(panel);
+}
+
+$('saveSiteSeo').onclick=async()=>{
+  if(!siteSeoDraft){toast('Нечего сохранять',true);return;}
+  const btn=$('saveSiteSeo');btn.disabled=true;const old=btn.textContent;
+  btn.innerHTML='<span class="spin"></span> Сохраняю…';
+  try{
+    DATA.site=Object.assign({},DATA.site||defaultSite(),{seoDefaults:siteSeoDraft});
+    const message='seo: обновление глобальных настроек';
+    // Глобальные значения влияют на все страницы — пересобираем сайт целиком.
+    await writeListing(message);
+    await writeSeoSidecars(message);
+    const site=DATA.site;
+    for(const p of DATA.posts){
+      await writeText('news/'+p.slug+'/index.html',G.articlePage(p,site),message);
+    }
+    toast('✅ Глобальные настройки сохранены, страницы пересобраны.');
+    $('siteSeoCard').classList.add('hidden');
+  }catch(e){toast(e.message,true);}
+  finally{btn.disabled=false;btn.textContent=old;}
+};
 
 /* автологин */
 (async()=>{if(TOKEN){try{await connect(TOKEN);enterApp();}catch(e){localStorage.removeItem('rc36_gh_token');}}})();

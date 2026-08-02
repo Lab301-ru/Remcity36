@@ -7,10 +7,28 @@
    Pure functions, no DOM, no Node APIs → usable everywhere.
 ─────────────────────────────────────────────────────────────── */
 (function (root, factory) {
-  if (typeof module === 'object' && module.exports) module.exports = factory();
-  else root.Generator = factory();
-})(typeof self !== 'undefined' ? self : this, function () {
+  if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('./seo/application.js'));
+  } else {
+    root.Generator = factory(root.SeoApp);
+  }
+})(typeof self !== 'undefined' ? self : this, function (SeoApp) {
   'use strict';
+
+  /**
+   * SEO-блок <head>. Если SEO-модуль почему-то не подключён,
+   * страница всё равно собирается с базовым набором тегов —
+   * генератор не должен падать из-за отсутствия модуля.
+   */
+  function seoHead(post, site) {
+    if (SeoApp && SeoApp.generateHead) return SeoApp.generateHead(post, site);
+    const t = plain(post.title), d = plain(post.description);
+    const u = site.origin + '/news/' + post.slug;
+    return '<title>' + esc(t) + ' — ' + esc(site.name) + '</title>\n' +
+      '<meta name="description" content="' + esc(d) + '">\n' +
+      '<link rel="canonical" href="' + esc(u) + '">\n' +
+      '<meta name="robots" content="index, follow">\n';
+  }
 
   /* ── helpers ─────────────────────────────────────────────── */
 
@@ -216,37 +234,10 @@
   /* ── per-article SEO page ─────────────────────────────────── */
 
   function articlePage(post, site) {
-    var origin = site.origin;
-    var url = origin + '/news/' + post.slug;
     var hasCover = !!post.cover;
-    var coverAbs = hasCover
-      ? (/^https?:/.test(post.cover) ? post.cover : origin + post.cover)
-      : origin + '/og-image.jpg';
     var titlePlain = plain(post.title);
-    var ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: plain(post.title),
-      description: plain(post.description),
-      image: [coverAbs],
-      datePublished: post.date,
-      dateModified: post.dateModified || post.date,
-      author: { '@type': 'Organization', name: site.name, url: origin },
-      publisher: {
-        '@type': 'Organization', name: site.name, url: origin,
-        logo: { '@type': 'ImageObject', url: origin + '/apple-touch-icon.png' }
-      },
-      mainEntityOfPage: { '@type': 'WebPage', '@id': url }
-    };
-    var crumbsLd = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Главная', item: origin + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Новости', item: origin + '/news' },
-        { '@type': 'ListItem', position: 3, name: titlePlain, item: url }
-      ]
-    };
+    // Свой CSS-класс для <body> — из вкладки «Свой Head».
+    var bodyClass = (post.seo && post.seo.customCssClass) || '';
 
     return (
 '<!DOCTYPE html>\n' +
@@ -254,32 +245,17 @@
 '<head>\n' +
 '<meta charset="utf-8">\n' +
 '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
-'<title>' + esc(titlePlain) + ' — Ремсити36, Воронеж</title>\n' +
-'<meta name="description" content="' + esc(plain(post.description)) + '">\n' +
-'<link rel="canonical" href="' + esc(url) + '">\n' +
 '<meta name="theme-color" content="#0a0a0a">\n' +
-'<meta name="robots" content="index, follow">\n' +
-'<meta property="og:type" content="article">\n' +
-'<meta property="og:title" content="' + esc(titlePlain) + '">\n' +
-'<meta property="og:description" content="' + esc(plain(post.description)) + '">\n' +
-'<meta property="og:url" content="' + esc(url) + '">\n' +
-'<meta property="og:image" content="' + esc(coverAbs) + '">\n' +
-'<meta property="og:site_name" content="Ремсити36">\n' +
-'<meta property="og:locale" content="ru_RU">\n' +
-'<meta property="article:published_time" content="' + esc(post.date) + '">\n' +
-'<meta property="article:section" content="' + esc(post.categoryTag || '') + '">\n' +
-'<meta name="twitter:card" content="summary_large_image">\n' +
-'<meta name="twitter:title" content="' + esc(titlePlain) + '">\n' +
-'<meta name="twitter:description" content="' + esc(plain(post.description)) + '">\n' +
-'<meta name="twitter:image" content="' + esc(coverAbs) + '">\n' +
+// Весь SEO-блок (title, description, canonical, robots, OG, Twitter,
+// hreflang, AI-директивы, свои теги и JSON-LD) собирает SEO-модуль
+// с учётом наследования из site.seoDefaults.
+seoHead(post, site) +
 '<link rel="icon" href="/logo-96.webp" type="image/webp">\n' +
 '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n' +
 FONTS + '\n' +
 '<link rel="stylesheet" href="/assets/journal.css">\n' +
-'<script type="application/ld+json">' + JSON.stringify(ld) + '</script>\n' +
-'<script type="application/ld+json">' + JSON.stringify(crumbsLd) + '</script>\n' +
 '</head>\n' +
-'<body class="article-page">\n\n' +
+'<body class="article-page' + (bodyClass ? ' ' + esc(bodyClass) : '') + '">\n\n' +
 statusBar() + '\n\n' +
 nav() + '\n\n' +
 '<main>\n\n' +
@@ -458,6 +434,10 @@ METRIKA + '\n\n' +
   /* ── sitemap.xml ─────────────────────────────────────────── */
 
   function sitemapXml(posts, site) {
+    // Когда SEO-модуль подключён, карта сайта строится с учётом
+    // настроек каждой страницы (включение, приоритет, частота, noindex).
+    if (SeoApp && SeoApp.sitemapXml) return SeoApp.sitemapXml(posts, site);
+
     var origin = site.origin;
     var today = new Date().toISOString().slice(0, 10);
     var urls = [
